@@ -10,14 +10,19 @@ kivy.require('1.9.1')
 from kivy.animation import Animation
 from kivy.app import App
 from kivy.clock import Clock
+from kivy.garden.circularlayout import CircularLayout
+from kivy.garden.modernmenu import ModernMenu
 from kivy.logger import Logger
 from kivy.properties import (
     BoundedNumericProperty, ObjectProperty, StringProperty
 )
-from kivy.uix.carousel import Carousel
+# from kivy.uix.carousel import Carousel
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
+
 
 TIMER_OPTIONS = {
     '1/60 sec': 1 / 60.0,
@@ -31,22 +36,28 @@ def _(text):
     return text
 
 
+class ActionList(DropDown):
+    pass
+
+class Player(BoxLayout):
+    pass
+
 class I18NLabel(Label):
     """Label that supports internationlization."""
     source_text = StringProperty('')
 
 
-class RefLabel(Label):
-    """Simple that opens a contained url in the webbrowser."""
+# class RefLabel(Label):
+    # """Simple that opens a contained url in the webbrowser."""
 
-    def on_ref_press(self, url):
-        """Callback which is being run when the user clicks on a ref in the
-        label.
+    # def on_ref_press(self, url):
+        # """Callback which is being run when the user clicks on a ref in the
+        # label.
 
-        :param str url: URL to be opened in the webbrowser
-        """
-        Logger.info("Opening '{url}' in webbrowser.".format(url=url))
-        webbrowser.open(url)
+        # :param str url: URL to be opened in the webbrowser
+        # """
+        # Logger.info("Opening '{url}' in webbrowser.".format(url=url))
+        # webbrowser.open(url)
 
 
 class TransitionProgress(ProgressBar):
@@ -83,7 +94,7 @@ class MafiaDemonstrationApp(App):
     translation = ObjectProperty(None, allownone=True)
 
     timer = BoundedNumericProperty(0, min=0, max=400)
-    carousel = ObjectProperty(Carousel)
+    # carousel = ObjectProperty(Carousel)
 
     def __init__(self, language, **kwargs):
         self.language = language
@@ -113,6 +124,8 @@ class MafiaDemonstrationApp(App):
             self.carousel.anim_move_duration
         )
 
+
+
     def build(self):
         """Initialize the GUI based on the kv file and set up events.
 
@@ -125,13 +138,13 @@ class MafiaDemonstrationApp(App):
         user_interval = self.config.get('user_settings', 'timer_interval')
         self.timer_interval = TIMER_OPTIONS[user_interval]
 
-        self.carousel = self.root.ids.carousel
-        self.progress_bar = self.root.ids.progress_bar
-        self.progress_bar.max = self.property('timer').get_max(self)
+        # self.carousel = self.root.ids.carousel
+        # self.progress_bar = self.root.ids.progress_bar
+        # self.progress_bar.max = self.property('timer').get_max(self)
 
-        self.start_timer()
-        self.carousel.bind(on_touch_down=self.stop_timer)
-        self.carousel.bind(current_slide=self.delay_timer)
+        # self.start_timer()
+        # self.carousel.bind(on_touch_down=self.stop_timer)
+        # self.carousel.bind(current_slide=self.delay_timer)
         return self.root
 
     def build_config(self, config):

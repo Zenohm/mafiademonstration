@@ -11,92 +11,82 @@
 
 #:set fsize 15
 
-<Slide@BoxLayout>:
-    bg_hex_clr: '000000'
+<ActionList>:
+    Button:
+        id: main
+        text: "Test"
+        on_release: drop.open()
+    DropDown:
+        id: drop
+        Button:
+            text: 'My first Item'
+            size_hint_y: None
+            height: 44
+            on_release: root.select('item1')
+        Label:
+            text: 'Unselectable item'
+            size_hint_y: None
+            height: 44
+        Button:
+            text: 'My second Item'
+            size_hint_y: None
+            height: 44
+            on_release: root.select('item2')
+    # trick to not lost the Dropdown instance
+    # Dropdown itself is not really made to be used in kv.
+
+<Player>:
+    name: 'player'
     orientation: 'vertical'
     canvas.before:
         Color:
-            rgba: to_rgba(root.bg_hex_clr)
+            rgba: to_rgba('9E9E9E')
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+    Label:
+        id: player_label
+        color: to_rgba('212121')
+        text: self.parent.name
+        valign: 'middle'
+# droppable_zone_objects: [p2, p3, p4, p5, p6, p7, p8]
+    #ActionList:
+    Spinner:
+        text: 'Action'
+        color: to_rgba('212121')
+        values: 'Accuse', 'Suspect', 'Clear'
+
+
+AnchorLayout:
+    canvas.before:
+        Color:
+            rgba: to_rgba('F5F5F5')
         Rectangle:
             pos: self.pos
             size: self.size
 
+    MenuSpawner:
+        timeout: .8
 
-<I18NLabel>:
-    source_text: ''
-    halign: 'center'
-    font_size: fsize
-    text: app.translation(self.source_text)
+    CircularLayout:
+        id: circular_layout
+        direction: 'ccw'
+        inner_radius_hint: 1
+        outer_radius_hint: 1.5
+        size_hint_x: 0.6
+        size_hint_y: 0.6
+        start_angle: 60
 
-
-<RefLabel>:
-    halign: 'center'
-    font_size: fsize
-    markup: True
-
-
-<TransitionProgress>:
-    size_hint: 0.8, 0.1
-    value: app.timer
-
-
-AnchorLayout:
-    anchor_y: 'bottom'
-    Carousel:
-        id: carousel
-        loop: True
-        Slide:
-            name: 'hello'
-            bg_hex_clr: '154152'
-            I18NLabel:
-                source_text: _("'Mafia Demonstration'\n\nA user friendly interface for playing a simplified game of Mafia.")
-        Slide:
-            name: 'kivy'
-            spacing: 10
-            bg_hex_clr: '057173'
-            I18NLabel:
-                text_size: self.size
-                valign: 'bottom'
-                source_text: _("This app uses Kivy, a Python Framework for NUI Development.")
-            RefLabel:
-                text_size: self.size
-                valign: 'top'
-                text:
-                    "[ref={kivy_github}][color={link_clr}]{kivy_github}[/color][/ref]" \
-                    "".format(**locals())
-        Slide:
-            name: 'cookiecutterdozer'
-            spacing: 10
-            bg_hex_clr: '487353'
-            I18NLabel:
-                valign: 'bottom'
-                text_size: self.size
-                source_text: _("It was generated with the Python command-line utility\nCookiecutter along with Cookiedozer.")
-            RefLabel:
-                valign: 'top'
-                text_size: self.size
-                text:
-                    "[ref={cookiecutter_github}][color={link_clr}]{cookiecutter_github}[/color][/ref]\n" \
-                    "[ref={cookiedozer_github}][color={link_clr}]{cookiedozer_github}[/color][/ref]\n" \
-                    "".format(**locals())
-        Slide:
-            name: 'license'
-            bg_hex_clr: 'C2872E'
-            I18NLabel:
-                source_text: _("Distributed under the terms of the MIT license,\n'Mafia Demonstration' is free and open source software.")
-        Slide:
-            name: 'github'
-            spacing: 10
-            bg_hex_clr: 'AB3E2B'
-            I18NLabel:
-                valign: 'bottom'
-                text_size: self.size
-                source_text: _("Fork me on GitHub")
-            RefLabel:
-                valign: 'top'
-                text_size: self.size
-                text:
-                    "[ref={repo_github}][color={link_clr}]{repo_github}[/color][/ref]" \
-                    "".format(**locals())
-    TransitionProgress:
-        id: progress_bar
+        Player:
+            name: 'player 1'
+        Player:
+            name: 'player 2'
+        Player:
+            name: 'player 3'
+        Player:
+            name: 'player 4'
+        Player:
+            name: 'player 5'
+        Player:
+            name: 'player 6'

@@ -1,0 +1,3 @@
+[console_scripts]
+mafiademonstration = mafiademonstration.cli:main
+
