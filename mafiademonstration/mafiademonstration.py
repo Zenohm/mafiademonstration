@@ -14,11 +14,13 @@ from kivy.garden.circularlayout import CircularLayout
 from kivy.garden.modernmenu import ModernMenu
 from kivy.logger import Logger
 from kivy.properties import (
-    BoundedNumericProperty, ObjectProperty, StringProperty
+    BoundedNumericProperty, ObjectProperty, StringProperty, ListProperty
 )
 # from kivy.uix.carousel import Carousel
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.dropdown import DropDown
+from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
@@ -35,6 +37,8 @@ def _(text):
     """This is just so we can use the default gettext format."""
     return text
 
+class ImageButton(ButtonBehavior, Image):
+    pass
 
 class ActionList(DropDown):
     pass
@@ -93,6 +97,7 @@ class MafiaDemonstrationApp(App):
     language = StringProperty('en')
     translation = ObjectProperty(None, allownone=True)
 
+    players = ListProperty([])
     timer = BoundedNumericProperty(0, min=0, max=400)
     # carousel = ObjectProperty(Carousel)
 
@@ -133,10 +138,17 @@ class MafiaDemonstrationApp(App):
           (:class:`kivy.uix.anchorlayout.AnchorLayout`): Root widget specified
             in the kv file of the app
         """
+        self.player_count = int(self.config.get('user_settings', 'player_count'))
         self.language = self.config.get('user_settings', 'language')
 
         user_interval = self.config.get('user_settings', 'timer_interval')
         self.timer_interval = TIMER_OPTIONS[user_interval]
+
+        self.root.players = list()
+        for player_number in range(2, self.player_count+1):
+            player = Player(name='player {}'.format(player_number))
+            self.root.ids.circular_layout.add_widget(player)
+            self.root.players.append(player)
 
         # self.carousel = self.root.ids.carousel
         # self.progress_bar = self.root.ids.progress_bar
@@ -154,7 +166,8 @@ class MafiaDemonstrationApp(App):
         config.setdefaults(
             'user_settings', {
                 'timer_interval': '1/60 sec',
-                'language': 'en'
+                'language': 'en',
+                'player_count': 6
             }
         )
 
@@ -174,6 +187,8 @@ class MafiaDemonstrationApp(App):
                 self.timer_interval=TIMER_OPTIONS[value]
             elif token == ('user_settings', 'language'):
                 self.language = value
+            elif token == ('user_settings', 'player_count'):
+                self.player_count = value
 
     def on_pause(self):
         """Enables the user to switch to another application causing

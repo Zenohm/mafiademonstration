@@ -16,5 +16,14 @@
         "true": "auto",
         "options": ["en", "es", "de", "fr"],
         "desc": "Changes the display language of the application."
+    },
+    {
+        "title": "Number of Players",
+        "type": "options",
+        "section": "user_settings",
+        "key": "player_count",
+        "true": "auto",
+        "options": [1,2,3,4,5,6,7,8,9,10,]
+        "desc": "Changes the number of players playing the game."
     }
 ]

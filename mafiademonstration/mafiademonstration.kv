@@ -37,25 +37,35 @@
 
 <Player>:
     name: 'player'
+    face: './data/icons/player_alive.png'
     orientation: 'vertical'
     canvas.before:
         Color:
-            rgba: to_rgba('9E9E9E')
+            rgba: to_rgba('F5F5F5')
         Rectangle:
             # self here refers to the widget i.e BoxLayout
             pos: self.pos
             size: self.size
-    Label:
-        id: player_label
-        color: to_rgba('212121')
-        text: self.parent.name
-        valign: 'middle'
-# droppable_zone_objects: [p2, p3, p4, p5, p6, p7, p8]
+    ImageButton:
+        source: self.parent.face
+        on_press: print(self.parent.name)
+#    Label:
+#        id: player_label
+#        color: to_rgba('212121')
+#        text: self.parent.name
+#        valign: 'middle'
+#        on_ref_press: print(self.parent.name)
+        # droppable_zone_objects: [p2, p3, p4, p5, p6, p7, p8]
     #ActionList:
     Spinner:
         text: 'Action'
-        color: to_rgba('212121')
+        color: to_rgba('F5F5F5')
+        background_color: to_rgba('212121')
         values: 'Accuse', 'Suspect', 'Clear'
+        on_text: print(self.parent.name, self.text)
+
+    # MenuSpawner:
+
 
 
 AnchorLayout:
@@ -66,8 +76,10 @@ AnchorLayout:
             pos: self.pos
             size: self.size
 
-    MenuSpawner:
-        timeout: .8
+    ImageButton:
+        source: './data/icons/submit_incomplete.png'
+        on_press: print("Submit")
+        size_hint: .2, .2
 
     CircularLayout:
         id: circular_layout
@@ -75,18 +87,19 @@ AnchorLayout:
         inner_radius_hint: 1
         outer_radius_hint: 1.5
         size_hint_x: 0.6
-        size_hint_y: 0.6
+        size_hint_y: 0.5
         start_angle: 60
 
         Player:
             name: 'player 1'
-        Player:
-            name: 'player 2'
-        Player:
-            name: 'player 3'
-        Player:
-            name: 'player 4'
-        Player:
-            name: 'player 5'
-        Player:
-            name: 'player 6'
+            face: './data/icons/agent.png'
+#        Player:
+#            name: 'player 2'
+#        Player:
+#            name: 'player 3'
+#        Player:
+#            name: 'player 4'
+#        Player:
+#            name: 'player 5'
+#        Player:
+#            name: 'player 6'
