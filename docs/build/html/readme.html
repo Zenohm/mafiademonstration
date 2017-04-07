@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Mafia Demonstration &#8212; Mafia Demonstration 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mafiademonstration package" href="mafiademonstration.html" />
+    <link rel="prev" title="Welcome to Mafia Demonstration’s documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mafiademonstration.html" title="mafiademonstration package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Mafia Demonstration’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mafia Demonstration 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mafia-demonstration">
+<span id="readme"></span><h1>Mafia Demonstration<a class="headerlink" href="#mafia-demonstration" title="Permalink to this headline">¶</a></h1>
+<p>A user friendly interface for playing a simplified game of Mafia.</p>
+<hr class="docutils" />
+<p>This <a class="reference external" href="https://github.com/kivy/kivy">Kivy</a> app was generated with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> along with <a class="reference external" href="https://github.com/hackebrot">&#64;hackebrot</a>&#8216;s <a class="reference external" href="https://github.com/hackebrot/cookiedozer">Cookiedozer</a> template.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Minimal design with flat colors</li>
+<li>Text labels that contain clickable links</li>
+<li>Several slides that can be controlled via swipe gestures</li>
+<li>Settings panel to change the slider transition delay (<code class="docutils literal"><span class="pre">&lt;F1&gt;</span></code>)</li>
+</ul>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>To run &#8220;Mafia Demonstration&#8221; you only need <a class="reference external" href="https://github.com/kivy/kivy">Kivy</a>.</p>
+<p>Depending on the features that you want to use, you do require additional libs though.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pytest.org/latest/">pytest</a> - implement readable tests without boilerplate-code</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pytest-cov">pytest-cov</a> - generate an <code class="docutils literal"><span class="pre">html</span></code> coverage report</li>
+<li><a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> - generate a readable <code class="docutils literal"><span class="pre">html</span></code> documentation</li>
+<li><a class="reference external" href="https://github.com/kivy/buildozer">Buildozer</a> - deploy your app to an Android mobile device</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Clone the repository:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/zenohm/mafiademonstration.git
+$ <span class="nb">cd</span> mafiademonstration
+</pre></div>
+</div>
+<p>Create a new virtual environment. Given that you are using <a class="reference external" href="https://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkvirtualenv -a <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> --system-site-packages mafiademonstration
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you prefer to set up a fresh env, feel free to omit the according option.
+Chances are that you want to use your systems <a class="reference external" href="https://github.com/kivy/kivy">Kivy</a> including all its dependencies such as <a class="reference external" href="https://pypi.python.org/pypi/Cython/">Cython</a>.</p>
+</div>
+<p>Install the app package in &#8220;editable&#8221; mode:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python setup.py develop
+</pre></div>
+</div>
+<p>Install Kivy&#8217;s garden tool and the required packages.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m pip install kivy-garden
+$ garden install &lt;module name&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find the required garden packages listed in the kivy-requirements file:</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Launch the app via:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mafiademonstration
+</pre></div>
+</div>
+<p>Run the <a class="reference external" href="http://pytest.org/latest/">pytest</a> test suite:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make <span class="nb">test</span>
+</pre></div>
+</div>
+<p>Generate an <code class="docutils literal"><span class="pre">html</span></code> coverage report and open it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make coverage
+</pre></div>
+</div>
+<p>Generate <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> <code class="docutils literal"><span class="pre">html</span></code> documentation and open it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make docs
+</pre></div>
+</div>
+<p>Build an android apk with <a class="reference external" href="https://github.com/kivy/buildozer">Buildozer</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make apk
+</pre></div>
+</div>
+<p>Deploy the app to your android device with <a class="reference external" href="https://github.com/kivy/buildozer">Buildozer</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make deploy
+</pre></div>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Distributed under the terms of the <a class="reference external" href="http://opensource.org/licenses/MIT">MIT license</a>, &#8220;Mafia Demonstration&#8221; is free and open source software</p>
+</div>
+<div class="section" id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h2>
+<p>If you encounter any problems, please <a class="reference external" href="https://github.com/zenohm/mafiademonstration/issues">file an issue</a> along with a detailed description.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mafia Demonstration</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#issues">Issues</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Mafia Demonstration&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mafiademonstration.html"
+                        title="next chapter">mafiademonstration package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mafiademonstration.html" title="mafiademonstration package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Mafia Demonstration’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mafia Demonstration 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015, Isaac Smith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.4.
+    </div>
+  </body>
+</html>

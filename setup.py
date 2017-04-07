@@ -29,7 +29,7 @@ class PyTest(TestCommand):
 
 setup(
     name='mafiademonstration',
-    version='0.1.0',
+    version='0.2.0',
     author='Isaac Smith',
     author_email='sentherus@gmail.com',
     description='A user friendly interface for playing a simplified game of Mafia.',
@@ -63,7 +63,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
         'Topic :: Artistic Software',
         'Topic :: Multimedia :: Graphics :: Presentation',
         'Topic :: Software Development :: User Interfaces',

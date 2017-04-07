@@ -55,6 +55,17 @@ Install the app package in "editable" mode:
 
     $ python setup.py develop
 
+Install Kivy's garden tool and the required packages.
+
+
+.. code-block:: bash
+
+    $ python -m pip install kivy-garden
+    $ garden install <module name>
+
+.. note:: You can find the required garden packages listed in the kivy-requirements file:
+
+
 
 Usage
 -----

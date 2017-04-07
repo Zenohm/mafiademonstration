@@ -1,43 +1,22 @@
 #:kivy 1.9.1
-#:import randint random.randint
 #:import to_rgba kivy.utils.get_color_from_hex
 #:import _ mafiademonstration.mafiademonstration._
 
-#:set link_clr '222222'
 #:set kivy_github 'https://github.com/kivy/kivy'
 #:set cookiecutter_github 'https://github.com/audreyr/cookiecutter'
 #:set cookiedozer_github 'https://github.com/hackebrot/cookiedozer'
 #:set repo_github 'https://github.com/zenohm/mafiademonstration'
 
-#:set fsize 15
-
-<ActionList>:
-    Button:
-        id: main
-        text: "Test"
-        on_release: drop.open()
-    DropDown:
-        id: drop
-        Button:
-            text: 'My first Item'
-            size_hint_y: None
-            height: 44
-            on_release: root.select('item1')
-        Label:
-            text: 'Unselectable item'
-            size_hint_y: None
-            height: 44
-        Button:
-            text: 'My second Item'
-            size_hint_y: None
-            height: 44
-            on_release: root.select('item2')
-    # trick to not lost the Dropdown instance
-    # Dropdown itself is not really made to be used in kv.
-
 <Player>:
     name: 'player'
-    face: './data/icons/player_alive.png'
+    icon: './data/icons/player_alive.png'
+    alive: True
+    on_alive: root.ready_action("die")
+    current_action: 'accuse'
+    # on_current_action: self.borders = (2, 'solid', to_rgba('05F5F5')); self.update_borders()
+    actions: {'accuses': None, 'suspects': None}
+    borders: 2, 'solid',to_rgba('F5F5F5')
+
     orientation: 'vertical'
     canvas.before:
         Color:
@@ -47,28 +26,19 @@
             pos: self.pos
             size: self.size
     ImageButton:
-        source: self.parent.face
-        on_press: print(self.parent.name)
-#    Label:
-#        id: player_label
-#        color: to_rgba('212121')
-#        text: self.parent.name
-#        valign: 'middle'
-#        on_ref_press: print(self.parent.name)
-        # droppable_zone_objects: [p2, p3, p4, p5, p6, p7, p8]
-    #ActionList:
+        source: root.icon
+        on_press: app.root.selected_player.act_on(root) if app.root.selected_player else None
     Spinner:
         text: 'Action'
         color: to_rgba('F5F5F5')
         background_color: to_rgba('212121')
         values: 'Accuse', 'Suspect', 'Clear'
-        on_text: print(self.parent.name, self.text)
-
-    # MenuSpawner:
-
-
+        on_text: app.root.selected_player = root.ready_action(self.text)
 
 AnchorLayout:
+    players: {}
+    selected_player: None
+    ready_to_submit: False
     canvas.before:
         Color:
             rgba: to_rgba('F5F5F5')
@@ -78,8 +48,10 @@ AnchorLayout:
 
     ImageButton:
         source: './data/icons/submit_incomplete.png'
-        on_press: print("Submit")
+        color: to_rgba('05F5F5')
+        on_press: app.submit()
         size_hint: .2, .2
+        borders: 2, 'solid', (1,1,1,1.)
 
     CircularLayout:
         id: circular_layout
@@ -89,17 +61,3 @@ AnchorLayout:
         size_hint_x: 0.6
         size_hint_y: 0.5
         start_angle: 60
-
-        Player:
-            name: 'player 1'
-            face: './data/icons/agent.png'
-#        Player:
-#            name: 'player 2'
-#        Player:
-#            name: 'player 3'
-#        Player:
-#            name: 'player 4'
-#        Player:
-#            name: 'player 5'
-#        Player:
-#            name: 'player 6'

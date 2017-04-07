@@ -18,3 +18,8 @@ mafiademonstration.egg-info/entry_points.txt
 mafiademonstration.egg-info/not-zip-safe
 mafiademonstration.egg-info/requires.txt
 mafiademonstration.egg-info/top_level.txt
+tests/__init__.py
+tests/conftest.py
+tests/test_cli.py
+tests/test_i18n.py
+tests/test_mafiademonstration.py

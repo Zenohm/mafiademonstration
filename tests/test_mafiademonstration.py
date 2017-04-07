@@ -13,15 +13,15 @@ def test_app_title(app):
     assert app.title == 'Mafia Demonstration'
 
 
-def test_carousel(app):
-    """Test for the carousel widget of the app checking the slides' names.
+# def test_carousel(app):
+    # """Test for the carousel widget of the app checking the slides' names.
 
-    Args:
-      app (:class:`MafiaDemonstrationApp`): Default app instance
+    # Args:
+      # app (:class:`MafiaDemonstrationApp`): Default app instance
 
-    Raises:
-      AssertionError: If the names of the slides do not match the expectations
-    """
-    names = [slide.name for slide in app.carousel.slides]
-    expected = ['hello', 'kivy', 'cookiecutterdozer', 'license', 'github']
-    assert names == expected
+    # Raises:
+      # AssertionError: If the names of the slides do not match the expectations
+    # """
+    # names = [slide.name for slide in app.carousel.slides]
+    # expected = ['hello', 'kivy', 'cookiecutterdozer', 'license', 'github']
+    # assert names == expected

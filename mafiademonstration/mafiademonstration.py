@@ -14,7 +14,8 @@ from kivy.garden.circularlayout import CircularLayout
 from kivy.garden.modernmenu import ModernMenu
 from kivy.logger import Logger
 from kivy.properties import (
-    BoundedNumericProperty, ObjectProperty, StringProperty, ListProperty
+    BooleanProperty, BoundedNumericProperty, DictProperty,
+    ObjectProperty, StringProperty, ListProperty
 )
 # from kivy.uix.carousel import Carousel
 from kivy.uix.behaviors import ButtonBehavior
@@ -24,6 +25,7 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
+from mafiademonstration.border_behavior import BorderBehavior
 
 
 TIMER_OPTIONS = {
@@ -37,14 +39,48 @@ def _(text):
     """This is just so we can use the default gettext format."""
     return text
 
-class ImageButton(ButtonBehavior, Image):
+class ImageButton(ButtonBehavior, Image, BorderBehavior):
     pass
 
 class ActionList(DropDown):
     pass
 
-class Player(BoxLayout):
-    pass
+class Player(BoxLayout, BorderBehavior):
+    name = StringProperty("")
+    alive = BooleanProperty(True)
+    current_action = StringProperty() # Holds a reference to the action that is to be taken on another player.
+    actions = DictProperty()
+
+    # def __init__(self,  **kwargs):
+        # super(Player, self).__init__(**kwargs)
+
+    def ready_action(self, action):
+        """ Designate the current player as the one who will be performing actions.
+            This is done by setting the self player instance as the selected player.
+        """
+        self.current_action = action.lower()
+        print(self.name, "is ready to", self.current_action)
+
+        if self.current_action == "clear":
+            self.actions = {"accuse": None, "suspect": None}
+            self.alive = False
+        if self.current_action == "die":
+            self.actions = {}
+            self.alive = False
+            self.icon = "./data/icons/player_dead.png"
+        return self
+
+    def act_on(self, player):
+        assert isinstance(player, type(self))
+
+        if self == player:
+            # TODO: Figure out how I want to handle this.
+            return
+
+        self.actions[self.current_action] = player
+        print(self.name, self.current_action, player.name)
+        return self
+
 
 class I18NLabel(Label):
     """Label that supports internationlization."""
@@ -88,8 +124,6 @@ class MafiaDemonstrationApp(App):
       timer (:class:`kivy.properties.BoundedNumericProperty`):
         Helper for the slide transition of `carousel`
 
-      carousel (:class:`kivy.uix.carousel.Carousel`):
-        Widget that holds several slides about the app
     """
 
     title = 'Mafia Demonstration'
@@ -97,7 +131,6 @@ class MafiaDemonstrationApp(App):
     language = StringProperty('en')
     translation = ObjectProperty(None, allownone=True)
 
-    players = ListProperty([])
     timer = BoundedNumericProperty(0, min=0, max=400)
     # carousel = ObjectProperty(Carousel)
 
@@ -105,6 +138,25 @@ class MafiaDemonstrationApp(App):
         self.language = language
         self.switch_lang(self.language)
         super(MafiaDemonstrationApp, self).__init__(**kwargs)
+
+    def submit_check(self):
+        """
+        Used to check and see if all the conditions for pressing the submit
+        button have been met.
+        This includes all living players having selected someone to both accuse
+        and suspect.
+        """
+        return True
+
+    def submit(self):
+        """
+        Submits information to whatever backend we have communicating
+        the individual player accusations and suspicions as well as
+        who has been voted off or killed or anything else.
+        """
+        if all(player.alive for player in self.root.players.values()):
+            print("All players are alive.")
+        print("Submit")
 
     def start_timer(self, *args, **kwargs):
         """Schedule the timer update routine and fade in the progress bar."""
@@ -144,11 +196,20 @@ class MafiaDemonstrationApp(App):
         user_interval = self.config.get('user_settings', 'timer_interval')
         self.timer_interval = TIMER_OPTIONS[user_interval]
 
-        self.root.players = list()
-        for player_number in range(2, self.player_count+1):
-            player = Player(name='player {}'.format(player_number))
+        players = dict()
+        for player_number in range(1, self.player_count+1):
+            player_name = 'player {}'.format(player_number)
+            player = Player(name=player_name)
+
+            if player_number == 1:
+                player.icon = './data/icons/agent.png'
+
+            players[player_name] = player
             self.root.ids.circular_layout.add_widget(player)
-            self.root.players.append(player)
+
+        self.root.players = players
+        # This will be used to keep track of who is acting against whom.
+        self.root.selected_player = None
 
         # self.carousel = self.root.ids.carousel
         # self.progress_bar = self.root.ids.progress_bar
@@ -157,6 +218,11 @@ class MafiaDemonstrationApp(App):
         # self.start_timer()
         # self.carousel.bind(on_touch_down=self.stop_timer)
         # self.carousel.bind(current_slide=self.delay_timer)
+
+        # Allow the kivy-style access of the root widget.
+        global app
+        app = self
+
         return self.root
 
     def build_config(self, config):
