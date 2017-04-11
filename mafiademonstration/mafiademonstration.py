@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 
-import webbrowser
+# import webbrowser
 import gettext
+import copy
 import sys
 
 import kivy
 kivy.require('1.9.1')
 
-from kivy.animation import Animation
+# from kivy.animation import Animation
 from kivy.app import App
-from kivy.clock import Clock
+# from kivy.clock import Clock
 from kivy.garden.circularlayout import CircularLayout
 from kivy.garden.modernmenu import ModernMenu
 from kivy.logger import Logger
 from kivy.properties import (
     BooleanProperty, BoundedNumericProperty, DictProperty,
-    ObjectProperty, StringProperty, ListProperty
+    ObjectProperty, StringProperty, ListProperty, NumericProperty
 )
 # from kivy.uix.carousel import Carousel
 from kivy.uix.behaviors import ButtonBehavior
@@ -23,23 +24,23 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import Image
 from kivy.uix.label import Label
-from kivy.uix.progressbar import ProgressBar
+# from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
 from mafiademonstration.border_behavior import BorderBehavior
 
 
-TIMER_OPTIONS = {
-    '1/60 sec': 1 / 60.0,
-    '1/30 sec': 1 / 30.0,
-    '1/15 sec': 1 / 15.0,
-}
+# TIMER_OPTIONS = {
+    # '1/60 sec': 1 / 60.0,
+    # '1/30 sec': 1 / 30.0,
+    # '1/15 sec': 1 / 15.0,
+# }
 
 
 def _(text):
     """This is just so we can use the default gettext format."""
     return text
 
-class ImageButton(ButtonBehavior, Image, BorderBehavior):
+class ImageButton(BorderBehavior, ButtonBehavior, Image):
     pass
 
 class ActionList(DropDown):
@@ -47,22 +48,23 @@ class ActionList(DropDown):
 
 class Player(BoxLayout, BorderBehavior):
     name = StringProperty("")
+    number = NumericProperty(0)
     alive = BooleanProperty(True)
+    mafia = BooleanProperty(False)
+    strategic_value = NumericProperty(0)
     current_action = StringProperty() # Holds a reference to the action that is to be taken on another player.
     actions = DictProperty()
-
-    # def __init__(self,  **kwargs):
-        # super(Player, self).__init__(**kwargs)
 
     def ready_action(self, action):
         """ Designate the current player as the one who will be performing actions.
             This is done by setting the self player instance as the selected player.
         """
         self.current_action = action.lower()
-        print(self.name, "is ready to", self.current_action)
+        Logger.info("{name} is ready to {action}".format(name=self.name, action=self.current_action))
 
         if self.current_action == "clear":
-            self.actions = {"accuse": None, "suspect": None}
+            self.actions = {"accuse": None, "suspect": None,
+                            "kill": None,   "vote": None}
             self.alive = False
         if self.current_action == "die":
             self.actions = {}
@@ -78,13 +80,13 @@ class Player(BoxLayout, BorderBehavior):
             return
 
         self.actions[self.current_action] = player
-        print(self.name, self.current_action, player.name)
+        Logger.info("{self} {action} {other}".format(self=self.name, action=self.current_action, other=player.name))
         return self
 
 
-class I18NLabel(Label):
-    """Label that supports internationlization."""
-    source_text = StringProperty('')
+# class I18NLabel(Label):
+    # """Label that supports internationlization."""
+    # source_text = StringProperty('')
 
 
 # class RefLabel(Label):
@@ -100,19 +102,19 @@ class I18NLabel(Label):
         # webbrowser.open(url)
 
 
-class TransitionProgress(ProgressBar):
-    """ProgressBar with pre-defined animations for fading in and out."""
+# class TransitionProgress(ProgressBar):
+    # """ProgressBar with pre-defined animations for fading in and out."""
 
-    _in = Animation(opacity=1.0, duration=0.4)
-    _out = Animation(opacity=0.0, duration=0.1)
+    # _in = Animation(opacity=1.0, duration=0.4)
+    # _out = Animation(opacity=0.0, duration=0.1)
 
-    def fade_in(self):
-        """Play the animation for changing the ProgressBar to be opaque."""
-        self._in.start(self)
+    # def fade_in(self):
+        # """Play the animation for changing the ProgressBar to be opaque."""
+        # self._in.start(self)
 
-    def fade_out(self):
-        """Play the animation to hide the ProgressBar."""
-        self._out.start(self)
+    # def fade_out(self):
+        # """Play the animation to hide the ProgressBar."""
+        # self._out.start(self)
 
 
 class MafiaDemonstrationApp(App):
@@ -127,25 +129,35 @@ class MafiaDemonstrationApp(App):
     """
 
     title = 'Mafia Demonstration'
+    stages = ListProperty(['Discussion', 'Vote', 'Mafia'])
+    stage = StringProperty('Discussion')
+    cycle = NumericProperty(0)
+    ready_to_submit = BooleanProperty(False)
 
-    language = StringProperty('en')
-    translation = ObjectProperty(None, allownone=True)
+    # language = StringProperty('en')
+    # translation = ObjectProperty(None, allownone=True)
 
-    timer = BoundedNumericProperty(0, min=0, max=400)
+    # timer = BoundedNumericProperty(0, min=0, max=400)
     # carousel = ObjectProperty(Carousel)
 
     def __init__(self, language, **kwargs):
-        self.language = language
-        self.switch_lang(self.language)
+        # self.language = language
+        # self.switch_lang(self.language)
         super(MafiaDemonstrationApp, self).__init__(**kwargs)
 
-    def submit_check(self):
+    def submit_conditions_met(self):
         """
         Used to check and see if all the conditions for pressing the submit
         button have been met.
         This includes all living players having selected someone to both accuse
         and suspect.
         """
+
+        if self.cycle == 0:
+            return True
+        if all(player.alive for player in self.root.players.values()):
+            Logger.debug("All players are alive.")
+        # TODO: Perform all sorts of checks here.
         return True
 
     def submit(self):
@@ -154,32 +166,38 @@ class MafiaDemonstrationApp(App):
         the individual player accusations and suspicions as well as
         who has been voted off or killed or anything else.
         """
-        if all(player.alive for player in self.root.players.values()):
-            print("All players are alive.")
-        print("Submit")
+        if self.submit_conditions_met():
+            players = self.root.players
+            players['player 2'].alive = False
+            Logger.info("Submit button pressed")
+            ready_to_submit = True
+        else:
+            # TODO: Figure out how to handle this.
+            pass
 
-    def start_timer(self, *args, **kwargs):
-        """Schedule the timer update routine and fade in the progress bar."""
-        Logger.debug("Starting timer")
-        Clock.schedule_interval(self._update_timer, self.timer_interval)
-        self.progress_bar.fade_in()
 
-    def stop_timer(self, *args, **kwargs):
-        """Reset the timer and unschedule the update routine."""
-        Logger.debug("Stopping timer")
-        Clock.unschedule(self._update_timer)
-        self.progress_bar.fade_out()
-        self.timer = 0
+    # def start_timer(self, *args, **kwargs):
+        # """Schedule the timer update routine and fade in the progress bar."""
+        # Logger.debug("Starting timer")
+        # Clock.schedule_interval(self._update_timer, self.timer_interval)
+        # self.progress_bar.fade_in()
 
-    def delay_timer(self, *args, **kwargs):
-        """Stop the timer but re-schedule it based on `anim_move_duration` of
-        :attr:`MafiaDemonstrationApp.carousel`.
-        """
-        self.stop_timer()
-        Clock.schedule_once(
-            self.start_timer,
-            self.carousel.anim_move_duration
-        )
+    # def stop_timer(self, *args, **kwargs):
+        # """Reset the timer and unschedule the update routine."""
+        # Logger.debug("Stopping timer")
+        # Clock.unschedule(self._update_timer)
+        # self.progress_bar.fade_out()
+        # self.timer = 0
+
+    # def delay_timer(self, *args, **kwargs):
+        # """Stop the timer but re-schedule it based on `anim_move_duration` of
+        # :attr:`MafiaDemonstrationApp.carousel`.
+        # """
+        # self.stop_timer()
+        # Clock.schedule_once(
+            # self.start_timer,
+            # self.carousel.anim_move_duration
+        # )
 
 
 
@@ -191,17 +209,19 @@ class MafiaDemonstrationApp(App):
             in the kv file of the app
         """
         self.player_count = int(self.config.get('user_settings', 'player_count'))
-        self.language = self.config.get('user_settings', 'language')
+        self.agent_number = int(self.config.get('user_settings', 'agent_number'))
+        # self.language = self.config.get('user_settings', 'language')
 
-        user_interval = self.config.get('user_settings', 'timer_interval')
-        self.timer_interval = TIMER_OPTIONS[user_interval]
+        # user_interval = self.config.get('user_settings', 'timer_interval')
+        # self.timer_interval = TIMER_OPTIONS[user_interval]
 
         players = dict()
         for player_number in range(1, self.player_count+1):
             player_name = 'player {}'.format(player_number)
             player = Player(name=player_name)
+            player.number = player_number
 
-            if player_number == 1:
+            if player_number == self.agent_number:
                 player.icon = './data/icons/agent.png'
 
             players[player_name] = player
@@ -233,7 +253,8 @@ class MafiaDemonstrationApp(App):
             'user_settings', {
                 'timer_interval': '1/60 sec',
                 'language': 'en',
-                'player_count': 6
+                'player_count': 6,
+                'agent_number': 1,
             }
         )
 
@@ -255,6 +276,8 @@ class MafiaDemonstrationApp(App):
                 self.language = value
             elif token == ('user_settings', 'player_count'):
                 self.player_count = value
+            elif token == ('user_settings', 'agent_number'):
+                self.agent_number = value
 
     def on_pause(self):
         """Enables the user to switch to another application causing
@@ -269,24 +292,24 @@ class MafiaDemonstrationApp(App):
         """
         pass
 
-    def _update_timer(self, dt):
-        try:
-            self.timer += 1
-        except ValueError:
-            self.stop_timer()
-            self.carousel.load_next()
-            Logger.debug("Automatically loading next slide")
+    # def _update_timer(self, dt):
+        # try:
+            # self.timer += 1
+        # except ValueError:
+            # self.stop_timer()
+            # self.carousel.load_next()
+            # Logger.debug("Automatically loading next slide")
 
-    def on_language(self, instance, language):
-        self.switch_lang(language)
+    # def on_language(self, instance, language):
+        # self.switch_lang(language)
 
-    def switch_lang(self, language):
-        locale_dir = join(dirname(dirname(__file__)), 'data', 'locales')
-        locales = gettext.translation(
-            'mafiademonstration', locale_dir, languages=[self.language]
-        )
+    # def switch_lang(self, language):
+        # locale_dir = join(dirname(dirname(__file__)), 'data', 'locales')
+        # locales = gettext.translation(
+            # 'mafiademonstration', locale_dir, languages=[self.language]
+        # )
 
-        if sys.version_info.major >= 3:
-            self.translation = locales.gettext
-        else:
-            self.translation = locales.ugettext
+        # if sys.version_info.major >= 3:
+            # self.translation = locales.gettext
+        # else:
+            # self.translation = locales.ugettext

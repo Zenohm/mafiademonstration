@@ -2,25 +2,28 @@
 #:import to_rgba kivy.utils.get_color_from_hex
 #:import _ mafiademonstration.mafiademonstration._
 
-#:set kivy_github 'https://github.com/kivy/kivy'
-#:set cookiecutter_github 'https://github.com/audreyr/cookiecutter'
-#:set cookiedozer_github 'https://github.com/hackebrot/cookiedozer'
-#:set repo_github 'https://github.com/zenohm/mafiademonstration'
+#:set kivy_github "https://github.com/kivy/kivy"
+#:set cookiecutter_github "https://github.com/audreyr/cookiecutter"
+#:set cookiedozer_github "https://github.com/hackebrot/cookiedozer"
+#:set repo_github "https://github.com/zenohm/mafiademonstration"
 
 <Player>:
-    name: 'player'
-    icon: './data/icons/player_alive.png'
+    name: "player"
+    number: 0
+    icon: "./data/icons/player_alive.png"
     alive: True
+    mafia: False
+    strategic_value: 0
     on_alive: root.ready_action("die")
-    current_action: 'accuse'
-    # on_current_action: self.borders = (2, 'solid', to_rgba('05F5F5')); self.update_borders()
-    actions: {'accuses': None, 'suspects': None}
-    borders: 2, 'solid',to_rgba('F5F5F5')
+    current_action: "accuse"
+    # on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
+    actions: {"accuse": None, "suspect": None, "kill": None, "vote": None}
+    borders: 2, "solid",to_rgba("F5F5F5")
 
-    orientation: 'vertical'
+    orientation: "vertical"
     canvas.before:
         Color:
-            rgba: to_rgba('F5F5F5')
+            rgba: to_rgba("F5F5F5")
         Rectangle:
             # self here refers to the widget i.e BoxLayout
             pos: self.pos
@@ -29,33 +32,35 @@
         source: root.icon
         on_press: app.root.selected_player.act_on(root) if app.root.selected_player else None
     Spinner:
-        text: 'Action'
-        color: to_rgba('F5F5F5')
-        background_color: to_rgba('212121')
-        values: 'Accuse', 'Suspect', 'Clear'
+        text: "Action"
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        values: "Accuse", "Suspect", "Clear"
         on_text: app.root.selected_player = root.ready_action(self.text)
 
 AnchorLayout:
     players: {}
     selected_player: None
     ready_to_submit: False
+    on_ready_to_submit: submit_button = "./data/icons/submit_complete.png" if ready_to_submit else "./data/icons/submit_incomplete.png"
     canvas.before:
         Color:
-            rgba: to_rgba('F5F5F5')
+            rgba: to_rgba("F5F5F5")
         Rectangle:
             pos: self.pos
             size: self.size
 
     ImageButton:
-        source: './data/icons/submit_incomplete.png'
-        color: to_rgba('05F5F5')
+        id: submit_button
+        source: "./data/icons/submit_incomplete.png"
+        color: to_rgba("05F5F5")
         on_press: app.submit()
         size_hint: .2, .2
-        borders: 2, 'solid', (1,1,1,1.)
+        borders: 2, "solid", (1,1,1,1.)
 
     CircularLayout:
         id: circular_layout
-        direction: 'ccw'
+        direction: "ccw"
         inner_radius_hint: 1
         outer_radius_hint: 1.5
         size_hint_x: 0.6
