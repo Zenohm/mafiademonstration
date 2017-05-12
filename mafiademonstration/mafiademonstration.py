@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # import webbrowser
-import gettext
-import copy
-import sys
+import copy  # Going to be used to create deep copy of players for records.
 
 import kivy
 kivy.require('1.9.1')
@@ -30,9 +28,9 @@ from mafiademonstration.border_behavior import BorderBehavior
 
 
 # TIMER_OPTIONS = {
-    # '1/60 sec': 1 / 60.0,
-    # '1/30 sec': 1 / 30.0,
-    # '1/15 sec': 1 / 15.0,
+#     '1/60 sec': 1 / 60.0,
+#     '1/30 sec': 1 / 30.0,
+#     '1/15 sec': 1 / 15.0,
 # }
 
 
@@ -40,11 +38,14 @@ def _(text):
     """This is just so we can use the default gettext format."""
     return text
 
+
 class ImageButton(BorderBehavior, ButtonBehavior, Image):
     pass
 
+
 class ActionList(DropDown):
     pass
+
 
 class Player(BoxLayout, BorderBehavior):
     name = StringProperty("")
@@ -52,7 +53,7 @@ class Player(BoxLayout, BorderBehavior):
     alive = BooleanProperty(True)
     mafia = BooleanProperty(False)
     strategic_value = NumericProperty(0)
-    current_action = StringProperty() # Holds a reference to the action that is to be taken on another player.
+    current_action = StringProperty()  # Holds a reference to the action that is to be taken on another player.
     actions = DictProperty()
 
     def ready_action(self, action):
@@ -60,7 +61,8 @@ class Player(BoxLayout, BorderBehavior):
             This is done by setting the self player instance as the selected player.
         """
         self.current_action = action.lower()
-        Logger.info("{name} is ready to {action}".format(name=self.name, action=self.current_action))
+        Logger.info("{name} is ready to {action}".format(name=self.name,
+                                                         action=self.current_action))
 
         if self.current_action == "clear":
             self.actions = {"accuse": None, "suspect": None,
@@ -175,7 +177,6 @@ class MafiaDemonstrationApp(App):
             # TODO: Figure out how to handle this.
             pass
 
-
     # def start_timer(self, *args, **kwargs):
         # """Schedule the timer update routine and fade in the progress bar."""
         # Logger.debug("Starting timer")
@@ -199,8 +200,6 @@ class MafiaDemonstrationApp(App):
             # self.carousel.anim_move_duration
         # )
 
-
-
     def build(self):
         """Initialize the GUI based on the kv file and set up events.
 
@@ -220,8 +219,11 @@ class MafiaDemonstrationApp(App):
             player_name = 'player {}'.format(player_number)
             player = Player(name=player_name)
             player.number = player_number
+            # player.borders = (2, "solid",(0,2,3,4))
 
             if player_number == self.agent_number:
+                # All values that need to be set for the agent
+                # should be set here.
                 player.icon = './data/icons/agent.png'
 
             players[player_name] = player
@@ -271,7 +273,8 @@ class MafiaDemonstrationApp(App):
         if config is self.config:
             token = (section, key)
             if token == ('user_settings', 'timer_interval'):
-                self.timer_interval=TIMER_OPTIONS[value]
+                pass
+                # self.timer_interval = TIMER_OPTIONS[value]
             elif token == ('user_settings', 'language'):
                 self.language = value
             elif token == ('user_settings', 'player_count'):
