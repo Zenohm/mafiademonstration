@@ -40,14 +40,6 @@ Clone the repository:
     $ git clone https://github.com/zenohm/mafiademonstration.git
     $ cd mafiademonstration
 
-Create a new virtual environment. Given that you are using `virtualenvwrapper`_:
-
-.. code-block:: bash
-
-    $ mkvirtualenv -a $(pwd) --system-site-packages mafiademonstration
-
-.. note:: If you prefer to set up a fresh env, feel free to omit the according option.
-    Chances are that you want to use your systems `Kivy`_ including all its dependencies such as `Cython`_.
 
 Install the app package in "editable" mode:
 
@@ -74,7 +66,7 @@ Launch the app via:
 
 .. code-block:: bash
 
-    $ mafiademonstration
+    $ python mafiademonstration
 
 Run the `pytest`_ test suite:
 

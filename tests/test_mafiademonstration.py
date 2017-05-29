@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
 
-def test_app_title(app):
-    """Simply tests if the default app title meets the expectations.
+# def test_app_title(app):
+    # """Simply tests if the default app title meets the expectations.
 
-    Args:
-      app (:class:`MafiaDemonstrationApp`): Default app instance
+    # Args:
+      # app (:class:`MafiaDemonstrationApp`): Default app instance
 
-    Raises:
-      AssertionError: If the title does not match
-    """
-    assert app.title == 'Mafia Demonstration'
+    # Raises:
+      # AssertionError: If the title does not match
+    # """
+    # assert app.title == 'Mafia Demonstration'
 
 
 # def test_carousel(app):

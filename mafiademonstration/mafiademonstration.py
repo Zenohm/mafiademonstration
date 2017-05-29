@@ -24,8 +24,11 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 # from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
-from mafiademonstration.border_behavior import BorderBehavior
 
+try:
+    from mafiademonstration.border_behavior import BorderBehavior
+except ModuleNotFoundError:
+    from border_behavior import BorderBehavior
 
 # TIMER_OPTIONS = {
 #     '1/60 sec': 1 / 60.0,

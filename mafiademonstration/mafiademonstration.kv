@@ -1,6 +1,5 @@
 #:kivy 1.9.1
 #:import to_rgba kivy.utils.get_color_from_hex
-#:import _ mafiademonstration.mafiademonstration._
 
 #:set kivy_github "https://github.com/kivy/kivy"
 #:set cookiecutter_github "https://github.com/audreyr/cookiecutter"
@@ -12,12 +11,12 @@
     number: 0
     icon: "./data/icons/player_alive.png"
     alive: True
+    on_alive: root.ready_action("die")
     mafia: False
     strategic_value: 0
-    on_alive: root.ready_action("die")
     current_action: "accuse"
     # on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
-    actions: {"accuse": None, "suspect": None, "kill": None, "vote": None}
+    actions: {"accuse": {"player": None, "reason": None}, "suspect": {"player": None, "reason": None}, "kill": None, "vote": "abstain"}
     borders: 2, "solid", to_rgba("F5F5F5")
 
     orientation: "vertical"
@@ -31,12 +30,12 @@
     ImageButton:
         source: root.icon
         on_press: app.root.selected_player.act_on(root) if app.root.selected_player else None
-    Spinner:
-        text: "Action"
-        color: to_rgba("F5F5F5")
-        background_color: to_rgba("212121")
-        values: "Accuse", "Suspect", "Clear"
-        on_text: app.root.selected_player = root.ready_action(self.text)
+#    Spinner:
+#        text: "Action"
+#        color: to_rgba("F5F5F5")
+#        background_color: to_rgba("212121")
+#        values: "Accuse", "Suspect", "Clear"
+#        on_text: app.root.selected_player = root.ready_action(self.text)
 
 AnchorLayout:
     players: {}

@@ -6,8 +6,7 @@ help:
 	@echo "docs - generate Sphinx HTML documentation and open it"
 	@echo "apk - build an android apk with buildozer"
 	@echo "deploy - deploy the app to your android device"
-	@echo "po - create i18n message file"
-	@echo "mo - create i18n locales files"
+	@echo "clean - remove unneeded build files before git push"
 
 test:
 	python setup.py test
@@ -26,19 +25,8 @@ apk:
 deploy:
 	buildozer android deploy logcat
 
-po:
-	xgettext -Lpython --keyword=tr:1 --output=messages.pot mafiademonstration/*.kv
-	msgmerge --update --no-fuzzy-matching --backup=off po/en.po messages.pot
-	msgmerge --update --no-fuzzy-matching --backup=off po/de.po messages.pot
-	msgmerge --update --no-fuzzy-matching --backup=off po/es.po messages.pot
-	msgmerge --update --no-fuzzy-matching --backup=off po/fr.po messages.pot
-
-mo:
-	mkdir -p data/locales/en/LC_MESSAGES
-	mkdir -p data/locales/de/LC_MESSAGES
-	mkdir -p data/locales/es/LC_MESSAGES
-	mkdir -p data/locales/fr/LC_MESSAGES
-	msgfmt -c -o data/locales/en/LC_MESSAGES/mafiademonstration.mo po/en.po
-	msgfmt -c -o data/locales/de/LC_MESSAGES/mafiademonstration.mo po/de.po
-	msgfmt -c -o data/locales/es/LC_MESSAGES/mafiademonstration.mo po/es.po
-	msgfmt -c -o data/locales/fr/LC_MESSAGES/mafiademonstration.mo po/fr.po
+clean:
+	rm -rf .cache
+	rm -rf mafiademonstration.egg-info
+	rm -rf mafiademonstration/__pycache__
+	rm -rf tests/__pycache__

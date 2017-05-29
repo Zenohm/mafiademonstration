@@ -1,7 +1,7 @@
 import pytest
 from click.testing import CliRunner
 
-from mafiademonstration.cli import main
+from mafiademonstration.__main__ import main
 
 
 @pytest.fixture
@@ -21,7 +21,7 @@ def cli_param(request):
 
 @pytest.fixture
 def mock_app(mocker):
-    return mocker.patch('mafiademonstration.cli.MafiaDemonstrationApp')
+    return mocker.patch('mafiademonstration.__main__.MafiaDemonstrationApp')
 
 
 def test_language_to_app(runner, mock_app, cli_param, lang):
