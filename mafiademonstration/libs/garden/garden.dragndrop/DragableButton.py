@@ -1,8 +1,8 @@
-'''
+"""
 Created on Oct 24, 2012
 
 @author: Pavel Kostelnik
-'''
+"""
 
 
 from DragNDropWidget import DragNDropWidget
@@ -10,13 +10,13 @@ from kivy.uix.button import Button
 
 
 class DragableButton(Button, DragNDropWidget):
-    '''
+    """
     classdocs
-    '''
+    """
     def __init__(self, **kw):
-        '''
+        """
         Constructor
-        '''
+        """
         #Button.__init__(self, **kw)
         super(DragableButton, self).__init__(**kw)
         self.size_hint = (None, None)

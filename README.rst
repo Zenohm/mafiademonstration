@@ -1,5 +1,5 @@
 Mafia Demonstration
-==========================
+===================
 
 A user friendly interface for playing a simplified game of Mafia.
 

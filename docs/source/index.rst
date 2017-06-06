@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to Mafia Demonstration's documentation!
-======================================================
+===============================================
 
 A user friendly interface for playing a simplified game of Mafia.
 

@@ -1,5 +1,5 @@
-'''A round menu that appears on a long touch
-'''
+"""A round menu that appears on a long touch
+"""
 from __future__ import print_function
 from kivy.uix.widget import Widget
 from kivy.uix.label import Label

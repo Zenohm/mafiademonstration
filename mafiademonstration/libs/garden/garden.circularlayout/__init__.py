@@ -21,17 +21,17 @@ difference between the outer and the inner circle's radii. To make the
 widgets bigger you can just decrease inner_radius_hint.
 """
 
-__all__ = ('CircularLayout')
+__all__ = 'CircularLayout'
 
 from kivy.uix.layout import Layout
 from kivy.properties import NumericProperty, ReferenceListProperty, OptionProperty, \
-                            BoundedNumericProperty, VariableListProperty, AliasProperty
+    BoundedNumericProperty, VariableListProperty, AliasProperty
 from math import sin, cos, pi, radians, degrees
 
 
 class CircularLayout(Layout):
-    '''Circular layout class. See module documentation for more information.
-    '''
+    """Circular layout class. See module documentation for more information.
+    """
 
     padding = VariableListProperty([0, 0, 0, 0])
     '''Padding between the layout box and it's children: [padding_left,
@@ -96,10 +96,12 @@ class CircularLayout(Layout):
     '''
 
     def _get_delta_radii(self):
-        radius = min(self.width-self.padding[0]-self.padding[2], self.height-self.padding[1]-self.padding[3]) / 2.
+        radius = min(self.width - self.padding[0] - self.padding[2],
+                     self.height - self.padding[1] - self.padding[3]) / 2.
         outer_r = radius * self.outer_radius_hint
         inner_r = radius * self.inner_radius_hint
         return outer_r - inner_r
+
     delta_radii = AliasProperty(_get_delta_radii, None, bind=("radius_hint", "padding", "size"))
 
     def __init__(self, **kwargs):
@@ -133,7 +135,7 @@ class CircularLayout(Layout):
         padding_x = padding_left + padding_right
         padding_y = padding_top + padding_bottom
 
-        radius = min(self.width-padding_x, self.height-padding_y) / 2.
+        radius = min(self.width - padding_x, self.height - padding_y) / 2.
         outer_r = radius * self.outer_radius_hint
         inner_r = radius * self.inner_radius_hint
         middle_r = radius * sum(self.radius_hint) / 2.
@@ -166,8 +168,6 @@ class CircularLayout(Layout):
             ccx = cos(angle) * middle_r + selfcx + padding_left - padding_right
             ccy = sin(angle) * middle_r + selfcy + padding_bottom - padding_top
 
-
-
             c.center_x = ccx
             c.center_y = ccy
             if shs:
@@ -175,9 +175,11 @@ class CircularLayout(Layout):
                 c.width = s
                 c.height = s
 
+
 if __name__ == "__main__":
     from kivy.app import App
     from kivy.uix.button import Button
+
 
     class CircLayoutApp(App):
         def build(self):
@@ -188,5 +190,5 @@ if __name__ == "__main__":
 
             return cly
 
-    CircLayoutApp().run()
 
+    CircLayoutApp().run()

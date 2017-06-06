@@ -209,6 +209,7 @@ class NightScreen(Screen):
 class EndGameScreen(Screen):
     pass
 
+
 sm = ScreenManager(transition=NoTransition())
 sm.add_widget(MenuScreen(name='menu'))
 sm.add_widget(SettingsScreen(name='settings'))
@@ -220,10 +221,9 @@ sm.add_widget(EndGameScreen(name='endgame'))
 
 
 class Stages(App):
-
     def build(self):
         return sm
 
-if __name__ == '__main__':
-   Stages().run()
 
+if __name__ == '__main__':
+    Stages().run()

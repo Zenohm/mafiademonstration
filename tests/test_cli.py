@@ -25,7 +25,7 @@ def mock_app(mocker):
 
 
 def test_language_to_app(runner, mock_app, cli_param, lang):
-    result = runner.invoke(main, [cli_param,lang])
+    result = runner.invoke(main, [cli_param, lang])
     assert result.exit_code == 0
     mock_app.assert_called_once_with(lang)
 

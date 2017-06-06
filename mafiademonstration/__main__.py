@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+
 os.environ["KIVY_NO_ARGS"] = "1"
 
 import click
@@ -10,6 +11,7 @@ try:
     from mafiademonstration.mafiademonstration import MafiaDemonstrationApp
 except ModuleNotFoundError:
     from mafiademonstration import MafiaDemonstrationApp
+
 
 @click.command()
 @click.option(
@@ -20,6 +22,7 @@ def main(language):
     """Run MafiaDemonstrationApp with the given language setting.
     """
     MafiaDemonstrationApp(language).run()
+
 
 if __name__ == "__main__":
     main()

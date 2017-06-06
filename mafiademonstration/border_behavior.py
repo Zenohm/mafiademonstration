@@ -3,9 +3,10 @@
 from math import sqrt
 from kivy.graphics import Line, Color
 from kivy.properties import (
-        NumericProperty, ObjectProperty, ReferenceListProperty
+    NumericProperty, ObjectProperty, ReferenceListProperty
 )
 from kivy.uix.widget import Widget
+
 
 class BorderBehavior(Widget):
     borders = ObjectProperty(None)
@@ -23,20 +24,20 @@ class BorderBehavior(Widget):
 
     dash_styles = {
         'dashed':
-        {
-            'dash_length': 10,
-            'dash_offset': 5
-        },
+            {
+                'dash_length': 10,
+                'dash_offset': 5
+            },
         'dotted':
-        {
-            'dash_length': 1,
-            'dash_offset': 1
-        },
+            {
+                'dash_length': 1,
+                'dash_offset': 1
+            },
         'solid':
-        {
-            'dash_length': 1,
-            'dash_offset': 0
-        }
+            {
+                'dash_length': 1,
+                'dash_offset': 0
+            }
     }
 
     def draw_border(self):
@@ -128,27 +129,25 @@ class BorderBehavior(Widget):
         self.set_border_origin()
         self.draw_border()
 
-    # touch events for testing
-    # def on_touch_down(self, touch):
+        # touch events for testing
+        # def on_touch_down(self, touch):
         # if self.collide_point(touch.x, touch.y):
-                # touch.grab(self)
+        # touch.grab(self)
 
-    # def on_touch_move(self, touch):
+        # def on_touch_move(self, touch):
         # if touch.grab_current is self:
-            # # I received my grabbed touch
-            # print(touch)
-            # self.pos = (touch.x, touch.y)
+        # # I received my grabbed touch
+        # print(touch)
+        # self.pos = (touch.x, touch.y)
         # # else:
         # #     print "only touched"
         # #     # it's a normal touch
 
-    # def on_touch_up(self, touch):
+        # def on_touch_up(self, touch):
         # if touch.grab_current is self:
-            # # I receive my grabbed touch, I must ungrab it!
-            # touch.ungrab(self)
+        # # I receive my grabbed touch, I must ungrab it!
+        # touch.ungrab(self)
         # # else:
         # #     # it's a normal touch
         # #     print "normal touch up"
         # #     pass
-
-

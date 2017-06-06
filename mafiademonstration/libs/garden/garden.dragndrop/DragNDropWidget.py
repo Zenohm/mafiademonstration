@@ -100,6 +100,8 @@ class DragNDropWidget(Widget):
         This function enables something that can be used instead of drag n drop
         @param function_to_do: function that is to be called when mouse_over event is fired on the widget
         @param bind_functions: what is really to be done - background function for GUI functionality
+        :param arguments:
+        :param function_to_do_out:
         """
         Window.bind(mouse_pos=self.on_motion)
         self.easy_access_dnd_function = function_to_do
