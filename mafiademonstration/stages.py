@@ -128,21 +128,23 @@ Builder.load_string("""
                 size_hint_x: None
                 color: to_rgba("212121")
                 halign: "left"
-                text: "testing"
+                text: "Number of Players"
 
             TextInput:
+                id: player_count
                 size_hint_x: 2
-                text: "testing"
+                text: "6"
 
             Label:
                 size_hint_x: None
                 color: to_rgba("212121")
                 halign: "left"
-                text: "testing"
+                text: "Number of Autonomous Agents"
 
             TextInput:
+                id: agent_number
                 size_hint_x: 2
-                text: "testing"
+                text: "0"
 
             Label:
                 size_hint_x: None
@@ -216,7 +218,7 @@ Builder.load_string("""
 
         ImageButton:
             id: submit_button
-            source: "./data/icons/submit_incomplete.png"
+            source: "/data/icons/submit_incomplete.png"
             color: to_rgba("05F5F5")
             on_press: app.submit()
             size_hint: .2, .2
@@ -230,6 +232,83 @@ Builder.load_string("""
             size_hint_x: 0.6
             size_hint_y: 0.5
             start_angle: 60
+
+<TrialScreen>:
+    
+
+<NightScreen>:
+    AnchorLayout:
+        players: {}
+        selected_player: None
+        ready_to_submit: False
+        on_ready_to_submit: submit_button = "./data/icons/submit_complete.png" if ready_to_submit else "./data/icons/submit_incomplete.png"
+        canvas.before:
+            Color:
+                rgba: to_rgba("F5F5F5")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            id: submit_button
+            source: "/data/icons/submit_incomplete.png"
+            color: to_rgba("05F5F5")
+            on_press: app.submit()
+            size_hint: .2, .2
+            borders: 2, "solid", (1,1,1,1.)
+
+        CircularLayout:
+            id: circular_layout
+            direction: "ccw"
+            inner_radius_hint: 1
+            outer_radius_hint: 1.5
+            size_hint_x: 0.6
+            size_hint_y: 0.5
+            start_angle: 60
+
+<EndGameScreen>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    GridLayout:
+        rows: 2
+
+        Label:
+            color: to_rgba("212121")
+            text: "End Game!"
+
+        BoxLayout:
+            orientation: "horizontal"
+            cols: 3
+
+            Label:
+
+            GridLayout:
+                rows: 4
+                row_force_default: True
+                row_default_height: 50
+                spacing: [10, 10]
+
+                Label:
+
+                Button:
+                    text: "Restart"
+                    on_press: root.manager.current = "loading"
+
+                Button:
+                    text: "Main Menu"
+                    on_press: root.manager.current = "settings"
+
+                Button:
+                    text: "Exit"
+                    on_press: exit()
+
+            Label:
 
 """)
 
@@ -255,7 +334,12 @@ class MenuScreen(Stage):
 
 
 class SettingsScreen(Stage):
-    pass
+    def __init__(self, **kwargs):
+        if self.config.get('settings', 'player_count') > 12 or self.config.get('settings', 'player_count') < 4:
+            self.player_count = 6
+        else:
+            self.player_count = self.config.get('settings', 'player_count')
+
 
 
 class LoadingScreen(Stage):
@@ -265,8 +349,8 @@ class LoadingScreen(Stage):
 class DiscussionScreen(Stage):
     def __init__(self, **kwargs):
         super(DiscussionScreen, self).__init__(**kwargs)
-        self.player_count = 6 #int(self.config.get('user_settings', 'player_count'))
-        self.agent_number = 0 #int(self.config.get('user_settings', 'agent_number'))
+        self.player_count = 6 #int(self.config.get('settings', 'player_count'))
+        self.agent_number = 0 #int(self.config.get('settings', 'agent_number'))
         # self.language = self.config.get('user_settings', 'language')
 
         # user_interval = self.config.get('user_settings', 'timer_interval')
@@ -297,7 +381,33 @@ class TrialScreen(Stage):
 
 
 class NightScreen(Stage):
-    pass
+    def __init__(self, **kwargs):
+        super(NightScreen, self).__init__(**kwargs)
+        self.player_count = 6 #int(self.config.get('settings', 'player_count'))
+        self.agent_number = 0 #int(self.config.get('settings', 'agent_number'))
+        # self.language = self.config.get('user_settings', 'language')
+
+        # user_interval = self.config.get('user_settings', 'timer_interval')
+        # self.timer_interval = TIMER_OPTIONS[user_interval]
+
+        players = dict()
+        for player_number in range(1, self.player_count + 1):
+            player_name = 'player {}'.format(player_number)
+            player = Player(name=player_name)
+            player.number = player_number
+            # player.borders = (2, "solid",(0,2,3,4))
+
+            if player_number == self.agent_number:
+                # All values that need to be set for the agent
+                # should be set here.
+                player.icon = './data/icons/agent.png'
+
+            players[player_name] = player
+            self.ids.circular_layout.add_widget(player)
+
+        Stage.players = players
+        # This will be used to keep track of who is acting against whom.
+        Stage.selected_player = None
 
 
 class EndGameScreen(Stage):

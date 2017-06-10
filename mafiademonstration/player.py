@@ -19,7 +19,7 @@ Builder.load_string("""
 <Player>:
     name: "player"
     number: 0
-    icon: "./data/icons/player_alive.png"
+    icon: "/data/icons/player_alive.png"
     alive: True
     on_alive: root.ready_action("die")
     mafia: False
@@ -72,7 +72,7 @@ class Player(BoxLayout, BorderBehavior):
         if self.current_action == "die":
             self.actions = {}
             self.alive = False
-            self.icon = "./data/icons/player_dead.png"
+            self.icon = "/data/icons/player_dead.png"
         return self
 
     def act_on(self, player):
