@@ -21,7 +21,7 @@ except ModuleNotFoundError:
 def main(language):
     """Run MafiaDemonstrationApp with the given language setting.
     """
-    MafiaDemonstrationApp(language).run()
+    MafiaDemonstrationApp().run()
 
 
 if __name__ == "__main__":

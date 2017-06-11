@@ -19,7 +19,7 @@ Builder.load_string("""
 <Player>:
     name: "player"
     number: 0
-    icon: "/data/icons/player_alive.png"
+    icon: "./data/icons/player_alive.png"
     alive: True
     on_alive: root.ready_action("die")
     mafia: False

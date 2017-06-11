@@ -218,9 +218,9 @@ Builder.load_string("""
 
         ImageButton:
             id: submit_button
-            source: "/data/icons/submit_incomplete.png"
+            source: "./data/icons/submit_incomplete.png"
             color: to_rgba("05F5F5")
-            on_press: app.submit()
+            on_press: root.submit(); root.manager.current = 'trial'
             size_hint: .2, .2
             borders: 2, "solid", (1,1,1,1.)
 
@@ -234,7 +234,10 @@ Builder.load_string("""
             start_angle: 60
 
 <TrialScreen>:
-    
+    Button:
+        text: 'press me'
+        on_press: root.manager.current = 'night'
+
 
 <NightScreen>:
     AnchorLayout:
@@ -244,16 +247,16 @@ Builder.load_string("""
         on_ready_to_submit: submit_button = "./data/icons/submit_complete.png" if ready_to_submit else "./data/icons/submit_incomplete.png"
         canvas.before:
             Color:
-                rgba: to_rgba("F5F5F5")
+                rgba: to_rgba("0D47A1")
             Rectangle:
                 pos: self.pos
                 size: self.size
 
         ImageButton:
             id: submit_button
-            source: "/data/icons/submit_incomplete.png"
+            source: "./data/icons/submit_incomplete.png"
             color: to_rgba("05F5F5")
-            on_press: app.submit()
+            on_press: root.submit(); root.manager.current = 'discussion'
             size_hint: .2, .2
             borders: 2, "solid", (1,1,1,1.)
 
@@ -335,10 +338,8 @@ class MenuScreen(Stage):
 
 class SettingsScreen(Stage):
     def __init__(self, **kwargs):
-        if self.config.get('settings', 'player_count') > 12 or self.config.get('settings', 'player_count') < 4:
-            self.player_count = 6
-        else:
-            self.player_count = self.config.get('settings', 'player_count')
+        super(SettingsScreen, self).__init__(**kwargs)
+        self.player_count = 6
 
 
 
@@ -375,6 +376,9 @@ class DiscussionScreen(Stage):
         # This will be used to keep track of who is acting against whom.
         Stage.selected_player = None
 
+    def submit(self, **kwargs):
+        print(kwargs)
+        return True
 
 class TrialScreen(Stage):
     pass
@@ -409,6 +413,11 @@ class NightScreen(Stage):
         # This will be used to keep track of who is acting against whom.
         Stage.selected_player = None
 
+    def submit(self, **kwargs):
+        print(kwargs)
+        return True
+
+
 
 class EndGameScreen(Stage):
     pass
@@ -420,22 +429,3 @@ class ImageButton(BorderBehavior, ButtonBehavior, Image):
 
 class ActionList(DropDown):
     pass
-
-
-sm = ScreenManager(transition=NoTransition())
-sm.add_widget(MenuScreen(name='menu'))
-sm.add_widget(SettingsScreen(name='settings'))
-sm.add_widget(LoadingScreen(name='loading'))
-sm.add_widget(DiscussionScreen(name='discussion'))
-sm.add_widget(TrialScreen(name='trial'))
-sm.add_widget(NightScreen(name='night'))
-sm.add_widget(EndGameScreen(name='endgame'))
-
-
-class Stages(App):
-    def build(self):
-        return sm
-
-
-if __name__ == '__main__':
-    Stages().run()

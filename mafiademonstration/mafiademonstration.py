@@ -23,13 +23,14 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import Image
 from kivy.uix.label import Label
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 # from kivy.uix.progressbar import ProgressBar
 from os.path import join, dirname
 
 try:
-    from mafiademonstration.border_behavior import BorderBehavior
+    import mafiademonstration.stages as stages
 except ModuleNotFoundError:
-    from border_behavior import BorderBehavior
+    import stages
 
 
 # TIMER_OPTIONS = {
@@ -38,89 +39,6 @@ except ModuleNotFoundError:
 #     '1/15 sec': 1 / 15.0,
 # }
 
-
-def _(text):
-    """This is just so we can use the default gettext format."""
-    return text
-
-
-class ImageButton(BorderBehavior, ButtonBehavior, Image):
-    pass
-
-
-class ActionList(DropDown):
-    pass
-
-
-class Player(BoxLayout, BorderBehavior):
-    name = StringProperty("")
-    number = NumericProperty(0)
-    alive = BooleanProperty(True)
-    mafia = BooleanProperty(False)
-    strategic_value = NumericProperty(0)
-    current_action = StringProperty()  # Holds a reference to the action that is to be taken on another player.
-    actions = DictProperty()
-
-    def ready_action(self, action):
-        """ Designate the current player as the one who will be performing actions.
-            This is done by setting the self player instance as the selected player.
-        """
-        self.current_action = action.lower()
-        Logger.info("{name} is ready to {action}".format(name=self.name,
-                                                         action=self.current_action))
-
-        if self.current_action == "clear":
-            self.actions = {"accuse": None, "suspect": None,
-                            "kill": None, "vote": None}
-            self.alive = False
-        if self.current_action == "die":
-            self.actions = {}
-            self.alive = False
-            self.icon = "./data/icons/player_dead.png"
-        return self
-
-    def act_on(self, player):
-        assert isinstance(player, type(self))
-
-        if self == player:
-            # TODO: Figure out how I want to handle this.
-            return
-
-        self.actions[self.current_action] = player
-        Logger.info("{self} {action} {other}".format(self=self.name, action=self.current_action, other=player.name))
-        return self
-
-        # class I18NLabel(Label):
-        # """Label that supports internationlization."""
-        # source_text = StringProperty('')
-
-
-        # class RefLabel(Label):
-        # """Simple that opens a contained url in the webbrowser."""
-
-        # def on_ref_press(self, url):
-        # """Callback which is being run when the user clicks on a ref in the
-        # label.
-
-        # :param str url: URL to be opened in the webbrowser
-        # """
-        # Logger.info("Opening '{url}' in webbrowser.".format(url=url))
-        # webbrowser.open(url)
-
-
-        # class TransitionProgress(ProgressBar):
-        # """ProgressBar with pre-defined animations for fading in and out."""
-
-        # _in = Animation(opacity=1.0, duration=0.4)
-        # _out = Animation(opacity=0.0, duration=0.1)
-
-        # def fade_in(self):
-        # """Play the animation for changing the ProgressBar to be opaque."""
-        # self._in.start(self)
-
-        # def fade_out(self):
-        # """Play the animation to hide the ProgressBar."""
-        # self._out.start(self)
 
 
 class MafiaDemonstrationApp(App):
@@ -135,74 +53,8 @@ class MafiaDemonstrationApp(App):
     """
 
     title = 'Mafia Demonstration'
-    stages = ListProperty(['Discussion', 'Vote', 'Mafia'])
-    stage = StringProperty('Discussion')
     cycle = NumericProperty(0)
     ready_to_submit = BooleanProperty(False)
-
-    # language = StringProperty('en')
-    # translation = ObjectProperty(None, allownone=True)
-
-    # timer = BoundedNumericProperty(0, min=0, max=400)
-    # carousel = ObjectProperty(Carousel)
-
-    def __init__(self, language, **kwargs):
-        # self.language = language
-        # self.switch_lang(self.language)
-        super(MafiaDemonstrationApp, self).__init__(**kwargs)
-
-    def submit_conditions_met(self):
-        """
-        Used to check and see if all the conditions for pressing the submit
-        button have been met.
-        This includes all living players having selected someone to both accuse
-        and suspect.
-        """
-
-        if self.cycle == 0:
-            return True
-        if all(player.alive for player in self.root.players.values()):
-            Logger.debug("All players are alive.")
-        # TODO: Perform all sorts of checks here.
-        return True
-
-    def submit(self):
-        """
-        Submits information to whatever backend we have communicating
-        the individual player accusations and suspicions as well as
-        who has been voted off or killed or anything else.
-        """
-        if self.submit_conditions_met():
-            players = self.root.players
-            players['player 2'].alive = False
-            Logger.info("Submit button pressed")
-            ready_to_submit = True
-        else:
-            # TODO: Figure out how to handle this.
-            pass
-
-            # def start_timer(self, *args, **kwargs):
-            # """Schedule the timer update routine and fade in the progress bar."""
-            # Logger.debug("Starting timer")
-            # Clock.schedule_interval(self._update_timer, self.timer_interval)
-            # self.progress_bar.fade_in()
-
-            # def stop_timer(self, *args, **kwargs):
-            # """Reset the timer and unschedule the update routine."""
-            # Logger.debug("Stopping timer")
-            # Clock.unschedule(self._update_timer)
-            # self.progress_bar.fade_out()
-            # self.timer = 0
-
-            # def delay_timer(self, *args, **kwargs):
-            # """Stop the timer but re-schedule it based on `anim_move_duration` of
-            # :attr:`MafiaDemonstrationApp.carousel`.
-            # """
-            # self.stop_timer()
-            # Clock.schedule_once(
-            # self.start_timer,
-            # self.carousel.anim_move_duration
-            # )
 
     def build(self):
         """Initialize the GUI based on the kv file and set up events.
@@ -211,45 +63,24 @@ class MafiaDemonstrationApp(App):
           (:class:`kivy.uix.anchorlayout.AnchorLayout`): Root widget specified
             in the kv file of the app
         """
-        self.player_count = int(self.config.get('user_settings', 'player_count'))
-        self.agent_number = int(self.config.get('user_settings', 'agent_number'))
+        # self.player_count = int(self.config.get('user_settings', 'player_count'))
+        # self.agent_number = int(self.config.get('user_settings', 'agent_number'))
         # self.language = self.config.get('user_settings', 'language')
 
         # user_interval = self.config.get('user_settings', 'timer_interval')
         # self.timer_interval = TIMER_OPTIONS[user_interval]
 
-        players = dict()
-        for player_number in range(1, self.player_count + 1):
-            player_name = 'player {}'.format(player_number)
-            player = Player(name=player_name)
-            player.number = player_number
-            # player.borders = (2, "solid",(0,2,3,4))
+        sm = ScreenManager(transition=NoTransition())
+        sm.add_widget(stages.MenuScreen(name='menu'))
+        sm.add_widget(stages.SettingsScreen(name='settings'))
+        sm.add_widget(stages.LoadingScreen(name='loading'))
+        sm.add_widget(stages.DiscussionScreen(name='discussion'))
+        sm.add_widget(stages.TrialScreen(name='trial'))
+        sm.add_widget(stages.NightScreen(name='night'))
+        sm.add_widget(stages.EndGameScreen(name='endgame'))
 
-            if player_number == self.agent_number:
-                # All values that need to be set for the agent
-                # should be set here.
-                player.icon = './data/icons/agent.png'
 
-            players[player_name] = player
-            self.root.ids.circular_layout.add_widget(player)
-
-        self.root.players = players
-        # This will be used to keep track of who is acting against whom.
-        self.root.selected_player = None
-
-        # self.carousel = self.root.ids.carousel
-        # self.progress_bar = self.root.ids.progress_bar
-        # self.progress_bar.max = self.property('timer').get_max(self)
-
-        # self.start_timer()
-        # self.carousel.bind(on_touch_down=self.stop_timer)
-        # self.carousel.bind(current_slide=self.delay_timer)
-
-        # Allow the kivy-style access of the root widget.
-        global app
-        app = self
-
-        return self.root
+        return sm
 
     def build_config(self, config):
         """Create a config file on disk and assign the ConfigParser object to
@@ -298,25 +129,3 @@ class MafiaDemonstrationApp(App):
         stored in :meth:`MafiaDemonstrationApp.on_pause`.
         """
         pass
-
-        # def _update_timer(self, dt):
-        # try:
-        # self.timer += 1
-        # except ValueError:
-        # self.stop_timer()
-        # self.carousel.load_next()
-        # Logger.debug("Automatically loading next slide")
-
-        # def on_language(self, instance, language):
-        # self.switch_lang(language)
-
-        # def switch_lang(self, language):
-        # locale_dir = join(dirname(dirname(__file__)), 'data', 'locales')
-        # locales = gettext.translation(
-        # 'mafiademonstration', locale_dir, languages=[self.language]
-        # )
-
-        # if sys.version_info.major >= 3:
-        # self.translation = locales.gettext
-        # else:
-        # self.translation = locales.ugettext
