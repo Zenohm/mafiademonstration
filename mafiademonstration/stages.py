@@ -61,7 +61,7 @@ Builder.load_string("""
 
                 Button:
                     text: "Start"
-                    on_press: root.manager.current = "loading"
+                    on_press: root.manager.current = "discussion"
 
                 Button:
                     text: "Settings"
@@ -185,24 +185,6 @@ Builder.load_string("""
             text: "Return"
             on_press: root.manager.current = "menu"
 
-
-<LoadingScreen>:
-    canvas.before:
-        Color:
-            rgba: to_rgba("F5F5F5")
-        Rectangle:
-            # self here refers to the widget i.e BoxLayout
-            pos: self.pos
-            size: self.size
-
-    BoxLayout:
-        Label:
-            color: to_rgba("212121")
-            text: "Loading..."
-        Button:
-            text: "Next Screen"
-            on_press: root.manager.current = "discussion"
-
 <DiscussionScreen>:
     AnchorLayout:
         players: {}
@@ -220,7 +202,7 @@ Builder.load_string("""
             id: submit_button
             source: "./data/icons/submit_incomplete.png"
             color: to_rgba("05F5F5")
-            on_press: root.submit(); root.manager.current = 'trial'
+            on_press: root.submit(); root.manager.current = 'loadingDT'
             size_hint: .2, .2
             borders: 2, "solid", (1,1,1,1.)
 
@@ -233,11 +215,44 @@ Builder.load_string("""
             size_hint_y: 0.5
             start_angle: 60
 
+<LoadingScreenDT>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        Label:
+            color: to_rgba("212121")
+            text: "Loading..."
+        Button:
+            text: "Next Screen"
+            on_press: root.manager.current = "trial"
+
 <TrialScreen>:
     Button:
         text: 'press me'
-        on_press: root.manager.current = 'night'
+        on_press: root.manager.current = 'loadingTN'
 
+<LoadingScreenTN>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        Label:
+            color: to_rgba("212121")
+            text: "Loading..."
+        Button:
+            text: "Next Screen"
+            on_press: root.manager.current = "night"
 
 <NightScreen>:
     AnchorLayout:
@@ -256,7 +271,7 @@ Builder.load_string("""
             id: submit_button
             source: "./data/icons/submit_incomplete.png"
             color: to_rgba("05F5F5")
-            on_press: root.submit(); root.manager.current = 'discussion'
+            on_press: root.submit(); root.manager.current = 'loadingND'
             size_hint: .2, .2
             borders: 2, "solid", (1,1,1,1.)
 
@@ -268,6 +283,23 @@ Builder.load_string("""
             size_hint_x: 0.6
             size_hint_y: 0.5
             start_angle: 60
+
+<LoadingScreenND>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        Label:
+            color: to_rgba("212121")
+            text: "Loading..."
+        Button:
+            text: "Next Screen"
+            on_press: root.manager.current = "discussion"
 
 <EndGameScreen>:
     canvas.before:
@@ -301,7 +333,7 @@ Builder.load_string("""
 
                 Button:
                     text: "Restart"
-                    on_press: root.manager.current = "loading"
+                    on_press: root.manager.current = "discussion"
 
                 Button:
                     text: "Main Menu"
@@ -342,8 +374,15 @@ class SettingsScreen(Stage):
         self.player_count = 6
 
 
+class LoadingScreenDT(Stage):
+    pass
 
-class LoadingScreen(Stage):
+
+class LoadingScreenTN(Stage):
+    pass
+
+
+class LoadingScreenND(Stage):
     pass
 
 
@@ -379,6 +418,7 @@ class DiscussionScreen(Stage):
     def submit(self, **kwargs):
         print(kwargs)
         return True
+
 
 class TrialScreen(Stage):
     pass
