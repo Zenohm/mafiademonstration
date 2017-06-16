@@ -1,0 +1,52 @@
+#:import to_rgba kivy.utils.get_color_from_hex
+
+<Player>:
+    name: "player"
+    number: 0
+    icon: "data/icons/player_alive.png"
+    alive: True
+    on_alive: root.ready_action("die")
+    mafia: False
+    strategic_value: 0
+    current_action: "accuse"
+    # on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
+    actions: {"accuse": {"player": None, "reason": None}, "suspect": {"player": None, "reason": None}, "kill": None, "vote": "abstain"}
+
+    orientation: "vertical"
+
+<DiscussionPlayer@Player>:
+    ImageButton:
+        source: root.icon
+        on_press:
+            if app.root.selected_player: app.root.selected_player.act_on(root)
+    Spinner:
+        text: "Abstain"
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        values: "Abstain", "Accuse", "Suspect"
+        on_text: app.root.selected_player = root.ready_action(self.text)
+
+<NightPlayer@Player>:
+    Image:
+        source: root.icon
+    Button:
+        text: "Kill"
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        on_press:
+            root.alive = False
+            if not any(player.alive for player in app.root.current_screen.players.values()): app.root.current = "gameovermenu"
+
+<TrialPlayer@Player>:
+    borders: 2, "solid", to_rgba("F44336")
+    ImageButton:
+        source: root.icon
+        on_press:
+            if app.root.selected_player: app.root.selected_player.act_on(root)
+    Spinner:
+        text: "Abstain"
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        values: "Abstain", "Innocent", "Guilty"
+        on_text: app.root.selected_player = root.ready_action(self.text)
+

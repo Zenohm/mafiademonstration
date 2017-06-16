@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import click
 import os
 
 os.environ["KIVY_NO_ARGS"] = "1"
 
-import click
 
 try:
     from mafiademonstration.mafiademonstration import MafiaDemonstrationApp

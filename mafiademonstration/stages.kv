@@ -1,0 +1,233 @@
+#:import to_rgba kivy.utils.get_color_from_hex
+#:import CircularLayout kivy.garden.circularlayout
+
+
+<MainMenu>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    GridLayout:
+        rows: 2
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+
+            Image:
+                source: "data/icons/submit.gif"
+
+            Label:
+                text: "Mafia"
+                color: to_rgba("212121")
+
+        BoxLayout:
+            orientation: "horizontal"
+            cols: 3
+
+            Label:
+
+            GridLayout:
+                rows: 4
+                row_force_default: True
+                row_default_height: 50
+                spacing: [10, 10]
+
+                Label:
+
+                Button:
+                    text: "Start"
+                    on_press: root.manager.current = "discussion"
+
+                Button:
+                    text: "Settings"
+                    on_press:
+                        app.open_settings()
+                        #root.manager.current = "settings"
+
+                Button:
+                    text: "Exit"
+                    on_press: exit()
+
+            Label:
+
+
+<Discussion>:
+    on_enter: self.enter()
+    on_pre_leave: self.exit()
+    AnchorLayout:
+        players: {}
+        selected_player: None
+        canvas.before:
+            Color:
+                rgba: to_rgba("F5F5F5")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            id: submit_button
+            source: "data/icons/submit_complete.png"
+            on_press:
+                root.manager.current = "loadingDT"
+            size_hint: .2, .2
+            #borders: 2, "solid", to_rgba("05F5F5")
+
+        CircularLayout:
+            id: circular_layout
+            direction: "ccw"
+            inner_radius_hint: 1
+            outer_radius_hint: 1.5
+            size_hint_x: 0.6
+            size_hint_y: 0.5
+            start_angle: 60
+
+
+<Trial>:
+    on_enter: self.enter()
+    on_pre_leave: self.exit()
+    AnchorLayout:
+        players: {}
+        selected_player: None
+        canvas.before:
+            Color:
+                rgba: to_rgba("F44336")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            id: submit_button
+            source: "data/icons/submit_complete.png"
+            on_press:
+                root.submit()
+                root.manager.current = 'loadingTN'
+            size_hint: .2, .2
+            #borders: 2, "solid", to_rgba("FF9800")
+
+        CircularLayout:
+            id: circular_layout
+            direction: "ccw"
+            inner_radius_hint: 1
+            outer_radius_hint: 1.5
+            size_hint_x: 0.6
+            size_hint_y: 0.5
+            start_angle: 60
+
+
+<Night>:
+    on_enter: self.enter()
+    on_pre_leave: self.exit()
+    AnchorLayout:
+        players: {}
+        selected_player: None
+        canvas.before:
+            Color:
+                rgba: to_rgba("2196F3")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            id: submit_button
+            source: "data/icons/submit_complete.png"
+            on_press:
+                root.submit()
+                root.manager.current = 'loadingND'
+            size_hint: .2, .2
+            #borders: 2, "solid", to_rgba("05F5F5")
+
+        CircularLayout:
+            id: circular_layout
+            direction: "ccw"
+            inner_radius_hint: 1
+            outer_radius_hint: 1.5
+            size_hint_x: 0.6
+            size_hint_y: 0.5
+            start_angle: 60
+
+
+<GameOverMenu>:
+    on_enter: self.enter()
+    on_pre_leave: self.exit()
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    GridLayout:
+        rows: 2
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+            ImageButton:
+                source: "data/icons/player_alive.png"
+                on_press:
+                    if self.source == "data/icons/player_alive.png": self.source = "data/icons/player_alive_old.png"
+                    else: self.source = "data/icons/player_alive.png"
+            Label:
+                color: to_rgba("212121")
+                markup: True
+                text: "[b]Game Over![/b]"
+
+        BoxLayout:
+            orientation: "horizontal"
+            cols: 3
+
+            Label:
+
+            GridLayout:
+                rows: 4
+                row_force_default: True
+                row_default_height: 50
+                spacing: [10, 10]
+
+                Label:
+
+                Button:
+                    text: "Restart"
+                    on_press: root.manager.current = "discussion"
+
+                Button:
+                    text: "Main Menu"
+                    on_press: root.manager.current = "mainmenu"
+
+                Button:
+                    text: "Exit"
+                    on_press: exit()
+
+            Label:
+
+
+<LoadingScreen>:
+    canvas.before:
+        Color:
+            rgba: to_rgba("F5F5F5")
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        Label:
+            color: to_rgba("212121")
+            text: "Loading..."
+
+
+<LoadingDT@LoadingScreen>:
+    on_enter: self.enter()
+
+<LoadingTN@LoadingScreen>:
+    on_enter: self.enter()
+
+<LoadingND@LoadingScreen>:
+    on_enter: self.enter()
+

@@ -1,6 +1,5 @@
 # From: https://gist.github.com/AWolf81/c6796dc2049d9872b2df
 
-from math import sqrt
 from kivy.graphics import Line, Color
 from kivy.properties import (
     NumericProperty, ObjectProperty, ReferenceListProperty

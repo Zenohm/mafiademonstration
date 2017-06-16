@@ -1,44 +1,22 @@
 # -*- coding: utf-8 -*-
 
-# import webbrowser
-import copy  # Going to be used to create deep copy of players for records.
-
+import json
 import kivy
+from kivy.app import App
+from kivy.properties import (
+        ListProperty,
+)
+from kivy.uix.screenmanager import ScreenManager, NoTransition
+
+from os.path import join, dirname
 
 kivy.require('1.9.1')
 
-# from kivy.animation import Animation
-from kivy.app import App
-# from kivy.clock import Clock
-from kivy.garden.circularlayout import CircularLayout
-from kivy.garden.modernmenu import ModernMenu
-from kivy.logger import Logger
-from kivy.properties import (
-    BooleanProperty, BoundedNumericProperty, DictProperty,
-    ObjectProperty, StringProperty, ListProperty, NumericProperty
-)
-# from kivy.uix.carousel import Carousel
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.dropdown import DropDown
-from kivy.uix.image import Image
-from kivy.uix.label import Label
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
-# from kivy.uix.progressbar import ProgressBar
-from os.path import join, dirname
 
 try:
     import mafiademonstration.stages as stages
 except ModuleNotFoundError:
     import stages
-
-
-# TIMER_OPTIONS = {
-#     '1/60 sec': 1 / 60.0,
-#     '1/30 sec': 1 / 30.0,
-#     '1/15 sec': 1 / 15.0,
-# }
-
 
 
 class MafiaDemonstrationApp(App):
@@ -47,38 +25,29 @@ class MafiaDemonstrationApp(App):
     Attributes:
       title (str): Window title of the application
 
-      timer (:class:`kivy.properties.BoundedNumericProperty`):
-        Helper for the slide transition of `carousel`
-
     """
 
     title = 'Mafia Demonstration'
-    cycle = NumericProperty(0)
-    ready_to_submit = BooleanProperty(False)
 
     def build(self):
         """Initialize the GUI based on the kv file and set up events.
 
         Returns:
-          (:class:`kivy.uix.anchorlayout.AnchorLayout`): Root widget specified
-            in the kv file of the app
+          (:class:`kivy.uix.screenmanager.ScreenManager`):
+            Root widget specified in the kv file of the app
         """
-        # self.player_count = int(self.config.get('user_settings', 'player_count'))
-        # self.agent_number = int(self.config.get('user_settings', 'agent_number'))
-        # self.language = self.config.get('user_settings', 'language')
-
-        # user_interval = self.config.get('user_settings', 'timer_interval')
-        # self.timer_interval = TIMER_OPTIONS[user_interval]
-
+        # cycle = NumericProperty(0)
         sm = ScreenManager(transition=NoTransition())
-        sm.add_widget(stages.MenuScreen(name='menu'))
-        sm.add_widget(stages.SettingsScreen(name='settings'))
-        sm.add_widget(stages.LoadingScreen(name='loading'))
-        sm.add_widget(stages.DiscussionScreen(name='discussion'))
-        sm.add_widget(stages.TrialScreen(name='trial'))
-        sm.add_widget(stages.NightScreen(name='night'))
-        sm.add_widget(stages.EndGameScreen(name='endgame'))
-
+        sm.selected_player = None
+        sm.players = ListProperty()
+        sm.add_widget(stages.MainMenu(name='mainmenu'))
+        sm.add_widget(stages.LoadingDT(name='loadingDT'))
+        sm.add_widget(stages.LoadingTN(name='loadingTN'))
+        sm.add_widget(stages.LoadingND(name='loadingND'))
+        sm.add_widget(stages.Discussion(name='discussion'))
+        sm.add_widget(stages.Trial(name='trial'))
+        sm.add_widget(stages.Night(name='night'))
+        sm.add_widget(stages.GameOverMenu(name='gameovermenu'))
 
         return sm
 
@@ -95,10 +64,16 @@ class MafiaDemonstrationApp(App):
             }
         )
 
+        config.setdefaults(
+            'debug', {
+                'stage_jump': 'discussion',
+            }
+        )
+
     def build_settings(self, settings):
         """Read the user settings and create a panel from it."""
-        settings_file = join(dirname(__file__), 'user_settings.json')
-        settings.add_json_panel(self.title, self.config, settings_file)
+        filename = join(dirname(__file__), 'user_settings.json')
+        settings.add_json_panel(self.title, self.config, filename)
 
     def on_config_change(self, config, section, key, value):
         """Called when the user changes the config values via the settings
