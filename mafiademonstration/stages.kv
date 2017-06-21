@@ -1,5 +1,4 @@
 #:import to_rgba kivy.utils.get_color_from_hex
-#:import CircularLayout kivy.garden.circularlayout
 
 
 <MainMenu>:
@@ -45,9 +44,7 @@
 
                 Button:
                     text: "Settings"
-                    on_press:
-                        app.open_settings()
-                        #root.manager.current = "settings"
+                    on_press: app.open_settings()
 
                 Button:
                     text: "Exit"
@@ -57,11 +54,7 @@
 
 
 <Discussion>:
-    on_enter: self.enter()
-    on_pre_leave: self.exit()
     AnchorLayout:
-        players: {}
-        selected_player: None
         canvas.before:
             Color:
                 rgba: to_rgba("F5F5F5")
@@ -71,27 +64,24 @@
 
         ImageButton:
             id: submit_button
+            pos: [root.center_x - self.width/2, root.center_y - self.height/2]
             source: "data/icons/submit_complete.png"
-            on_press:
-                root.manager.current = "loadingDT"
+            on_press: root.submit()
             size_hint: .2, .2
-            #borders: 2, "solid", to_rgba("05F5F5")
+#            borders: 2, "solid", to_rgba("05F5F5")
 
         CircularLayout:
+            pos: [i - j/2 for i, j in zip(root.center, self.size)]
             id: circular_layout
-            direction: "ccw"
-            inner_radius_hint: 1
-            outer_radius_hint: 1.5
-            size_hint_x: 0.6
-            size_hint_y: 0.5
-            start_angle: 60
+            direction: "cw"
+            start_angle: -180/len(self.children)-90 if len(self.children) else 0
+            inner_radius_hint: 0.7
+            outer_radius_hint: 1.2
+            size_hint_y: 0.7
 
 
 <Trial>:
-    on_enter: self.enter()
-    on_pre_leave: self.exit()
     AnchorLayout:
-        players: {}
         selected_player: None
         canvas.before:
             Color:
@@ -103,25 +93,20 @@
         ImageButton:
             id: submit_button
             source: "data/icons/submit_complete.png"
-            on_press:
-                root.submit()
-                root.manager.current = 'loadingTN'
+            on_press: root.submit()
             size_hint: .2, .2
             #borders: 2, "solid", to_rgba("FF9800")
 
         CircularLayout:
             id: circular_layout
-            direction: "ccw"
-            inner_radius_hint: 1
-            outer_radius_hint: 1.5
-            size_hint_x: 0.6
-            size_hint_y: 0.5
-            start_angle: 60
+            direction: "cw"
+            start_angle: -180/len(self.children)-90 if len(self.children) else 0
+            inner_radius_hint: 0.7
+            outer_radius_hint: 1.2
+            size_hint_y: 0.7
 
 
 <Night>:
-    on_enter: self.enter()
-    on_pre_leave: self.exit()
     AnchorLayout:
         players: {}
         selected_player: None
@@ -137,23 +122,19 @@
             source: "data/icons/submit_complete.png"
             on_press:
                 root.submit()
-                root.manager.current = 'loadingND'
             size_hint: .2, .2
             #borders: 2, "solid", to_rgba("05F5F5")
 
         CircularLayout:
             id: circular_layout
-            direction: "ccw"
-            inner_radius_hint: 1
-            outer_radius_hint: 1.5
-            size_hint_x: 0.6
-            size_hint_y: 0.5
-            start_angle: 60
+            direction: "cw"
+            start_angle: -180/len(self.children)-90 if len(self.children) else 0
+            inner_radius_hint: 0.7
+            outer_radius_hint: 1.2
+            size_hint_y: 0.7
 
 
 <GameOverMenu>:
-    on_enter: self.enter()
-    on_pre_leave: self.exit()
     canvas.before:
         Color:
             rgba: to_rgba("F5F5F5")
@@ -162,12 +143,14 @@
             pos: self.pos
             size: self.size
 
-    GridLayout:
-        rows: 2
+    BoxLayout:
+        orientation: "vertical"
 
         BoxLayout:
             orientation: "vertical"
+
             Label:
+
             ImageButton:
                 source: "data/icons/player_alive.png"
                 on_press:
@@ -220,14 +203,3 @@
         Label:
             color: to_rgba("212121")
             text: "Loading..."
-
-
-<LoadingDT@LoadingScreen>:
-    on_enter: self.enter()
-
-<LoadingTN@LoadingScreen>:
-    on_enter: self.enter()
-
-<LoadingND@LoadingScreen>:
-    on_enter: self.enter()
-

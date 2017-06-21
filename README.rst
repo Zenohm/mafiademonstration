@@ -5,8 +5,6 @@ A user friendly interface for playing a simplified game of Mafia.
 
 ----
 
-This `Kivy`_ app was generated with `Cookiecutter`_ along with `@hackebrot`_'s `Cookiedozer`_ template.
-
 
 Features
 --------

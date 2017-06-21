@@ -1,0 +1,48 @@
+
+Next Week Required Functionality
+    - A list in the discussion stage of current suspicions and accusations or some way of permanently displaying the players that are being accused/suspected
+    - (Explore, ideal but not necessary) Some sort of icons/images for dropdown menus
+    - Buggy full playthrough
+    - Mafia wins if villagers die
+    - Town wins if Mafia is killed
+    - Communication through JSON : End of week
+    - A protoreasoner to show that a reasoner can theoretically be hooked up to the system and work correctly : End of week
+
+General things to keep in mind:
+    - List of actions taken off to the side or a visual representation of accusations and suspicions.
+    - Get icons next to options for each stage possibly only night and trial stage
+    - Dead people are going to be included, not removed, but they will be treated differently
+    - Night stage allow players to be selected and then press continue to confirm
+    - Prototype agent that is being communicated with
+    - Arrows > Modern Menu > List
+    - Settings > Reasons > Detectives
+    - Reasons for each action
+    - Detectives (hold off until second run of testing)
+    - Animations for loading
+    - Credits menu button
+    - Other things for Dylan to draw
+    - Icon list for Dylan:
+        * Logo with text (Ex: Angry mafia bot staring at angry detective hooman with the word Maaafiaaaaa underneath)
+        * Mafia win logo (Ex: Mwahahah evil)
+        * Town win logo (Ex: Townies + Detectives being happy)
+        * Mafia fedoras and neckbeards (shiny rare neckbeards :D)
+        * Sleeping icons
+        * Selected to be killed sleeping icon (Restless sleepy)
+        * Detective icon
+        * Player on trial
+        * Player on trial about to be executed
+        * Player on trial relieved about not being executed
+        * Continue icon
+        * Permanently dead townie icon
+        * Permanently dead mafia icon
+        * Permanently dead detective icon
+        * Permanently dead townie robot icon
+        * Permanently dead mafia robot icon
+        * Permanently dead detective robot icon
+        * Accuse icon
+        * Suspect icon
+        * Innocent icon
+        * Guilty icon
+        * Kill icon
+        * Investigate icon
+        * Pay Dylan with mons

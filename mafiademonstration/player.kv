@@ -1,32 +1,75 @@
 #:import to_rgba kivy.utils.get_color_from_hex
+#:import Logger kivy.logger.Logger
+#:import random random.random
+
 
 <Player>:
     name: "player"
+    icon: "data/icons/easter_egg.png" if random() < 0.01 else "data/icons/player_alive.png"
     number: 0
-    icon: "data/icons/player_alive.png"
+    strategic_value: 0
+#    borders: 2, "solid", to_rgba("F5F5F5")
+    mafia: False
     alive: True
     on_alive: root.ready_action("die")
-    mafia: False
-    strategic_value: 0
+    # The second layer in this dictionary is REQUIRED. Shallow copy dragons will get angry if you flatten this dict. Hiss.
+    actions: {"accuse": {'player': None}, "suspect": {'player': None}, "kill": {'player': None}, "vote": {'decision': "abstain"}}
     current_action: "accuse"
     # on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
-    actions: {"accuse": {"player": None, "reason": None}, "suspect": {"player": None, "reason": None}, "kill": None, "vote": "abstain"}
-
     orientation: "vertical"
 
-<DiscussionPlayer@Player>:
+
+<DiscussionPlayer>:
+    drop_widget: dropdown.__self__
+
+    FloatLayout:
+        id: empty
+        height: "0dp"
+        size_hint_y: 0
+
     ImageButton:
         source: root.icon
-        on_press:
-            if app.root.selected_player: app.root.selected_player.act_on(root)
-    Spinner:
-        text: "Abstain"
-        color: to_rgba("F5F5F5")
-        background_color: to_rgba("212121")
-        values: "Abstain", "Accuse", "Suspect"
-        on_text: app.root.selected_player = root.ready_action(self.text)
+        on_release:
+#             if app.root.current_screen.selected_player: app.root.current_screen.selected_player.icon = "data/icons/player_alive.png"
+#             print(app.root.current_screen.selected_player)
+#             app.root.current_screen.selected_player = root
+#             root.icon = "data/icons/player_alive_old.png"
+            dropdown.open(self)
+            # print(app.root.current_screen.players)
+            # root.show_bubble()
+            if app.root.current_screen.selected_player: app.root.current_screen.selected_player.act_on(root.__self__)
 
-<NightPlayer@Player>:
+    DropDown:
+        id: dropdown
+        on_select:
+            Logger.info('{}'.format(args[1]))
+
+        Button:
+            text: 'Accuse'
+            size_hint_y: None
+            height: '48dp'
+            on_release:
+                app.root.current_screen.selected_player = root.ready_action('Accuse')
+                dropdown.select('Ready to accuse another player')
+
+        Button:
+            text: 'Suspect'
+            color: to_rgba("050505")
+            size_hint_y: None
+            height: '48dp'
+            on_release:
+                app.root.current_screen.selected_player = root.ready_action('Suspect')
+                dropdown.select('Ready to suspect another player')
+
+        Button:
+            text: 'Abstain'
+            size_hint_y: None
+            height: '48dp'
+            on_release:
+                app.root.current_screen.selected_player = root.ready_action('Abstain')
+                dropdown.select('Abstaining from the vote')
+
+<NightPlayer>:
     Image:
         source: root.icon
     Button:
@@ -35,10 +78,9 @@
         background_color: to_rgba("212121")
         on_press:
             root.alive = False
-            if not any(player.alive for player in app.root.current_screen.players.values()): app.root.current = "gameovermenu"
 
-<TrialPlayer@Player>:
-    borders: 2, "solid", to_rgba("F44336")
+<TrialPlayer>:
+#    borders: 2, "solid", to_rgba("F44336")
     ImageButton:
         source: root.icon
         on_press:

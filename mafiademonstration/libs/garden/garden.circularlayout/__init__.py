@@ -183,9 +183,14 @@ if __name__ == "__main__":
 
     class CircLayoutApp(App):
         def build(self):
-            cly = CircularLayout(direction="cw", start_angle=-75, inner_radius_hint=.7, padding="20dp")
+            items = range(0, 18)
+            cly = CircularLayout(direction="cw",
+                                 start_angle=-180/len(items)-90,
+                                 inner_radius_hint=.7,
+                                 padding="20dp"
+            )
 
-            for i in xrange(1, 13):
+            for i in items:
                 cly.add_widget(Button(text=str(i), font_size="30dp"))
 
             return cly
