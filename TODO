@@ -5,7 +5,7 @@ Next Week Required Functionality
     - Buggy full playthrough
     - Mafia wins if villagers die
     - Town wins if Mafia is killed
-    - Communication through JSON : End of week
+    -!Communication through JSON : End of week
     - A protoreasoner to show that a reasoner can theoretically be hooked up to the system and work correctly : End of week
 
 General things to keep in mind:

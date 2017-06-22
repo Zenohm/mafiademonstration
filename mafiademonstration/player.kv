@@ -11,11 +11,11 @@
 #    borders: 2, "solid", to_rgba("F5F5F5")
     mafia: False
     alive: True
-    on_alive: root.ready_action("die")
+#    on_alive: root.ready_action("die")
     # The second layer in this dictionary is REQUIRED. Shallow copy dragons will get angry if you flatten this dict. Hiss.
-    actions: {"accuse": {'player': None}, "suspect": {'player': None}, "kill": {'player': None}, "vote": {'decision': "abstain"}}
+    actions: {"accuse": {'player': None}, "suspect": {'player': None}, "vote": {'decision': "abstain"}}
     current_action: "accuse"
-    # on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
+    on_current_action: self.borders = (2, "solid", to_rgba("05F5F5")); self.update_borders()
     orientation: "vertical"
 
 
@@ -28,6 +28,7 @@
         size_hint_y: 0
 
     ImageButton:
+        disabled: not root.alive
         source: root.icon
         on_release:
 #             if app.root.current_screen.selected_player: app.root.current_screen.selected_player.icon = "data/icons/player_alive.png"
@@ -40,6 +41,7 @@
             if app.root.current_screen.selected_player: app.root.current_screen.selected_player.act_on(root.__self__)
 
     DropDown:
+        disabled: not root.alive
         id: dropdown
         on_select:
             Logger.info('{}'.format(args[1]))
@@ -69,26 +71,36 @@
                 app.root.current_screen.selected_player = root.ready_action('Abstain')
                 dropdown.select('Abstaining from the vote')
 
-<NightPlayer>:
+<NightSleepingPlayer>:
     Image:
         source: root.icon
     Button:
+        disabled: not root.alive
         text: "Kill"
         color: to_rgba("F5F5F5")
         background_color: to_rgba("212121")
-        on_press:
-            root.alive = False
+        on_press: app.root.current_screen.selected_player = root
+
+<NightMafiaPlayer>:
+    Image:
+        source: root.icon
 
 <TrialPlayer>:
 #    borders: 2, "solid", to_rgba("F44336")
     ImageButton:
+        disabled: not root.alive
         source: root.icon
         on_press:
             if app.root.selected_player: app.root.selected_player.act_on(root)
     Spinner:
+        disabled: not root.alive
+        on_disabled: root.remove_widget(self); print("Thing happened")
         text: "Abstain"
         color: to_rgba("F5F5F5")
         background_color: to_rgba("212121")
         values: "Abstain", "Innocent", "Guilty"
         on_text: app.root.selected_player = root.ready_action(self.text)
 
+<DeadPlayer>:
+    Image:
+        source: root.icon

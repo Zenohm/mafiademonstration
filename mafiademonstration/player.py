@@ -1,5 +1,5 @@
 from functools import partial
-import json
+import inspect
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -34,23 +34,57 @@ class Player(BoxLayout, BorderBehavior):
     current_action = StringProperty()
     actions = DictProperty()
 
+    def __iter__(self):
+        flattened_actions = self.actions.copy()
+        for action, decision in self.actions.items():
+            flattened_actions[action] = decision.copy()
+            for key, value in decision.items():
+                if hasattr(value, "name"):
+                    flattened_actions[action][key] = value.name
+        print(self.actions)
+        print(flattened_actions)
+        return iter([('name', self.name),
+                     ('number', self.number),
+                     ('icon', self.icon),
+                     ('mafia', self.mafia),
+                     ('alive', self.alive),
+                     ('strategic_value', self.strategic_value),
+                     ('current_action', self.current_action),
+                     ('actions', flattened_actions)])
+
+    def suspect(self, other):
+        pass
+
+    def accuse(self, other):
+        pass
+
+    def kill(self, other):
+        pass
+
+    def die(self):
+        stage = App.get_running_app().root.current_screen
+        stage.players[self.name].alive = self.alive = False
+        stage.players[self.name].icon = self.icon = "data/icons/player_dead.png"
+
     def ready_action(self, action) -> object:
         """
         Designate the current player as the one who will be performing actions.
         This is done by setting the player instance as the selected player.
         """
-        self.current_action = action.lower()
-        Logger.info("{name} is ready to {action}".format(
-            name=self.name,
-            action=self.current_action
-        ))
-        Logger.debug("{} said by the ready_action method".format(type(self.actions)))
+        Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
 
-        if self.current_action == "clear":
-            self.alive = False
+        self.current_action = action.lower()
+        Logger.info("Player: {name} is ready to {action}".format(name=self.name, action=self.current_action))
+        Logger.debug("Player: {}.current_action: {}".format(self.name, self.current_action))
+
         if self.current_action == "die":
-            self.alive = False
-            self.icon = "data/icons/player_dead.png"
+            self.die()
+
+        if self.current_action == "guilty" or self.current_action == "innocent":
+            stage = App.get_running_app().root.current_screen
+            stage.players[self.name].actions["vote"]["decision"] = self.current_action
+
+        Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
         return self
 
     def act_on(self, player) -> None:
@@ -58,19 +92,26 @@ class Player(BoxLayout, BorderBehavior):
         assert player is not None
         assert issubclass(type(self), Player)
         assert self.actions != {}
+        print(dict(player))
+        Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
 
-        Logger.debug("{} said by the act_on method".format(type(self.actions)))
+        Logger.debug("Player: {}.actions: {}".format(self.name, self.actions))
+        Logger.debug("Player: {}.actions: {}".format(player.name, player.actions))
         if self == player:
+            Logger.debug("Player: {} tried to act on themselves.".format(type(self.name)))
             # TODO: Figure out how I want to handle this.
+            Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
             return
 
-        Logger.debug("ID in Player:act_on: {}".format(id(self.actions)))
         if self.current_action.lower() != 'abstain':
             self.actions[self.current_action]['player'] = player
-        Logger.info("{self} {action} {other}".format(self=self.name,
-                    action=self.current_action, other=player.name))
+        Logger.info("Player: {self} {action} {other}".format(self=self.name,
+                                                             action=self.current_action,
+                                                             other=player.name))
+        Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
 
     def show_bubble(self) -> None:
+        Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
         self.bubb = Bubble(size_hint=(None, None),
                            size=(160, 30),
                            pos_hint={'center_x': .5, 'y': .6})
@@ -81,37 +122,29 @@ class Player(BoxLayout, BorderBehavior):
         self.bubb.add_widget(accuse)
         self.bubb.add_widget(suspect)
         self.ids.empty.add_widget(self.bubb)
+        Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
 
     def hide_bubble(self, instance, *args):
+        Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
         self.ids.empty.remove_widget(self.bubb)
-
-    def to_json(self) -> str:
-        """
-        Convert player object to standard language for transmission
-        between various outside reasoners.
-        """
-        return json.dumps(self.__dict__)
-
-    @staticmethod
-    def from_json(json_players):
-        """
-        Read a list of players in a standard format and convert it
-        into a list of Player objects.
-        """
-        output_data = list()
-        json_data = json.loads(json_players)
-        for person_data in json_data:
-            output_data.append(Player(**person_data))
-        App.get_running_app().root.Stage.players = output_data
+        Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
 
 
 class DiscussionPlayer(Player):
     pass
 
 
-class NightPlayer(Player):
+class NightMafiaPlayer(Player):
+    pass
+
+
+class NightSleepingPlayer(Player):
     pass
 
 
 class TrialPlayer(Player):
+    pass
+
+
+class DeadPlayer(Player):
     pass
