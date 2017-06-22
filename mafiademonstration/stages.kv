@@ -82,7 +82,6 @@
 
 <Trial>:
     AnchorLayout:
-        selected_player: None
         canvas.before:
             Color:
                 rgba: to_rgba("F44336")
@@ -109,7 +108,6 @@
 <Night>:
     AnchorLayout:
         players: {}
-        selected_player: None
         canvas.before:
             Color:
                 rgba: to_rgba("2196F3")
@@ -135,6 +133,7 @@
 
 
 <GameOverMenu>:
+    text: "[b]{} wins![/b]"
     canvas.before:
         Color:
             rgba: to_rgba("F5F5F5")
@@ -159,7 +158,7 @@
             Label:
                 color: to_rgba("212121")
                 markup: True
-                text: "[b]Game Over![/b]"
+                text: root.text
 
         BoxLayout:
             orientation: "horizontal"

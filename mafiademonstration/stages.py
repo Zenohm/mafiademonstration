@@ -6,7 +6,6 @@ from kivy.garden.circularlayout import CircularLayout
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.dropdown import DropDown
 from kivy.uix.image import Image
 
 from kivy.logger import Logger
@@ -18,13 +17,13 @@ try:
     from mafiademonstration.border_behavior import BorderBehavior
     from mafiademonstration.player import (
         Player, DeadPlayer, DiscussionPlayer,
-        NightMafiaPlayer, NightSleepingPlayer, TrialPlayer
+        PlayerIcon, NightSleepingPlayer, TrialPlayer
     )
 except ModuleNotFoundError:
     from border_behavior import BorderBehavior
     from player import (
         Player, DeadPlayer, DiscussionPlayer,
-        NightMafiaPlayer, NightSleepingPlayer, TrialPlayer
+        PlayerIcon, NightSleepingPlayer, TrialPlayer
     )
 
 try:
@@ -36,21 +35,18 @@ except FileNotFoundError:
 class Stage(Screen):
     # Kivy Properties
     # This will be used to keep track of who is acting against whom.
-    selected_player = ObjectProperty(None)
+    selected_player = ObjectProperty(None, allownone=True)
 
     # Static variables
     players = dict()
     player_count = 0
     agent_number = 0
     player_to_be_tried = None
+    winner = "Nobody"
 
     def __init__(self, **kwargs):
         super(Stage, self).__init__(**kwargs)
         self.config = Config
-
-    def check_for_game_over(self):
-        if not any(player.alive for player in Stage.players.values()):
-            self.manager.current = "gameovermenu"
 
     def add_players(self, default_new_player_class):
         """
@@ -124,6 +120,27 @@ class Stage(Screen):
         super(Stage, self).on_leave(*args)
         Logger.debug("Movement: Exited: {stage}".format(stage=self.__class__.__name__))
 
+    @staticmethod
+    def check_for_winner():
+
+        mafia_count = 0
+        towny_count = 0
+
+        for name, player in Stage.players.items():
+            if player.alive:
+                if player.mafia:
+                    mafia_count += 1
+                else:
+                    towny_count += 1
+
+        if mafia_count == 0:
+            Stage.winner = "Town"
+
+        if towny_count == 0:
+            Stage.winner = "Mafia"
+
+        return Stage.winner
+
 
 class MainMenu(Stage):
     def on_pre_leave(self, *args):
@@ -161,15 +178,13 @@ class Discussion(Stage):
         suspicions = dict.fromkeys(Stage.players.keys(), 0)
 
         for player in Stage.players.values():
-            print(str(player))
-            print(player.actions)
             if player.actions['accuse']['player'] is not None:
                 accusations[player.actions['accuse']['player'].name] += 1
             if player.actions['suspect']['player'] is not None:
                 suspicions[player.actions['suspect']['player'].name] += 1
 
         most_accused = max(accusations, key=accusations.get)
-        accusation_amount = max(accusations.values())
+        accusation_amount = accusations[most_accused]
 
         if dict(Counter(accusations.values()))[accusation_amount] > 1:
             Logger.debug("Discussion: Accusation Counts: {}".format(dict(Counter(accusations.values()))))
@@ -186,6 +201,29 @@ class Discussion(Stage):
 
 
 class Trial(Stage):
+    def add_players(self, default_new_player_class):
+        for player in self.players.values():
+            if player.alive:
+                if Stage.players[Stage.player_to_be_tried.name] == player:
+                    new_player_class = PlayerIcon
+                else:
+                    new_player_class = default_new_player_class
+            else:
+                new_player_class = DeadPlayer
+
+            # Here there be shallow copied dragons.
+            new_player = new_player_class(
+                name=player.name,
+                number=player.number,
+                alive=player.alive,
+                mafia=player.mafia,
+                icon=player.icon,
+                strategic_value=player.strategic_value,
+                actions=player.actions
+            )
+
+            self.ids.circular_layout.add_widget(new_player)
+
     def submit(self):
         verdict = Trial.decide_verdict()
 
@@ -205,11 +243,19 @@ class Trial(Stage):
             player.icon = "data/icons/player_alive.png"
             Stage.player_to_be_tried = None
 
-        self.manager.current = "loadingTN"
+        winner = Stage.check_for_winner()
+        print(winner)
+        if winner == "Nobody":
+            self.manager.current = "loadingTN"
+        else:
+            game_over = self.manager.get_screen("gameovermenu")
+            game_over.text = game_over.text.format(winner)
+            self.manager.current_screen = "gameovermenu"
 
     def on_enter(self, *args):
         super(Trial, self).on_enter(*args)
-        Stage.player_to_be_tried.icon = "data/icons/player_asleep.png"
+        player = Stage.players[Stage.player_to_be_tried.name]
+        player.icon = "data/icons/player.png"
         self.add_players(TrialPlayer)
 
     def on_pre_leave(self, *args):
@@ -253,7 +299,7 @@ class Night(Stage):
         for player in self.players.values():
             if player.alive:
                 if player.mafia:
-                    new_player_class = NightMafiaPlayer
+                    new_player_class = PlayerIcon
                 else:
                     new_player_class = default_new_player_class
             else:
@@ -273,8 +319,17 @@ class Night(Stage):
             self.ids.circular_layout.add_widget(new_player)
 
     def submit(self):
-        Stage.players[self.selected_player.name].die()
-        self.manager.current = "loadingND"
+        if self.selected_player:
+            Stage.players[self.selected_player.name].die()
+
+        winner = Stage.check_for_winner()
+        print(winner)
+        if winner == "Nobody":
+            self.manager.current = "loadingND"
+        else:
+            game_over = self.manager.get_screen("gameovermenu")
+            game_over.text = game_over.text.format(winner)
+            self.manager.current = "gameovermenu"
 
     def on_enter(self):
         super(Night, self).on_enter()
@@ -299,12 +354,12 @@ class Night(Stage):
                     player.icon = "data/icons/player_alive.png"
 
         self.ids.circular_layout.clear_widgets()
-        self.check_for_game_over()
 
 
 class GameOverMenu(Stage):
     def on_pre_leave(self):
         super(GameOverMenu, self).on_pre_leave()
+        Stage.winner = "Nobody"
         self.initialize_settings()
         self.initialize_players()
 

@@ -41,8 +41,6 @@ class Player(BoxLayout, BorderBehavior):
             for key, value in decision.items():
                 if hasattr(value, "name"):
                     flattened_actions[action][key] = value.name
-        print(self.actions)
-        print(flattened_actions)
         return iter([('name', self.name),
                      ('number', self.number),
                      ('icon', self.icon),
@@ -66,11 +64,12 @@ class Player(BoxLayout, BorderBehavior):
         stage.players[self.name].alive = self.alive = False
         stage.players[self.name].icon = self.icon = "data/icons/player_dead.png"
 
-    def ready_action(self, action) -> object:
+    def ready_action(self, action) -> None:
         """
         Designate the current player as the one who will be performing actions.
         This is done by setting the player instance as the selected player.
         """
+        stage = App.get_running_app().root.current_screen
         Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
 
         self.current_action = action.lower()
@@ -81,18 +80,16 @@ class Player(BoxLayout, BorderBehavior):
             self.die()
 
         if self.current_action == "guilty" or self.current_action == "innocent":
-            stage = App.get_running_app().root.current_screen
             stage.players[self.name].actions["vote"]["decision"] = self.current_action
 
         Logger.debug("Method Exit: {}".format(inspect.currentframe().f_code.co_name))
-        return self
+        stage.selected_player = self
 
     def act_on(self, player) -> None:
         assert self.actions is not None
         assert player is not None
         assert issubclass(type(self), Player)
         assert self.actions != {}
-        print(dict(player))
         Logger.debug("Method Call: {}".format(inspect.currentframe().f_code.co_name))
 
         Logger.debug("Player: {}.actions: {}".format(self.name, self.actions))
@@ -134,15 +131,15 @@ class DiscussionPlayer(Player):
     pass
 
 
-class NightMafiaPlayer(Player):
-    pass
-
-
 class NightSleepingPlayer(Player):
     pass
 
 
 class TrialPlayer(Player):
+    pass
+
+
+class PlayerIcon(Player):
     pass
 
 

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/icons/player_alive_mafia.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data/icons/agent.png" afterPath="$PROJECT_DIR$/data/icons/agent_alive.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO" afterPath="$PROJECT_DIR$/TODO" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.kv" afterPath="$PROJECT_DIR$/mafiademonstration/player.kv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.py" afterPath="$PROJECT_DIR$/mafiademonstration/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.kv" afterPath="$PROJECT_DIR$/mafiademonstration/stages.kv" />
@@ -21,39 +18,27 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stages.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+            <state relative-caret-position="740">
+              <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#431#647#0" expanded="false" />
-                <element signature="e#680#858#0" expanded="false" />
-                <element signature="e#4847#5175#0" expanded="false" />
-                <element signature="e#5209#5286#0" expanded="false" />
-                <element signature="e#5324#5411#0" expanded="false" />
-                <element signature="e#5468#6812#0" expanded="false" />
-                <element signature="e#7766#7909#0" expanded="false" />
-                <element signature="e#7954#8041#0" expanded="false" />
-                <element signature="e#8102#9083#0" expanded="false" />
-                <element signature="e#10070#10503#0" expanded="false" />
-                <element signature="e#10541#10943#0" expanded="false" />
-                <element signature="e#11009#11118#0" expanded="false" />
-                <element signature="e#13124#13178#0" expanded="false" />
-                <element signature="e#13217#13271#0" expanded="false" />
-                <element signature="e#13310#13369#0" expanded="false" />
-                <element signature="e#13434#13438#0" expanded="false" />
+                <element signature="e#5762#7041#0" expanded="false" />
+                <element signature="e#7125#7909#0" expanded="false" />
+                <element signature="e#9508#10489#0" expanded="false" />
+                <element signature="e#10573#11315#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stages.kv" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stages.kv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="158" column="18" lean-forward="false" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+            <state relative-caret-position="420">
+              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,22 +47,17 @@
       <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
+            <state relative-caret-position="1480">
+              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#1870#1874#0" expanded="false" />
-                <element signature="e#1913#1917#0" expanded="false" />
-                <element signature="e#1954#1958#0" expanded="false" />
-                <element signature="e#1987#2177#0" expanded="false" />
-                <element signature="e#2233#3142#0" expanded="false" />
-                <element signature="e#3190#4349#0" expanded="false" />
-                <element signature="e#4394#5056#0" expanded="false" />
-                <element signature="e#5110#5321#0" expanded="false" />
-                <element signature="e#5360#5364#0" expanded="false" />
-                <element signature="e#5403#5407#0" expanded="false" />
-                <element signature="e#5449#5453#0" expanded="false" />
-                <element signature="e#5487#5491#0" expanded="false" />
+                <element signature="e#1809#1813#0" expanded="false" />
+                <element signature="e#1852#1856#0" expanded="false" />
+                <element signature="e#1893#1897#0" expanded="false" />
+                <element signature="e#4316#4978#0" expanded="false" />
+                <element signature="e#5032#5243#0" expanded="false" />
+                <element signature="e#5282#5286#0" expanded="false" />
+                <element signature="e#5328#5332#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -86,8 +66,8 @@
       <file leaf-file-name="player.kv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="81" column="64" lean-forward="false" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
+            <state relative-caret-position="1780">
+              <caret line="89" column="155" lean-forward="false" selection-start-line="89" selection-start-column="155" selection-end-line="89" selection-end-column="155" />
               <folding />
             </state>
           </provider>
@@ -105,6 +85,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Zenohm &lt;sentherus@gmail.com&gt;" />
         <option value="Hei Jing Tsang &lt;tsangh@purdue.edu&gt;" />
       </list>
     </option>
@@ -132,8 +113,8 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" />
         <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
+        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/player.kv" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
       </list>
@@ -186,20 +167,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="mafiademonstration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mafiademonstration" />
@@ -525,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496725655061</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable.">
+      <created>1498161844405</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1498161844405</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -572,7 +546,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43030974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43003064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -588,19 +562,21 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Style and Syntax Fixes&#10;Fix random errors in the style or syntax of files across the project.&#10;For more information view the diff. These changes were found through PyCharm's code inspection tool." />
-    <option name="LAST_COMMIT_MESSAGE" value="Style and Syntax Fixes&#10;Fix random errors in the style or syntax of files across the project.&#10;For more information view the diff. These changes were found through PyCharm's code inspection tool." />
+    <MESSAGE value="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mafiademonstration/stages.py</url>
-          <line>325</line>
-          <option name="timeStamp" value="12" />
+          <line>123</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -904,67 +880,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="81" column="64" lean-forward="false" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="740">
+          <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#5762#7041#0" expanded="false" />
+            <element signature="e#7125#7909#0" expanded="false" />
+            <element signature="e#9508#10489#0" expanded="false" />
+            <element signature="e#10573#11315#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
+        <state relative-caret-position="1480">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#1870#1874#0" expanded="false" />
-            <element signature="e#1913#1917#0" expanded="false" />
-            <element signature="e#1954#1958#0" expanded="false" />
-            <element signature="e#1987#2177#0" expanded="false" />
-            <element signature="e#2233#3142#0" expanded="false" />
-            <element signature="e#3190#4349#0" expanded="false" />
-            <element signature="e#4394#5056#0" expanded="false" />
-            <element signature="e#5110#5321#0" expanded="false" />
-            <element signature="e#5360#5364#0" expanded="false" />
-            <element signature="e#5403#5407#0" expanded="false" />
-            <element signature="e#5449#5453#0" expanded="false" />
-            <element signature="e#5487#5491#0" expanded="false" />
+            <element signature="e#1809#1813#0" expanded="false" />
+            <element signature="e#1852#1856#0" expanded="false" />
+            <element signature="e#1893#1897#0" expanded="false" />
+            <element signature="e#4316#4978#0" expanded="false" />
+            <element signature="e#5032#5243#0" expanded="false" />
+            <element signature="e#5282#5286#0" expanded="false" />
+            <element signature="e#5328#5332#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1780">
+          <caret line="89" column="155" lean-forward="false" selection-start-line="89" selection-start-column="155" selection-end-line="89" selection-end-column="155" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="158" column="18" lean-forward="false" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+        <state relative-caret-position="420">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#431#647#0" expanded="false" />
-            <element signature="e#680#858#0" expanded="false" />
-            <element signature="e#4847#5175#0" expanded="false" />
-            <element signature="e#5209#5286#0" expanded="false" />
-            <element signature="e#5324#5411#0" expanded="false" />
-            <element signature="e#5468#6812#0" expanded="false" />
-            <element signature="e#7766#7909#0" expanded="false" />
-            <element signature="e#7954#8041#0" expanded="false" />
-            <element signature="e#8102#9083#0" expanded="false" />
-            <element signature="e#10070#10503#0" expanded="false" />
-            <element signature="e#10541#10943#0" expanded="false" />
-            <element signature="e#11009#11118#0" expanded="false" />
-            <element signature="e#13124#13178#0" expanded="false" />
-            <element signature="e#13217#13271#0" expanded="false" />
-            <element signature="e#13310#13369#0" expanded="false" />
-            <element signature="e#13434#13438#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -38,7 +38,7 @@
             dropdown.open(self)
             # print(app.root.current_screen.players)
             # root.show_bubble()
-            if app.root.current_screen.selected_player: app.root.current_screen.selected_player.act_on(root.__self__)
+            if app.root.current_screen.selected_player: app.root.current_screen.selected_player.act_on(root.__self__); app.root.current_screen.selected_player = None
 
     DropDown:
         disabled: not root.alive
@@ -51,7 +51,7 @@
             size_hint_y: None
             height: '48dp'
             on_release:
-                app.root.current_screen.selected_player = root.ready_action('Accuse')
+                root.ready_action('Accuse')
                 dropdown.select('Ready to accuse another player')
 
         Button:
@@ -60,7 +60,7 @@
             size_hint_y: None
             height: '48dp'
             on_release:
-                app.root.current_screen.selected_player = root.ready_action('Suspect')
+                root.ready_action('Suspect')
                 dropdown.select('Ready to suspect another player')
 
         Button:
@@ -68,7 +68,7 @@
             size_hint_y: None
             height: '48dp'
             on_release:
-                app.root.current_screen.selected_player = root.ready_action('Abstain')
+                root.ready_action('Abstain')
                 dropdown.select('Abstaining from the vote')
 
 <NightSleepingPlayer>:
@@ -79,11 +79,7 @@
         text: "Kill"
         color: to_rgba("F5F5F5")
         background_color: to_rgba("212121")
-        on_press: app.root.current_screen.selected_player = root
-
-<NightMafiaPlayer>:
-    Image:
-        source: root.icon
+        on_press: app.root.current_screen.selected_player = root.__self__
 
 <TrialPlayer>:
 #    borders: 2, "solid", to_rgba("F44336")
@@ -91,15 +87,18 @@
         disabled: not root.alive
         source: root.icon
         on_press:
-            if app.root.selected_player: app.root.selected_player.act_on(root)
+            if app.root.current_screen.selected_player: app.root.current_screen.selected_player.act_on(root); app.root.current_screen.selected_player = None
     Spinner:
         disabled: not root.alive
-        on_disabled: root.remove_widget(self); print("Thing happened")
         text: "Abstain"
         color: to_rgba("F5F5F5")
         background_color: to_rgba("212121")
         values: "Abstain", "Innocent", "Guilty"
-        on_text: app.root.selected_player = root.ready_action(self.text)
+        on_text: root.ready_action(self.text)
+
+<PlayerIcon>:
+    Image:
+        source: root.icon
 
 <DeadPlayer>:
     Image:
