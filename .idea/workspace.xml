@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="Minor Bug Fix&#10;Fix a bug with the">
+    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="UI Update and minor code cleanup&#10;Added a display in the discussion stage, changed the logo, cleaned code&#10;Tried to remove useless comments and reorganize the code a tiny amount,&#10;added the required action display to the discussion stage,&#10;added an animated logo :D">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.kv" afterPath="$PROJECT_DIR$/mafiademonstration/player.kv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.py" afterPath="$PROJECT_DIR$/mafiademonstration/player.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.kv" afterPath="$PROJECT_DIR$/mafiademonstration/stages.kv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.py" afterPath="$PROJECT_DIR$/mafiademonstration/stages.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,11 +59,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stages.kv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stages.kv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="174">
               <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TODO" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TODO">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,6 +163,7 @@
         <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
+        <option value="$PROJECT_DIR$/run.sh" />
       </list>
     </option>
   </component>
@@ -505,7 +522,21 @@
       <option name="project" value="LOCAL" />
       <updated>1498170094135</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="UI Update and minor code cleanup&#10;Added a display in the discussion stage, changed the logo, cleaned code&#10;Tried to remove useless comments and reorganize the code a tiny amount,&#10;added the required action display to the discussion stage,&#10;added an animated logo :D">
+      <created>1498181959544</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1498181959544</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add shebang line&#10;Added a shebang line to run.sh&#10;I'm not saying it again :P">
+      <created>1498182374143</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1498182374143</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -547,7 +578,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.301059" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.301059" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -572,7 +603,9 @@
     <MESSAGE value="Style and Syntax Fixes&#10;Fix random errors in the style or syntax of files across the project.&#10;For more information view the diff. These changes were found through PyCharm's code inspection tool." />
     <MESSAGE value="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable." />
     <MESSAGE value="End Game Update&#10;Added end-game scenario, fixed a few bugs, improved UIX&#10;Added win scenarios for mafia and townies, fixed new-game bugs,&#10;made it so that (in the discussion stage) clicking an action then clicking&#10;another player deselects the acting player." />
-    <option name="LAST_COMMIT_MESSAGE" value="End Game Update&#10;Added end-game scenario, fixed a few bugs, improved UIX&#10;Added win scenarios for mafia and townies, fixed new-game bugs,&#10;made it so that (in the discussion stage) clicking an action then clicking&#10;another player deselects the acting player." />
+    <MESSAGE value="UI Update and minor code cleanup&#10;Added a display in the discussion stage, changed the logo, cleaned code&#10;Tried to remove useless comments and reorganize the code a tiny amount,&#10;added the required action display to the discussion stage,&#10;added an animated logo :D" />
+    <MESSAGE value="Add shebang line&#10;Added a shebang line to run.sh&#10;I'm not saying it again :P" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add shebang line&#10;Added a shebang line to run.sh&#10;I'm not saying it again :P" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -742,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -879,14 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -960,6 +978,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

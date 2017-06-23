@@ -395,9 +395,20 @@ class LoadingScreen(Stage):
         # import time
         # time.sleep(3)
 
-        players['agent'].actions['accuse']['player'] = Stage.players['player 2']
-        players['agent'].actions['suspect']['player'] = Stage.players['player 3']
-        players['agent'].actions['vote']['decision'] = "guilty"
+        choices = []
+
+        if players['agent'].alive:
+            for name, player in players.items():
+                if name == 'agent':
+                    continue
+
+                if player.alive:
+                    choices.append(player)
+
+        if choices:
+            poor_devil = random.choice(choices)
+            players['agent'].actions['accuse']['player'] = poor_devil
+            players['agent'].actions['vote']['decision'] = "guilty" if random.random() > 0.5 else "innocent"
         players = [dict(player) for player in players.values()]
         json_players_modified = LoadingScreen.to_json(players)
         return json_players_modified
