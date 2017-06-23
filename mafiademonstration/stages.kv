@@ -6,7 +6,6 @@
         Color:
             rgba: to_rgba("F5F5F5")
         Rectangle:
-            # self here refers to the widget i.e BoxLayout
             pos: self.pos
             size: self.size
 
@@ -18,7 +17,7 @@
             Label:
 
             Image:
-                source: "data/icons/submit.gif"
+                source: "data/icons/logo.gif"
 
             Label:
                 text: "Mafia"
@@ -54,6 +53,7 @@
 
 
 <Discussion>:
+    text: ""
     FloatLayout:
         canvas.before:
             Color:
@@ -62,22 +62,34 @@
                 pos: self.pos
                 size: self.size
 
+        Label:
+#            canvas.before:
+#                Color:
+#                    rgba: to_rgba("05F5F0")
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+            text: root.text
+            color: to_rgba("212121")
+            pos: (0, root.height-self.height)
+            size_hint: .2, .5
+
         ImageButton:
             id: submit_button
             pos: [root.center_x - self.width/2, root.center_y - self.height/2]
             source: "data/icons/submit_complete.png"
+            size_hint: None, None
+            size: "135dp", "135dp"
             on_press: root.submit()
-            size_hint: .2, .2
-#            borders: 2, "solid", to_rgba("05F5F5")
 
         CircularLayout:
-            pos: [i - j/2 for i, j in zip(root.center, self.size)]
             id: circular_layout
-            direction: "cw"
+            pos: [root.center_x - self.width/2, root.center_y - self.height/2]
+            size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
             inner_radius_hint: 0.7
             outer_radius_hint: 1.2
-            size_hint_y: 0.7
+            direction: "cw"
 
 
 <Trial>:
@@ -91,23 +103,22 @@
 
         ImageButton:
             id: submit_button
+            size_hint: None, None
+            size: "135dp", "135dp"
             source: "data/icons/submit_complete.png"
             on_press: root.submit()
-            size_hint: .2, .2
-            #borders: 2, "solid", to_rgba("FF9800")
 
         CircularLayout:
             id: circular_layout
-            direction: "cw"
+            size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
             inner_radius_hint: 0.7
             outer_radius_hint: 1.2
-            size_hint_y: 0.7
+            direction: "cw"
 
 
 <Night>:
     AnchorLayout:
-        players: {}
         canvas.before:
             Color:
                 rgba: to_rgba("2196F3")
@@ -118,18 +129,17 @@
         ImageButton:
             id: submit_button
             source: "data/icons/submit_complete.png"
-            on_press:
-                root.submit()
-            size_hint: .2, .2
-            #borders: 2, "solid", to_rgba("05F5F5")
+            size_hint: None, None
+            size: "135dp", "135dp"
+            on_press: root.submit()
 
         CircularLayout:
             id: circular_layout
-            direction: "cw"
+            size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
             inner_radius_hint: 0.7
             outer_radius_hint: 1.2
-            size_hint_y: 0.7
+            direction: "cw"
 
 
 <GameOverMenu>:
@@ -138,7 +148,6 @@
         Color:
             rgba: to_rgba("F5F5F5")
         Rectangle:
-            # self here refers to the widget i.e BoxLayout
             pos: self.pos
             size: self.size
 
@@ -157,8 +166,8 @@
                     else: self.source = "data/icons/player_alive.png"
             Label:
                 color: to_rgba("212121")
-                markup: True
                 text: root.text
+                markup: True
 
         BoxLayout:
             orientation: "horizontal"
@@ -194,11 +203,11 @@
         Color:
             rgba: to_rgba("F5F5F5")
         Rectangle:
-            # self here refers to the widget i.e BoxLayout
             pos: self.pos
             size: self.size
 
     BoxLayout:
-        Label:
-            color: to_rgba("212121")
-            text: "Loading..."
+        Image:
+            source: "data/icons/loading.gif"
+#            color: to_rgba("212121")
+#            text: "Loading..."

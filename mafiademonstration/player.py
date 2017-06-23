@@ -3,6 +3,7 @@ import inspect
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
+from kivy.utils import get_color_from_hex as to_rgba
 from kivy.properties import (
         BooleanProperty, DictProperty,
         StringProperty, NumericProperty
@@ -24,8 +25,8 @@ except FileNotFoundError:
 
 
 class Player(BoxLayout, BorderBehavior):
-    name = StringProperty()
-    number = NumericProperty()
+    name = StringProperty("player")
+    number = NumericProperty(0)
     icon = StringProperty()
     alive = BooleanProperty(True)
     mafia = BooleanProperty(False)
@@ -63,6 +64,18 @@ class Player(BoxLayout, BorderBehavior):
         stage = App.get_running_app().root.current_screen
         stage.players[self.name].alive = self.alive = False
         stage.players[self.name].icon = self.icon = "data/icons/player_dead.png"
+
+    def set_strategic_value(self, strategic_value):
+        tolerance = 1.5
+
+        if strategic_value > tolerance:
+            self.borders = (2, "solid", to_rgba("05F5F5"))
+        elif strategic_value < tolerance:
+            self.borders = (2, "solid", to_rgba("05F5F5"))
+        else:
+            self.borders = (2, "solid", to_rgba("05F5F5"))
+
+        self.update_borders()
 
     def ready_action(self, action) -> None:
         """

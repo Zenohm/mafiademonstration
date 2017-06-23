@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="">
+    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="Minor Bug Fix&#10;Fix a bug with the">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.kv" afterPath="$PROJECT_DIR$/mafiademonstration/player.kv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.py" afterPath="$PROJECT_DIR$/mafiademonstration/player.py" />
@@ -21,14 +21,43 @@
       <file leaf-file-name="stages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+            <state relative-caret-position="-1844">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#5762#7041#0" expanded="false" />
-                <element signature="e#7125#7909#0" expanded="false" />
-                <element signature="e#9508#10489#0" expanded="false" />
-                <element signature="e#10573#11315#0" expanded="false" />
+                <element signature="e#421#631#0" expanded="false" />
+                <element signature="e#664#836#0" expanded="false" />
+                <element signature="e#1007#1024#0" expanded="false" />
+                <element signature="e#1376#1442#0" expanded="false" />
+                <element signature="e#1505#2412#0" expanded="false" />
+                <element signature="e#1828#2412#0" expanded="false" />
+                <element signature="e#2457#2885#0" expanded="false" />
+                <element signature="e#2929#3838#0" expanded="false" />
+                <element signature="e#3883#4011#0" expanded="false" />
+                <element signature="e#4052#4175#0" expanded="false" />
+                <element signature="e#4220#4347#0" expanded="false" />
+                <element signature="e#4388#4510#0" expanded="false" />
+                <element signature="e#4567#4974#0" expanded="false" />
+                <element signature="e#5043#5153#0" expanded="false" />
+                <element signature="e#5211#5539#0" expanded="false" />
+                <element signature="e#6219#6306#0" expanded="false" />
+                <element signature="e#6363#7642#0" expanded="false" />
+                <element signature="e#7726#8510#0" expanded="false" />
+                <element signature="e#9729#9909#0" expanded="false" />
+                <element signature="e#9954#10041#0" expanded="false" />
+                <element signature="e#10102#11083#0" expanded="false" />
+                <element signature="e#11167#11909#0" expanded="false" />
+                <element signature="e#11941#12354#0" expanded="false" />
+                <element signature="e#12388#12821#0" expanded="false" />
+                <element signature="e#12859#13226#0" expanded="false" />
+                <element signature="e#13292#13433#0" expanded="false" />
+                <element signature="e#13496#13822#0" expanded="false" />
+                <element signature="e#13852#13856#0" expanded="false" />
+                <element signature="e#14506#14671#0" expanded="false" />
+                <element signature="e#14732#15482#0" expanded="false" />
+                <element signature="e#15545#15575#0" expanded="false" />
+                <element signature="e#15638#15668#0" expanded="false" />
+                <element signature="e#15731#15766#0" expanded="false" />
+                <element signature="e#15831#15835#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -37,8 +66,8 @@
       <file leaf-file-name="stages.kv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+            <state relative-caret-position="174">
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -47,17 +76,18 @@
       <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1480">
-              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="-1520">
+              <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#1809#1813#0" expanded="false" />
-                <element signature="e#1852#1856#0" expanded="false" />
-                <element signature="e#1893#1897#0" expanded="false" />
-                <element signature="e#4316#4978#0" expanded="false" />
-                <element signature="e#5032#5243#0" expanded="false" />
-                <element signature="e#5282#5286#0" expanded="false" />
-                <element signature="e#5328#5332#0" expanded="false" />
+                <element signature="e#1129#1831#0" expanded="false" />
+                <element signature="e#1871#1875#0" expanded="false" />
+                <element signature="e#1914#1918#0" expanded="false" />
+                <element signature="e#1955#1959#0" expanded="false" />
+                <element signature="e#4760#5422#0" expanded="false" />
+                <element signature="e#5476#5687#0" expanded="false" />
+                <element signature="e#5726#5730#0" expanded="false" />
+                <element signature="e#5772#5776#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -66,8 +96,8 @@
       <file leaf-file-name="player.kv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1780">
-              <caret line="89" column="155" lean-forward="false" selection-start-line="89" selection-start-column="155" selection-end-line="89" selection-end-column="155" />
+            <state relative-caret-position="180">
+              <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -113,17 +143,18 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" />
         <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
-        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/player.kv" />
+        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1081" />
+    <option name="y" value="6" />
+    <option name="width" value="1368" />
+    <option name="height" value="763" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -170,38 +201,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mafiademonstration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="icons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -499,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498161844405</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="End Game Update&#10;Added end-game scenario, fixed a few bugs, improved UIX&#10;Added win scenarios for mafia and townies, fixed new-game bugs,&#10;made it so that (in the discussion stage) clicking an action then clicking&#10;another player deselects the acting player.">
+      <created>1498170094135</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1498170094135</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -535,13 +541,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
+    <frame x="-1" y="6" width="1368" height="763" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13177083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1852123" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20326865" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.301059" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -565,18 +571,19 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Style and Syntax Fixes&#10;Fix random errors in the style or syntax of files across the project.&#10;For more information view the diff. These changes were found through PyCharm's code inspection tool." />
     <MESSAGE value="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Game Logic Update&#10;Add in the rest of the game logic, making the game somewhat playable&#10;Added in the rest of the checks for each stage, implemented mafia,&#10;added a very simple proto-reasoner to simulate an external agent,&#10;added in logger messages, cleaned up a little bit of the code,&#10;added in some checks so that in the event of bugs dead players can't do anything.&#10;&#10;The end game logic still needs to be implemented and the code desperately needs refactored,&#10;we also need to add in a display for which players are accusing and suspecting one another in the Discussion stage, but other than that the game is somewhat playable." />
+    <MESSAGE value="End Game Update&#10;Added end-game scenario, fixed a few bugs, improved UIX&#10;Added win scenarios for mafia and townies, fixed new-game bugs,&#10;made it so that (in the discussion stage) clicking an action then clicking&#10;another player deselects the acting player." />
+    <option name="LAST_COMMIT_MESSAGE" value="End Game Update&#10;Added end-game scenario, fixed a few bugs, improved UIX&#10;Added win scenarios for mafia and townies, fixed new-game bugs,&#10;made it so that (in the discussion stage) clicking an action then clicking&#10;another player deselects the acting player." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mafiademonstration/stages.py</url>
-          <line>123</line>
+          <line>125</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -880,49 +887,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#5762#7041#0" expanded="false" />
-            <element signature="e#7125#7909#0" expanded="false" />
-            <element signature="e#9508#10489#0" expanded="false" />
-            <element signature="e#10573#11315#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1480">
-          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="-1520">
+          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#1809#1813#0" expanded="false" />
-            <element signature="e#1852#1856#0" expanded="false" />
-            <element signature="e#1893#1897#0" expanded="false" />
-            <element signature="e#4316#4978#0" expanded="false" />
-            <element signature="e#5032#5243#0" expanded="false" />
-            <element signature="e#5282#5286#0" expanded="false" />
-            <element signature="e#5328#5332#0" expanded="false" />
+            <element signature="e#1129#1831#0" expanded="false" />
+            <element signature="e#1871#1875#0" expanded="false" />
+            <element signature="e#1914#1918#0" expanded="false" />
+            <element signature="e#1955#1959#0" expanded="false" />
+            <element signature="e#4760#5422#0" expanded="false" />
+            <element signature="e#5476#5687#0" expanded="false" />
+            <element signature="e#5726#5730#0" expanded="false" />
+            <element signature="e#5772#5776#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1780">
-          <caret line="89" column="155" lean-forward="false" selection-start-line="89" selection-start-column="155" selection-end-line="89" selection-end-column="155" />
-          <folding />
+        <state relative-caret-position="-1844">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#421#631#0" expanded="false" />
+            <element signature="e#664#836#0" expanded="false" />
+            <element signature="e#1007#1024#0" expanded="false" />
+            <element signature="e#1376#1442#0" expanded="false" />
+            <element signature="e#1505#2412#0" expanded="false" />
+            <element signature="e#1828#2412#0" expanded="false" />
+            <element signature="e#2457#2885#0" expanded="false" />
+            <element signature="e#2929#3838#0" expanded="false" />
+            <element signature="e#3883#4011#0" expanded="false" />
+            <element signature="e#4052#4175#0" expanded="false" />
+            <element signature="e#4220#4347#0" expanded="false" />
+            <element signature="e#4388#4510#0" expanded="false" />
+            <element signature="e#4567#4974#0" expanded="false" />
+            <element signature="e#5043#5153#0" expanded="false" />
+            <element signature="e#5211#5539#0" expanded="false" />
+            <element signature="e#6219#6306#0" expanded="false" />
+            <element signature="e#6363#7642#0" expanded="false" />
+            <element signature="e#7726#8510#0" expanded="false" />
+            <element signature="e#9729#9909#0" expanded="false" />
+            <element signature="e#9954#10041#0" expanded="false" />
+            <element signature="e#10102#11083#0" expanded="false" />
+            <element signature="e#11167#11909#0" expanded="false" />
+            <element signature="e#11941#12354#0" expanded="false" />
+            <element signature="e#12388#12821#0" expanded="false" />
+            <element signature="e#12859#13226#0" expanded="false" />
+            <element signature="e#13292#13433#0" expanded="false" />
+            <element signature="e#13496#13822#0" expanded="false" />
+            <element signature="e#13852#13856#0" expanded="false" />
+            <element signature="e#14506#14671#0" expanded="false" />
+            <element signature="e#14732#15482#0" expanded="false" />
+            <element signature="e#15545#15575#0" expanded="false" />
+            <element signature="e#15638#15668#0" expanded="false" />
+            <element signature="e#15731#15766#0" expanded="false" />
+            <element signature="e#15831#15835#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+        <state relative-caret-position="174">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -2,6 +2,7 @@ from collections import Counter
 import json
 import math
 import random
+from kivy.clock import Clock
 from kivy.garden.circularlayout import CircularLayout
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
@@ -43,6 +44,7 @@ class Stage(Screen):
     agent_number = 0
     player_to_be_tried = None
     winner = "Nobody"
+    player_log = "Output text goes here"
 
     def __init__(self, **kwargs):
         super(Stage, self).__init__(**kwargs)
@@ -160,8 +162,18 @@ class Discussion(Stage):
             Stage.player_to_be_tried = most_accused
             self.manager.current = "loadingDT"
 
+    def write_to_action_log(self, *args):
+        output = ""
+        for name, player in self.players.items():
+            if player.actions['accuse']['player'] is not None:
+                output += f"{player.number} accuses  {player.actions['accuse']['player'].number}\n"
+            if player.actions['suspect']['player'] is not None:
+                output += f"{player.number} suspects {player.actions['suspect']['player'].number}\n"
+        self.text = output
+
     def on_enter(self):
         super(Discussion, self).on_enter()
+        Clock.schedule_interval(self.write_to_action_log, 0.5)
         self.add_players(DiscussionPlayer)
 
     def on_pre_leave(self):
@@ -250,7 +262,7 @@ class Trial(Stage):
         else:
             game_over = self.manager.get_screen("gameovermenu")
             game_over.text = game_over.text.format(winner)
-            self.manager.current_screen = "gameovermenu"
+            self.manager.current = "gameovermenu"
 
     def on_enter(self, *args):
         super(Trial, self).on_enter(*args)
@@ -379,6 +391,10 @@ class LoadingScreen(Stage):
     @staticmethod
     def call_reasoner(json_players):
         players = LoadingScreen.from_json(json_players)
+        # Simulate a slow reasoner
+        # import time
+        # time.sleep(3)
+
         players['agent'].actions['accuse']['player'] = Stage.players['player 2']
         players['agent'].actions['suspect']['player'] = Stage.players['player 3']
         players['agent'].actions['vote']['decision'] = "guilty"
