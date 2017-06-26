@@ -256,12 +256,11 @@ class Trial(Stage):
             Stage.player_to_be_tried = None
 
         winner = Stage.check_for_winner()
-        print(winner)
         if winner == "Nobody":
             self.manager.current = "loadingTN"
         else:
             game_over = self.manager.get_screen("gameovermenu")
-            game_over.text = game_over.text.format(winner)
+            game_over.text = "{} wins!".format(winner)
             self.manager.current = "gameovermenu"
 
     def on_enter(self, *args):
@@ -335,12 +334,11 @@ class Night(Stage):
             Stage.players[self.selected_player.name].die()
 
         winner = Stage.check_for_winner()
-        print(winner)
         if winner == "Nobody":
             self.manager.current = "loadingND"
         else:
             game_over = self.manager.get_screen("gameovermenu")
-            game_over.text = game_over.text.format(winner)
+            game_over.text = "{} wins!".format(winner)
             self.manager.current = "gameovermenu"
 
     def on_enter(self):
@@ -364,6 +362,7 @@ class Night(Stage):
                     player.icon = "data/icons/agent_alive.png"
                 else:
                     player.icon = "data/icons/player_alive.png"
+            player.actions = {"accuse": {"player": None}, "suspect": {"player": None}, "vote": {"decision": "abstain"}}
 
         self.ids.circular_layout.clear_widgets()
 
