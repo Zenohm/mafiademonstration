@@ -53,7 +53,8 @@
 
 
 <Discussion>:
-    text: ""
+    action_text: ""
+    mafia_text: ""
     FloatLayout:
         canvas.before:
             Color:
@@ -69,10 +70,30 @@
 #                Rectangle:
 #                    pos: self.pos
 #                    size: self.size
-            text: root.text
+            text: root.action_text
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            markup: True
             color: to_rgba("212121")
             pos: (0, root.height-self.height)
-            size_hint: .2, .5
+            size_hint: .2, 1
+
+        Label:
+#            canvas.before:
+#                Color:
+#                    rgba: to_rgba("05F5F0")
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+            text: root.mafia_text
+            text_size: self.size
+            halign: 'right'
+            valign: 'top'
+            markup: True
+            color: to_rgba("212121")
+            pos: (root.width-self.width, root.height-self.height)
+            size_hint: .2, .3
 
         ImageButton:
             id: submit_button

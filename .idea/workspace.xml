@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="UI Update and minor code cleanup&#10;Added a display in the discussion stage, changed the logo, cleaned code&#10;Tried to remove useless comments and reorganize the code a tiny amount,&#10;added the required action display to the discussion stage,&#10;added an animated logo :D">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.kv" afterPath="$PROJECT_DIR$/mafiademonstration/stages.kv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.py" afterPath="$PROJECT_DIR$/mafiademonstration/stages.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +19,8 @@
       <file leaf-file-name="stages.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="340" column="53" lean-forward="false" selection-start-line="340" selection-start-column="53" selection-end-line="340" selection-end-column="53" />
+            <state relative-caret-position="120">
+              <caret line="167" column="43" lean-forward="false" selection-start-line="167" selection-start-column="43" selection-end-line="167" selection-end-column="43" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#421#631#0" expanded="false" />
@@ -37,19 +38,20 @@
                 <element signature="e#4567#4974#0" expanded="false" />
                 <element signature="e#5043#5153#0" expanded="false" />
                 <element signature="e#5211#5539#0" expanded="false" />
-                <element signature="e#6219#6306#0" expanded="false" />
-                <element signature="e#6363#7642#0" expanded="false" />
-                <element signature="e#7726#8510#0" expanded="false" />
-                <element signature="e#9703#9883#0" expanded="false" />
-                <element signature="e#9928#10015#0" expanded="false" />
-                <element signature="e#10076#11057#0" expanded="false" />
-                <element signature="e#11141#11883#0" expanded="false" />
-                <element signature="e#12336#12769#0" expanded="false" />
-                <element signature="e#13564#13890#0" expanded="false" />
-                <element signature="e#13920#13924#0" expanded="false" />
-                <element signature="e#15975#16005#0" expanded="false" />
-                <element signature="e#16068#16103#0" expanded="false" />
-                <element signature="e#16168#16172#0" expanded="false" />
+                <element signature="e#6709#7988#0" expanded="false" />
+                <element signature="e#8072#8856#0" expanded="false" />
+                <element signature="e#10049#10229#0" expanded="false" />
+                <element signature="e#10274#10361#0" expanded="false" />
+                <element signature="e#10422#11403#0" expanded="false" />
+                <element signature="e#11487#12229#0" expanded="false" />
+                <element signature="e#12682#13115#0" expanded="false" />
+                <element signature="e#13882#16165#0" expanded="false" />
+                <element signature="e#13910#14236#0" expanded="false" />
+                <element signature="e#14266#14270#0" expanded="false" />
+                <element signature="e#16204#16258#0" expanded="false" />
+                <element signature="e#16321#16351#0" expanded="false" />
+                <element signature="e#16414#16449#0" expanded="false" />
+                <element signature="e#16514#16518#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -58,8 +60,8 @@
       <file leaf-file-name="stages.kv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1420">
-              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+            <state relative-caret-position="448">
+              <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -108,7 +110,7 @@
       <file leaf-file-name="player.kv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
+            <state relative-caret-position="180">
               <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
@@ -157,16 +159,16 @@
         <option value="$PROJECT_DIR$/TODO" />
         <option value="$PROJECT_DIR$/mafiademonstration/player.kv" />
         <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
-        <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
         <option value="$PROJECT_DIR$/run.sh" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1081" />
+    <option name="y" value="-5" />
+    <option name="width" value="1920" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -202,7 +204,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -231,6 +232,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -581,13 +583,12 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-5" width="1920" height="1085" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18489583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30051282" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3506626" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -922,14 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TODO">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -948,16 +941,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
+        <state relative-caret-position="180">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="340" column="53" lean-forward="false" selection-start-line="340" selection-start-column="53" selection-end-line="340" selection-end-column="53" />
+        <state relative-caret-position="120">
+          <caret line="167" column="43" lean-forward="false" selection-start-line="167" selection-start-column="43" selection-end-line="167" selection-end-column="43" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#421#631#0" expanded="false" />
@@ -975,19 +976,20 @@
             <element signature="e#4567#4974#0" expanded="false" />
             <element signature="e#5043#5153#0" expanded="false" />
             <element signature="e#5211#5539#0" expanded="false" />
-            <element signature="e#6219#6306#0" expanded="false" />
-            <element signature="e#6363#7642#0" expanded="false" />
-            <element signature="e#7726#8510#0" expanded="false" />
-            <element signature="e#9703#9883#0" expanded="false" />
-            <element signature="e#9928#10015#0" expanded="false" />
-            <element signature="e#10076#11057#0" expanded="false" />
-            <element signature="e#11141#11883#0" expanded="false" />
-            <element signature="e#12336#12769#0" expanded="false" />
-            <element signature="e#13564#13890#0" expanded="false" />
-            <element signature="e#13920#13924#0" expanded="false" />
-            <element signature="e#15975#16005#0" expanded="false" />
-            <element signature="e#16068#16103#0" expanded="false" />
-            <element signature="e#16168#16172#0" expanded="false" />
+            <element signature="e#6709#7988#0" expanded="false" />
+            <element signature="e#8072#8856#0" expanded="false" />
+            <element signature="e#10049#10229#0" expanded="false" />
+            <element signature="e#10274#10361#0" expanded="false" />
+            <element signature="e#10422#11403#0" expanded="false" />
+            <element signature="e#11487#12229#0" expanded="false" />
+            <element signature="e#12682#13115#0" expanded="false" />
+            <element signature="e#13882#16165#0" expanded="false" />
+            <element signature="e#13910#14236#0" expanded="false" />
+            <element signature="e#14266#14270#0" expanded="false" />
+            <element signature="e#16204#16258#0" expanded="false" />
+            <element signature="e#16321#16351#0" expanded="false" />
+            <element signature="e#16414#16449#0" expanded="false" />
+            <element signature="e#16514#16518#0" expanded="false" />
           </folding>
         </state>
       </provider>

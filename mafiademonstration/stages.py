@@ -162,18 +162,26 @@ class Discussion(Stage):
             Stage.player_to_be_tried = most_accused
             self.manager.current = "loadingDT"
 
+    def write_to_mafia_log(self, *args):
+        output = "[b]Mafia List:[/b]\n"
+        for name, player in self.players.items():
+            if player.mafia and player.alive:
+                output += f"{player.name}\n"
+        self.mafia_text = output
+
     def write_to_action_log(self, *args):
-        output = ""
+        output = "[b]Action List:[/b]\n"
         for name, player in self.players.items():
             if player.actions['accuse']['player'] is not None:
                 output += f"{player.number} accuses  {player.actions['accuse']['player'].number}\n"
             if player.actions['suspect']['player'] is not None:
                 output += f"{player.number} suspects {player.actions['suspect']['player'].number}\n"
-        self.text = output
+        self.action_text = output
 
     def on_enter(self):
         super(Discussion, self).on_enter()
         Clock.schedule_interval(self.write_to_action_log, 0.5)
+        Clock.schedule_interval(self.write_to_mafia_log, 0.5)
         self.add_players(DiscussionPlayer)
 
     def on_pre_leave(self):
