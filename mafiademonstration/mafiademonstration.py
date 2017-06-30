@@ -10,9 +10,9 @@ kivy.require('1.9.1')
 
 
 try:
-    import mafiademonstration.stages as stages
-except ModuleNotFoundError:
     import stages
+except ModuleNotFoundError:
+    import mafiademonstration.stages as stages
 
 
 class MafiaDemonstrationApp(App):
@@ -34,6 +34,8 @@ class MafiaDemonstrationApp(App):
         sm = ScreenManager(transition=NoTransition())
         sm.add_widget(stages.MainMenu(name='mainmenu'))
         sm.add_widget(stages.Discussion(name='discussion'))
+        sm.add_widget(stages.Tutorial(name='tutorial'))
+        sm.add_widget(stages.Credits(name='credits'))
         sm.add_widget(stages.LoadingDT(name='loadingDT'))
         sm.add_widget(stages.Trial(name='trial'))
         sm.add_widget(stages.LoadingTN(name='loadingTN'))

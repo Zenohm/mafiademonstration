@@ -15,14 +15,14 @@ from kivy.config import Config
 
 
 try:
-    from mafiademonstration.border_behavior import BorderBehavior
-    from mafiademonstration.player import (
+    from border_behavior import BorderBehavior
+    from player import (
         Player, DeadPlayer, DiscussionPlayer,
         PlayerIcon, NightSleepingPlayer, TrialPlayer
     )
 except ModuleNotFoundError:
-    from border_behavior import BorderBehavior
-    from player import (
+    from mafiademonstration.border_behavior import BorderBehavior
+    from mafiademonstration.player import (
         Player, DeadPlayer, DiscussionPlayer,
         PlayerIcon, NightSleepingPlayer, TrialPlayer
     )
@@ -145,10 +145,18 @@ class Stage(Screen):
 
 
 class MainMenu(Stage):
-    def on_pre_leave(self, *args):
-        super(MainMenu, self).on_pre_leave(*args)
+    def ready_game(self):
+        Stage.winner = "Nobody"
         self.initialize_settings()
         self.initialize_players()
+
+
+class Tutorial(Stage):
+    pass
+
+
+class Credits(Stage):
+    pass
 
 
 class Discussion(Stage):
@@ -376,8 +384,7 @@ class Night(Stage):
 
 
 class GameOverMenu(Stage):
-    def on_pre_leave(self):
-        super(GameOverMenu, self).on_pre_leave()
+    def ready_game(self):
         Stage.winner = "Nobody"
         self.initialize_settings()
         self.initialize_players()

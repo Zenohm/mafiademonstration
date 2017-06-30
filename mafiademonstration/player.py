@@ -13,9 +13,9 @@ from kivy.uix.bubble import Bubble
 from kivy.uix.bubble import BubbleButton
 
 try:
-    from mafiademonstration.border_behavior import BorderBehavior
-except ModuleNotFoundError:
     from border_behavior import BorderBehavior
+except ModuleNotFoundError:
+    from mafiademonstration.border_behavior import BorderBehavior
 
 
 try:
