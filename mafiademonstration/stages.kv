@@ -1,5 +1,5 @@
 #:import to_rgba kivy.utils.get_color_from_hex
-
+#:import webbrowser webbrowser
 
 <MainMenu>:
     canvas.before:
@@ -60,10 +60,417 @@
 
 <Tutorial>:
     # TODO: Write out the tutorial.
+    GridLayout:
+        rows: 8
+        row_force_default: True
+        row_default_height: 50
+        spacing: [10, 10]
+
+        canvas.before:
+            Color:
+                rgba: to_rgba("EE1FD0")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "[b]          Tutorials[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+
+        Label:
+            text: "Please click one of the following categories for more information."
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+
+        GridLayout:
+            cols: 3
+            Label:
+            Button:
+                text: "Player Status"
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
+                on_press: root.manager.current = "playerstatus"
+            Label:
+
+        GridLayout:
+            cols: 3
+            Label:
+            Button:
+                text: "Stages"
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
+                on_press: root.manager.current = "stagestutorial"
+            Label:
+
+        Label:
+        Label:
+        Label:
+
+    FloatLayout:
+        Button:
+            text: "Main Menu"
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+            size_hint: [0.3, 0.075]
+            pos: (root.width-self.width-15, 25)
+            on_press: root.manager.current = "mainmenu"
+
+<PlayerStatus>:
+    GridLayout:
+        canvas.before:
+            Color:
+                rgba: to_rgba("EE1FD0")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        rows: 6
+        cols: 4
+        padding: [0, 0, 5, 0]
+
+        Label:
+            text: "[b]     Player Status[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+
+        Label:
+        Label:
+        Label:
+
+        Image:
+            source: "data/icons/player_alive.png"
+            halign: 'center'
+            valign: 'center'
+
+        Label:
+            text: "Player is alive in discussion and trial stages"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/player_dead.png"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Label:
+            text: "Player is dead"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/player_alive_mafia.png"
+            halign: 'center'
+            valign: 'center'
+
+        Label:
+            text: "Mafia awakes in night stage"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/player_asleep.png"
+            halign: 'left'
+            valign: 'center'
+
+        Label:
+            text: "Player is asleep in night stage"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/player.png"
+            halign: 'left'
+            valign: 'center'
+
+        Label:
+            text: "Player is on trial"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/agent_alive.png"
+            halign: 'left'
+            valign: 'center'
+
+        Label:
+            text: "Autonomous agent"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Image:
+            source: "data/icons/easter_egg.png"
+            halign: 'center'
+            valign: 'center'
+
+        Label:
+            text: "Detective (Coming Soon...!)"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+
+        Label:
+        Label:
+        Label:
+        Label:
+        Label:
+
+    FloatLayout:
+        Button:
+            text: "Return"
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos: (root.width-self.width-15, 25)
+            on_press: root.manager.current = "tutorial"
+
+
+<StagesTutorial>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: to_rgba("EE1FD0")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "[b]Stages Tutorial[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos_hint: {"center_x": .175, "center_y": .95}
+            markup: True
+
+        Label:
+            text: "[b]Discussion Stage[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos_hint: {"center_x": .2, "center_y": .9}
+            markup: True
+
+        Label:
+            text: "This stage involves the townspeople accusing and suspecting people with specified reasons. Each player has the option of not choosing any option, allowing them to abstain from accusing or suspecting anyone. The person who is accused the most will go on trial, if nobody is accused then the stage will advance immediately to the night stage. After a night stage and in the beginning of the discussion stage, if there is a player being 'murdered,' there would be a public announcement, as well as revealing the identity of the eliminated player."
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint_x: .875
+            pos_hint: {"center_x": .5, "center_y": .78}
+
+        Label:
+            text: "[b]Trial Stage[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos_hint: {"center_x": .2, "center_y": .65}
+            markup: True
+
+        Label:
+            text: "The player who is being accused the most would be placed on trial. If the majority of the players vote to eliminate that player, he will be eliminated from the game, and his identity would be revealed to the public once he has been eliminated."
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint_x: .875
+            pos_hint: {"center_x": .5, "center_y": .58}
+
+        Label:
+            text: "[b]Night Stage[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos_hint: {"center_x": .2, "center_y": .5}
+            markup: True
+
+        Label:
+            text: "The night stage is where the Mafia members deciding on which player to kill and proceed to killing."
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint_x: .875
+            pos_hint: {"center_x": .5, "center_y": .46}
+
+        Image:
+            source: "data/icons/submit_complete.png"
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.325, .325]
+            pos_hint: {"center_x": .125, "center_y": .3}
+
+        Label:
+            text: "[b]Stage transition button[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos_hint: {"center_x": .34, "center_y": .34}
+            markup: True
+
+        Label:
+            text: "The button which finalizes all the decisions made by the players and proceeds to the next stage."
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint_x: .75
+            pos_hint: {"center_x": .57, "center_y": .295}
+
+        Button:
+            text: "Return"
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+            size_hint: [.3, .075]
+            pos: (root.width-self.width-15, 25)
+            on_press: root.manager.current = "tutorial"
 
 
 <Credits>:
     # TODO: Write out the credits.
+    GridLayout:
+        rows: 15
+        row_force_default: True
+        row_default_height: 45
+        spacing: [10, 10]
+
+        canvas.before:
+            Color:
+                rgba: to_rgba("EE1FD0")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "[b]     Credits[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+
+        Label:
+            text: "[b]               Written by:[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+
+        GridLayout:
+            rows: 2
+            cols: 2
+            padding: [150, 0, 75, 0]
+
+            Label:
+                text: "Isaac Smith"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "Hei Jing Tsang"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "smitil01@students.ipfw.edu"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "tsangh@purdue.edu"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+        Label:
+            text: "[b]               Advisors:[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+        GridLayout:
+            rows: 2
+            cols: 2
+            padding: [150, 0, 75, 0]
+
+            Label:
+                text: "Prof. John Licato"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "Prof. Max Fowler"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "John.Licato@gmail.com"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+            Label:
+                text: "maxfwlr@gmail.com"
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+
+        Label:
+            text: "[b]               Beta-testers:[b]"
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            markup: True
+
+        Label:
+            text: "Cole Duncan, Reese Crowell"
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+
+        Label:
+
+        ImageButton:
+            source: "data/icons/GitHub-Mark-120px-plus.png"
+            halign: 'center'
+            valign: 'center'
+            markup: True
+            on_press: webbrowser.open("https://www.github.com/zenohm/mafiademonstration")
+
+
+        Label:
+
+        GridLayout:
+            cols: 3
+            Label:
+            Button:
+                text: "Return"
+                on_press: root.manager.current = "mainmenu"
+            Label:
+
+        Label:
 
 
 <Discussion>:

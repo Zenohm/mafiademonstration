@@ -35,6 +35,8 @@ class MafiaDemonstrationApp(App):
         sm.add_widget(stages.MainMenu(name='mainmenu'))
         sm.add_widget(stages.Discussion(name='discussion'))
         sm.add_widget(stages.Tutorial(name='tutorial'))
+        sm.add_widget(stages.PlayerStatus(name='playerstatus'))
+        sm.add_widget(stages.StagesTutorial(name='stagestutorial'))
         sm.add_widget(stages.Credits(name='credits'))
         sm.add_widget(stages.LoadingDT(name='loadingDT'))
         sm.add_widget(stages.Trial(name='trial'))

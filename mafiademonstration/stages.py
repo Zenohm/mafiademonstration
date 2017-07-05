@@ -154,6 +154,11 @@ class MainMenu(Stage):
 class Tutorial(Stage):
     pass
 
+class PlayerStatus(Stage):
+    pass
+
+class StagesTutorial(Stage):
+    pass
 
 class Credits(Stage):
     pass
