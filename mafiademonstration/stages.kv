@@ -1,5 +1,6 @@
 #:import to_rgba kivy.utils.get_color_from_hex
 #:import webbrowser webbrowser
+#:import CircularLayout kivy.garden.circularlayout.CircularLayout
 
 <MainMenu>:
     canvas.before:
@@ -68,12 +69,13 @@
 
         canvas.before:
             Color:
-                rgba: to_rgba("EE1FD0")
+                rgba: to_rgba("F5F5F5")
             Rectangle:
                 pos: self.pos
                 size: self.size
 
         Label:
+            color: to_rgba("212121")
             text: "[b]          Tutorials[b]"
             text_size: self.size
             halign: 'left'
@@ -81,6 +83,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "Please click one of the following categories for more information."
             text_size: self.size
             halign: 'center'
@@ -126,7 +129,7 @@
     GridLayout:
         canvas.before:
             Color:
-                rgba: to_rgba("EE1FD0")
+                rgba: to_rgba("F5F5F5")
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -136,6 +139,7 @@
         padding: [0, 0, 5, 0]
 
         Label:
+            color: to_rgba("212121")
             text: "[b]     Player Status[b]"
             text_size: self.size
             halign: 'left'
@@ -152,6 +156,7 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Player is alive in discussion and trial stages"
             text_size: self.size
             halign: 'left'
@@ -164,6 +169,7 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Player is dead"
             text_size: self.size
             halign: 'left'
@@ -175,6 +181,7 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Mafia awakes in night stage"
             text_size: self.size
             halign: 'left'
@@ -186,17 +193,19 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Player is asleep in night stage"
             text_size: self.size
             halign: 'left'
             valign: 'center'
 
         Image:
-            source: "data/icons/player.png"
+            source: "data/icons/player_on_trial.png"
             halign: 'left'
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Player is on trial"
             text_size: self.size
             halign: 'left'
@@ -208,6 +217,7 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Autonomous agent"
             text_size: self.size
             halign: 'left'
@@ -219,6 +229,7 @@
             valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "Detective (Coming Soon...!)"
             text_size: self.size
             halign: 'left'
@@ -245,12 +256,13 @@
     FloatLayout:
         canvas.before:
             Color:
-                rgba: to_rgba("EE1FD0")
+                rgba: to_rgba("F5F5F5")
             Rectangle:
                 pos: self.pos
                 size: self.size
 
         Label:
+            color: to_rgba("212121")
             text: "[b]Stages Tutorial[b]"
             text_size: self.size
             halign: 'left'
@@ -260,6 +272,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "[b]Discussion Stage[b]"
             text_size: self.size
             halign: 'left'
@@ -269,6 +282,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "This stage involves the townspeople accusing and suspecting people with specified reasons. Each player has the option of not choosing any option, allowing them to abstain from accusing or suspecting anyone. The person who is accused the most will go on trial, if nobody is accused then the stage will advance immediately to the night stage. After a night stage and in the beginning of the discussion stage, if there is a player being 'murdered,' there would be a public announcement, as well as revealing the identity of the eliminated player."
             text_size: self.size
             halign: 'left'
@@ -277,6 +291,7 @@
             pos_hint: {"center_x": .5, "center_y": .78}
 
         Label:
+            color: to_rgba("212121")
             text: "[b]Trial Stage[b]"
             text_size: self.size
             halign: 'left'
@@ -286,6 +301,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "The player who is being accused the most would be placed on trial. If the majority of the players vote to eliminate that player, he will be eliminated from the game, and his identity would be revealed to the public once he has been eliminated."
             text_size: self.size
             halign: 'left'
@@ -294,6 +310,7 @@
             pos_hint: {"center_x": .5, "center_y": .58}
 
         Label:
+            color: to_rgba("212121")
             text: "[b]Night Stage[b]"
             text_size: self.size
             halign: 'left'
@@ -303,6 +320,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "The night stage is where the Mafia members deciding on which player to kill and proceed to killing."
             text_size: self.size
             halign: 'left'
@@ -318,6 +336,7 @@
             pos_hint: {"center_x": .125, "center_y": .3}
 
         Label:
+            color: to_rgba("212121")
             text: "[b]Stage transition button[b]"
             text_size: self.size
             halign: 'left'
@@ -327,6 +346,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "The button which finalizes all the decisions made by the players and proceeds to the next stage."
             text_size: self.size
             halign: 'left'
@@ -347,19 +367,20 @@
 <Credits>:
     # TODO: Write out the credits.
     GridLayout:
-        rows: 15
+        rows: 16
         row_force_default: True
         row_default_height: 45
         spacing: [10, 10]
 
         canvas.before:
             Color:
-                rgba: to_rgba("EE1FD0")
+                rgba: to_rgba("F5F5F5")
             Rectangle:
                 pos: self.pos
                 size: self.size
 
         Label:
+            color: to_rgba("212121")
             text: "[b]     Credits[b]"
             text_size: self.size
             halign: 'left'
@@ -367,6 +388,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "[b]               Written by:[b]"
             text_size: self.size
             halign: 'left'
@@ -379,30 +401,35 @@
             padding: [150, 0, 75, 0]
 
             Label:
+                color: to_rgba("212121")
                 text: "Isaac Smith"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "Hei Jing Tsang"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "smitil01@students.ipfw.edu"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "tsangh@purdue.edu"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "[b]               Advisors:[b]"
             text_size: self.size
             halign: 'left'
@@ -414,30 +441,35 @@
             padding: [150, 0, 75, 0]
 
             Label:
+                color: to_rgba("212121")
                 text: "Prof. John Licato"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "Prof. Max Fowler"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "John.Licato@gmail.com"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
             Label:
+                color: to_rgba("212121")
                 text: "maxfwlr@gmail.com"
                 text_size: self.size
                 halign: 'left'
                 valign: 'center'
 
         Label:
+            color: to_rgba("212121")
             text: "[b]               Beta-testers:[b]"
             text_size: self.size
             halign: 'left'
@@ -445,6 +477,7 @@
             markup: True
 
         Label:
+            color: to_rgba("212121")
             text: "Cole Duncan, Reese Crowell"
             text_size: self.size
             halign: 'center'
@@ -471,6 +504,7 @@
             Label:
 
         Label:
+        Label:
 
 
 <Discussion>:
@@ -484,13 +518,13 @@
                 pos: self.pos
                 size: self.size
 
+        ImageButton:
+            source: "data/icons/menu_button.png"
+            pos_hint: {"center_x": 0.95, "center_y": 0.05}
+            size_hint: (0.1, 0.1)
+            on_press: root.manager.current = "mainmenu"
+
         Label:
-#            canvas.before:
-#                Color:
-#                    rgba: to_rgba("05F5F0")
-#                Rectangle:
-#                    pos: self.pos
-#                    size: self.size
             text: root.action_text
             text_size: self.size
             halign: 'left'
@@ -518,7 +552,7 @@
 
         ImageButton:
             id: submit_button
-            pos: [root.center_x - self.width/2, root.center_y - self.height/2]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             source: "data/icons/submit_complete.png"
             size_hint: None, None
             size: "135dp", "135dp"
@@ -526,16 +560,16 @@
 
         CircularLayout:
             id: circular_layout
-            pos: [root.center_x - self.width/2, root.center_y - self.height/2]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
-            inner_radius_hint: 0.7
+            inner_radius_hint: 0.65
             outer_radius_hint: 1.2
             direction: "cw"
 
 
 <Trial>:
-    AnchorLayout:
+    FloatLayout:
         canvas.before:
             Color:
                 rgba: to_rgba("F44336")
@@ -544,7 +578,14 @@
                 size: self.size
 
         ImageButton:
+            source: "data/icons/menu_button.png"
+            pos_hint: {"center_x": 0.95, "center_y": 0.05}
+            size_hint: (0.1, 0.1)
+            on_press: root.manager.current = "mainmenu"
+
+        ImageButton:
             id: submit_button
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             size_hint: None, None
             size: "135dp", "135dp"
             source: "data/icons/submit_complete.png"
@@ -552,15 +593,16 @@
 
         CircularLayout:
             id: circular_layout
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
-            inner_radius_hint: 0.7
-            outer_radius_hint: 1.2
+            inner_radius_hint: 0.65
+            outer_radius_hint: 1.1
             direction: "cw"
 
 
 <Night>:
-    AnchorLayout:
+    FloatLayout:
         canvas.before:
             Color:
                 rgba: to_rgba("2196F3")
@@ -569,14 +611,22 @@
                 size: self.size
 
         ImageButton:
+            source: "data/icons/menu_button.png"
+            pos_hint: {"center_x": 0.95, "center_y": 0.05}
+            size_hint: (0.1, 0.1)
+            on_press: root.manager.current = "mainmenu"
+
+        ImageButton:
             id: submit_button
             source: "data/icons/submit_complete.png"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             size_hint: None, None
             size: "135dp", "135dp"
             on_press: root.submit()
 
         CircularLayout:
             id: circular_layout
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             size_hint_y: 0.7
             start_angle: -180/len(self.children)-90 if len(self.children) else 0
             inner_radius_hint: 0.7
@@ -653,5 +703,4 @@
     BoxLayout:
         Image:
             source: "data/icons/loading.gif"
-#            color: to_rgba("212121")
-#            text: "Loading..."
+

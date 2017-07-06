@@ -3,11 +3,8 @@ import json
 import math
 import random
 from kivy.clock import Clock
-from kivy.garden.circularlayout import CircularLayout
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.image import Image
 
 from kivy.logger import Logger
 from kivy.properties import ObjectProperty
@@ -17,14 +14,16 @@ from kivy.config import Config
 try:
     from border_behavior import BorderBehavior
     from player import (
-        Player, DeadPlayer, DiscussionPlayer,
-        PlayerIcon, NightSleepingPlayer, TrialPlayer
+        Player, PlayerIcon, DiscussionPlayer,
+        NightSleepingPlayer, NightMafiaPlayer,
+        TrialPlayer, TrialAgent
     )
 except ModuleNotFoundError:
     from mafiademonstration.border_behavior import BorderBehavior
     from mafiademonstration.player import (
-        Player, DeadPlayer, DiscussionPlayer,
-        PlayerIcon, NightSleepingPlayer, TrialPlayer
+        Player, PlayerIcon, DiscussionPlayer,
+        NightSleepingPlayer, NightMafiaPlayer,
+        TrialPlayer, TrialAgent
     )
 
 try:
@@ -39,96 +38,105 @@ class Stage(Screen):
     selected_player = ObjectProperty(None, allownone=True)
 
     # Static variables
-    players = dict()
+    players = list()
     player_count = 0
     agent_number = 0
-    player_to_be_tried = None
-    winner = "Nobody"
-    player_log = "Output text goes here"
+    # player_log = "Output text goes here"
 
-    def __init__(self, **kwargs):
-        super(Stage, self).__init__(**kwargs)
-        self.config = Config
+    def get_player_class(self, player):
+        return self.__class__
 
-    def add_players(self, default_new_player_class):
+    def add_players(self, players):
         """
         Goes through every player, and, depending on the state of the player,
         adds that player to the current stage.
-        :param default_new_player_class: The Class of the player to be created and added to the stage.
         :return: None
         """
-        for player in self.players.values():
-            if player.alive:
-                new_player_class = default_new_player_class
-            else:
-                new_player_class = DeadPlayer
+        for player in players:
+            new_player_class = self.get_player_class(player)
 
-            # Here there be shallow copied dragons.
+            # Here there be shallow copy dragons.
             new_player = new_player_class(
                 name=player.name,
                 number=player.number,
                 alive=player.alive,
                 mafia=player.mafia,
+                agent=player.agent,
                 icon=player.icon,
+                is_on_trial=player.is_on_trial,
                 strategic_value=player.strategic_value,
                 actions=player.actions
             )
 
             self.ids.circular_layout.add_widget(new_player)
 
-    def initialize_settings(self):
+    @staticmethod
+    def initialize_settings():
         Config.read('mafiademonstration/mafiademonstration.ini')
-        Stage.player_count = self.config.getint('user_settings', 'player_count')
-        Stage.agent_number = self.config.getint('user_settings', 'agent_number')
-        # self.language = self.config.get('user_settings', 'language')
+        Stage.player_count = Config.getint('user_settings', 'player_count')
+        Stage.agent_number = Config.getint('user_settings', 'agent_number')
 
-        # user_interval = self.config.get('user_settings', 'timer_interval')
-        # self.timer_interval = TIMER_OPTIONS[user_interval]
+    @staticmethod
+    def create_players(player_count, agent_number):
+        players = []
 
-    def initialize_players(self):
-        for player_number in range(1, Stage.player_count + 1):
-            if player_number == self.agent_number:
-                # All values that need to be set for
-                # the agent should be set here.
-                player_icon = './data/icons/agent_alive.png'
-                player_name = "agent"
-                Logger.debug("Player: Agent found: {}".format(player_name))
-            else:
-                player_name = 'player {}'.format(player_number)
-                player_icon = './data/icons/player_alive.png'
-            player = Player(name=player_name, icon=player_icon)
-            player.number = player_number
-            Stage.players[player_name] = player
+        for number in range(player_count):
+            name = 'player {}'.format(number)
+            icon = "data/icons/easter_egg.png" if random.random() < 0.01 else "data/icons/player_alive.png"
+            agent = False
 
-        number_of_mafia = math.floor(math.sqrt(Stage.player_count))
-        mafia_members = random.sample(list(Stage.players), number_of_mafia)
+            players.append(Player(
+                name=name,
+                number=number,
+                alive=True,
+                mafia=False,
+                agent=agent,
+                icon=icon,
+                strategic_value=0
+            ))
+
+        if 0 <= agent_number < player_count:
+            new_agent = players[agent_number]
+            Logger.debug("Player: Agent assuming the role of {}.".format(new_agent.name))
+            # All values that need to be set for
+            # the agent should be set here.
+
+            new_agent.name = "agent"
+            new_agent.icon = './data/icons/agent_alive.png'
+            new_agent.agent = True
+
+        number_of_mafia = math.floor(math.sqrt(player_count))
+        mafia_members = random.sample(players, number_of_mafia)
 
         for player in mafia_members:
-            Stage.players[player].mafia = True
+            player.mafia = True
+
+        return players
 
     def on_pre_enter(self, *args):
-        super(Stage, self).on_pre_enter(*args)
+        super().on_pre_enter(*args)
         Logger.debug("Movement: Entering: {stage}".format(stage=self.__class__.__name__))
 
     def on_enter(self, *args):
-        super(Stage, self).on_enter(*args)
+        super().on_enter(*args)
         Logger.debug("Movement: Entered: {stage}".format(stage=self.__class__.__name__))
 
     def on_pre_leave(self, *args):
-        super(Stage, self).on_pre_leave(*args)
+        super().on_pre_leave(*args)
         Logger.debug("Movement: Exiting: {stage}".format(stage=self.__class__.__name__))
 
     def on_leave(self, *args):
-        super(Stage, self).on_leave(*args)
+        super().on_leave(*args)
         Logger.debug("Movement: Exited: {stage}".format(stage=self.__class__.__name__))
 
     @staticmethod
-    def check_for_winner():
+    def check_for_winner(players):
 
+        winner = "Nobody"
         mafia_count = 0
         towny_count = 0
 
-        for name, player in Stage.players.items():
+        for player in players:
             if player.alive:
                 if player.mafia:
                     mafia_count += 1
@@ -136,55 +144,69 @@ class Stage(Screen):
                     towny_count += 1
 
         if mafia_count == 0:
-            Stage.winner = "Town"
+            winner = "Town"
 
         if towny_count == 0:
-            Stage.winner = "Mafia"
+            winner = "Mafia"
 
-        return Stage.winner
+        return winner
 
 
 class MainMenu(Stage):
     def ready_game(self):
-        Stage.winner = "Nobody"
         self.initialize_settings()
-        self.initialize_players()
+        Stage.players = self.create_players(Stage.player_count, Stage.agent_number)
 
 
 class Tutorial(Stage):
     pass
 
+
 class PlayerStatus(Stage):
     pass
 
+
 class StagesTutorial(Stage):
     pass
+
 
 class Credits(Stage):
     pass
 
 
 class Discussion(Stage):
+
     def submit(self):
-        most_accused = Discussion.count_accusations()
+        most_accused = Discussion.count_accusations(Stage.players)
 
         if most_accused is None:
             self.manager.current = "loadingTN"
         else:
             Logger.info("Discussion: Most accused player: {}".format(most_accused.name))
-            Stage.player_to_be_tried = most_accused
+            Stage.players[most_accused.number].is_on_trial = True
             self.manager.current = "loadingDT"
+
+    def get_player_class(self, player):
+        if player.alive:
+            if player.agent:
+                new_player_class = PlayerIcon
+            else:
+                new_player_class = DiscussionPlayer
+        else:
+            new_player_class = PlayerIcon
+
+        return new_player_class
 
     def write_to_mafia_log(self, *args):
         output = "[b]Mafia List:[/b]\n"
-        for name, player in self.players.items():
+        for player in self.players:
             if player.mafia and player.alive:
                 output += f"{player.name}\n"
         self.mafia_text = output
 
     def write_to_action_log(self, *args):
         output = "[b]Action List:[/b]\n"
-        for name, player in self.players.items():
+        for player in self.players:
             if player.actions['accuse']['player'] is not None:
                 output += f"{player.number} accuses  {player.actions['accuse']['player'].number}\n"
             if player.actions['suspect']['player'] is not None:
@@ -192,35 +214,34 @@ class Discussion(Stage):
         self.action_text = output
 
     def on_enter(self):
-        super(Discussion, self).on_enter()
+        super().on_enter()
         Clock.schedule_interval(self.write_to_action_log, 0.5)
         Clock.schedule_interval(self.write_to_mafia_log, 0.5)
-        self.add_players(DiscussionPlayer)
+        self.add_players(Stage.players)
 
     def on_pre_leave(self):
-        super(Discussion, self).on_pre_leave()
+        super().on_pre_leave()
         self.ids.circular_layout.clear_widgets()
 
     @staticmethod
-    def count_accusations():
+    def count_accusations(players):
         """
 
         :return: A reference to the player to be put on trial, or None
         """
-        accusations = dict.fromkeys(Stage.players.keys(), 0)
-        suspicions = dict.fromkeys(Stage.players.keys(), 0)
+        accusations = [0] * len(players)
+        suspicions = [0] * len(players)
 
-        for player in Stage.players.values():
+        for player in players:
             if player.actions['accuse']['player'] is not None:
-                accusations[player.actions['accuse']['player'].name] += 1
+                accusations[player.actions['accuse']['player'].number] += 1
             if player.actions['suspect']['player'] is not None:
-                suspicions[player.actions['suspect']['player'].name] += 1
+                suspicions[player.actions['suspect']['player'].number] += 1
 
-        most_accused = max(accusations, key=accusations.get)
-        accusation_amount = accusations[most_accused]
+        most_accused, accusation_amount = max(enumerate(accusations), key=lambda p: p[1])
 
-        if dict(Counter(accusations.values()))[accusation_amount] > 1:
-            Logger.debug("Discussion: Accusation Counts: {}".format(dict(Counter(accusations.values()))))
+        if dict(Counter(accusations))[accusation_amount] > 1:
+            Logger.debug("Discussion: Accusation Counts: {}".format(dict(Counter(accusations))))
             Logger.info("Discussion: There was a tie amongst the accused.")
             # most_accused = max(suspicions, key=suspicions.get)
             # accusation_amount = max(suspicions.values())
@@ -230,53 +251,42 @@ class Discussion(Stage):
             #     Logger.info("Tie amongst the players, no one goes on trial.")
             #     return None
 
-        return Stage.players[most_accused]
+        return players[most_accused]
 
 
 class Trial(Stage):
-    def add_players(self, default_new_player_class):
-        for player in self.players.values():
-            if player.alive:
-                if Stage.players[Stage.player_to_be_tried.name] == player:
-                    new_player_class = PlayerIcon
-                else:
-                    new_player_class = default_new_player_class
+    player_on_trial = ObjectProperty()
+
+    def get_player_class(self, player):
+        if player.alive:
+            if player.is_on_trial:
+                new_player_class = PlayerIcon
+            elif player.agent:
+                new_player_class = TrialAgent
             else:
-                new_player_class = DeadPlayer
+                new_player_class = TrialPlayer
+        else:
+            new_player_class = PlayerIcon
 
-            # Here there be shallow copied dragons.
-            new_player = new_player_class(
-                name=player.name,
-                number=player.number,
-                alive=player.alive,
-                mafia=player.mafia,
-                icon=player.icon,
-                strategic_value=player.strategic_value,
-                actions=player.actions
-            )
-
-            self.ids.circular_layout.add_widget(new_player)
+        return new_player_class
 
     def submit(self):
-        verdict = Trial.decide_verdict()
-
-        player = Stage.players[Stage.player_to_be_tried.name]
+        verdict = Trial.decide_verdict(Stage.players)
+        self.player_on_trial.is_on_trial = False
 
         if verdict == "guilty":
-            Logger.info("{} is guilty!".format(Stage.player_to_be_tried.name))
-            player.icon = "data/icons/player_dead.png"
-            player.alive = False
+            Logger.info("{} is guilty!".format(self.player_on_trial.name))
+            self.player_on_trial.icon = "data/icons/player_dead.png"
+            self.player_on_trial.alive = False
         elif verdict == "innocent":
-            Logger.info("{} is innocent!".format(player.name))
-            player.icon = "data/icons/player_alive.png"
-            Stage.player_to_be_tried = None
+            Logger.info("{} is innocent!".format(self.player_on_trial.name))
+            self.player_on_trial.icon = "data/icons/player_alive.png"
         elif verdict == "tie":
-            Logger.info("{} split the votes and will be released!".format(player.name))
+            Logger.info("{} split the votes and will be released!".format(self.player_on_trial.name))
             # This could be changed so that the result is decided by a coin toss or something similar.
-            player.icon = "data/icons/player_alive.png"
-            Stage.player_to_be_tried = None
+            self.player_on_trial.icon = "data/icons/player_alive.png"
 
-        winner = Stage.check_for_winner()
+        winner = Stage.check_for_winner(Stage.players)
         if winner == "Nobody":
             self.manager.current = "loadingTN"
         else:
@@ -285,24 +295,35 @@ class Trial(Stage):
             self.manager.current = "gameovermenu"
 
     def on_enter(self, *args):
-        super(Trial, self).on_enter(*args)
-        player = Stage.players[Stage.player_to_be_tried.name]
-        player.icon = "data/icons/player.png"
-        self.add_players(TrialPlayer)
+        super().on_enter(*args)
+
+        if not any(player.is_on_trial for player in Stage.players):
+            Logger.error("Trial: No player has the is_on_trial variable set to true in the trial stage!")
+
+        for player in Stage.players:
+            if player.is_on_trial:
+                self.player_on_trial = player
+                break
+
+        if self.player_on_trial is None:
+            Logger.error("Trial: No player was put on trial despite having entered the trial stage!")
+
+        self.player_on_trial.icon = "data/icons/player_on_trial.png"
+        self.add_players(Stage.players)
 
     def on_pre_leave(self, *args):
-        super(Trial, self).on_pre_leave(*args)
+        super().on_pre_leave(*args)
         self.ids.circular_layout.clear_widgets()
 
     @staticmethod
-    def decide_verdict() -> str:
+    def decide_verdict(players) -> str:
         """
         Step through the players, count their votes, and decide on a verdict.
         :return: A string with the value of guilty, innocent, or tie.
         """
         vote = {'guilty': 0, 'innocent': 0}
 
-        for player in Stage.players.values():
+        for player in players:
             decision = player.actions['vote']['decision']
 
             if decision is None:
@@ -310,51 +331,40 @@ class Trial(Stage):
                 continue
 
             if decision == "abstain":
-                Logger.debug("{} decided to abstain.".format(player.name))
+                Logger.info("{} decided to abstain.".format(player.name))
                 continue
 
-            Logger.debug("{} voted {}".format(player.name, decision))
+            Logger.info("{} voted {}".format(player.name, decision))
             vote[decision] += 1
 
         if vote['guilty'] == vote['innocent']:
             verdict = "tie"
-            Logger.debug("The vote was a tie.")
+            Logger.info("The vote was a tie.")
         else:
             verdict = max(vote, key=vote.get)
-            Logger.debug("The verdict was {}.".format(verdict))
+            Logger.info("The verdict was {}.".format(verdict))
 
         return verdict
 
 
 class Night(Stage):
-    def add_players(self, default_new_player_class):
-        for player in self.players.values():
-            if player.alive:
-                if player.mafia:
-                    new_player_class = PlayerIcon
-                else:
-                    new_player_class = default_new_player_class
+
+    def get_player_class(self, player):
+        if player.alive:
+            if player.mafia:
+                new_player_class = NightMafiaPlayer
             else:
-                new_player_class = DeadPlayer
+                new_player_class = NightSleepingPlayer
+        else:
+            new_player_class = PlayerIcon
 
-            # Here there be shallow copied dragons.
-            new_player = new_player_class(
-                name=player.name,
-                number=player.number,
-                alive=player.alive,
-                mafia=player.mafia,
-                icon=player.icon,
-                strategic_value=player.strategic_value,
-                actions=player.actions
-            )
-
-            self.ids.circular_layout.add_widget(new_player)
+        return new_player_class
 
     def submit(self):
         if self.selected_player:
-            Stage.players[self.selected_player.name].die()
+            Stage.players[self.selected_player.number].die()
 
-        winner = Stage.check_for_winner()
+        winner = Stage.check_for_winner(Stage.players)
         if winner == "Nobody":
             self.manager.current = "loadingND"
         else:
@@ -363,26 +373,26 @@ class Night(Stage):
             self.manager.current = "gameovermenu"
 
     def on_enter(self):
-        super(Night, self).on_enter()
-        for name, player in self.players.items():
-            # TODO: Move all the add_players methods into each stage's on_enter method.
-            if player.alive:
-                if player.mafia:
-                    player.icon = "data/icons/player_alive_mafia.png"
-                else:
-                    player.icon = "data/icons/player_asleep.png"
+        super().on_enter()
+        # for player in self.players:
+        #     # TODO: Move all the add_players methods into each stage's on_enter method.
+        #     if player.alive:
+        #         if player.mafia:
+        #             player.icon = "data/icons/player_alive_mafia.png"
+        #         else:
+        #             player.icon = "data/icons/player_asleep.png"
 
-        self.add_players(NightSleepingPlayer)
+        self.add_players(Stage.players)
 
     def on_pre_leave(self):
-        super(Night, self).on_pre_leave()
+        super().on_pre_leave()
 
-        for name, player in self.players.items():
-            if player.alive:
-                if player.number == self.agent_number:
-                    player.icon = "data/icons/agent_alive.png"
-                else:
-                    player.icon = "data/icons/player_alive.png"
+        for player in self.players:
+            # if player.alive:
+            #     if player.agent:
+            #         player.icon = "data/icons/agent_alive.png"
+            #     else:
+            #         player.icon = "data/icons/player_alive.png"
             player.actions = {"accuse": {"player": None}, "suspect": {"player": None}, "vote": {"decision": "abstain"}}
 
         self.ids.circular_layout.clear_widgets()
@@ -390,15 +400,14 @@ class Night(Stage):
 
 class GameOverMenu(Stage):
     def ready_game(self):
-        Stage.winner = "Nobody"
         self.initialize_settings()
-        self.initialize_players()
+        Stage.players = self.create_players(Stage.player_count, Stage.agent_number)
 
 
 class LoadingScreen(Stage):
     def on_enter(self):
-        super(LoadingScreen, self).on_enter()
-        players = [dict(player) for player in Stage.players.values()]
+        super().on_enter()
+        players = list(map(dict, Stage.players))
         json_players = LoadingScreen.to_json(players)
         json_players_modified = LoadingScreen.call_reasoner(json_players)
         Stage.players = LoadingScreen.from_json(json_players_modified)
@@ -415,10 +424,16 @@ class LoadingScreen(Stage):
         # time.sleep(3)
 
         choices = []
+        agent = None
 
-        if players['agent'].alive:
-            for name, player in players.items():
-                if name == 'agent':
+        for player in players:
+            if player.agent:
+                agent = player
+                break
+
+        if agent.alive:
+            for player in players:
+                if player.agent:
                     continue
 
                 if player.alive:
@@ -426,9 +441,9 @@ class LoadingScreen(Stage):
 
         if choices:
             poor_devil = random.choice(choices)
-            players['agent'].actions['accuse']['player'] = poor_devil
-            players['agent'].actions['vote']['decision'] = "guilty" if random.random() > 0.5 else "innocent"
-        players = [dict(player) for player in players.values()]
+            agent.actions['accuse']['player'] = poor_devil
+            agent.actions['vote']['decision'] = "guilty" if random.random() > 0.5 else "innocent"
+        players = list(map(dict, players))
         json_players_modified = LoadingScreen.to_json(players)
         return json_players_modified
 
@@ -446,18 +461,19 @@ class LoadingScreen(Stage):
         Read a list of players in a standard format and convert it
         into a list of Player objects.
         """
-        output_data = {}
         json_data = json.loads(json_players)
+        output_data = [0] * len(json_data)
         for person_data in json_data:
             player = Player(**person_data)
-            output_data[player.name] = player
+            player.number = int(player.number)
+            output_data[player.number] = player
 
         # Change the player names in the dict to actual player references
-        for name, player in output_data.items():
+        for player in output_data:
             for action, attributes in player.actions.items():
                 for attribute, value in attributes.items():
                     if attribute == "player" and value is not None:
-                        output_data[name].actions[action][attribute] = output_data[value]
+                        output_data[player.number].actions[action][attribute] = output_data[value]
 
         return output_data
 
@@ -476,7 +492,4 @@ class LoadingND(LoadingScreen):
     def exit(self):
         self.manager.current = "discussion"
 
-
-class ImageButton(BorderBehavior, ButtonBehavior, Image):
-    pass
 
