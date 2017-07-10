@@ -4,8 +4,9 @@ License: LGPL
 __author__ = 'Olivier POYEN'
 
 
-from kivy.properties import BooleanProperty, ObjectProperty
 from kivy.core.window import Window
+from kivy.properties import BooleanProperty, ObjectProperty
+
 
 class HoverBehavior(object):
     """Hover behavior.

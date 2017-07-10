@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from os.path import join, dirname
+
 import kivy
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, NoTransition
-
-from os.path import join, dirname
 
 kivy.require('1.9.1')
 
@@ -12,11 +12,11 @@ kivy.require('1.9.1')
 try:
     import stages
 except ModuleNotFoundError:
-    import mafiademonstration.stages as stages
+    import mafiademonstration.stages
 
 
 class MafiaDemonstrationApp(App):
-    """Simple Slideshow App with a user defined title.
+    """
 
     Attributes:
       title (str): Window title of the application
@@ -26,24 +26,22 @@ class MafiaDemonstrationApp(App):
     title = 'Mafia Demonstration'
 
     def build(self) -> ScreenManager:
-        """Initialize the GUI based on the kv file and set up events.
+        """Initialize the GUI using the screen manager.
 
         :rtype: ScreenManager
         :return: Root widget specified in the kv file of the app
         """
         sm = ScreenManager(transition=NoTransition())
         sm.add_widget(stages.MainMenu(name='mainmenu'))
-        sm.add_widget(stages.Discussion(name='discussion'))
-        sm.add_widget(stages.Tutorial(name='tutorial'))
-        sm.add_widget(stages.PlayerStatus(name='playerstatus'))
+        sm.add_widget(stages.GameOverMenu(name='gameovermenu'))
+        sm.add_widget(stages.TutorialMenu(name='tutorial'))
+        sm.add_widget(stages.PlayerTutorial(name='playerstatus'))
         sm.add_widget(stages.StagesTutorial(name='stagestutorial'))
         sm.add_widget(stages.Credits(name='credits'))
-        sm.add_widget(stages.LoadingDT(name='loadingDT'))
+        sm.add_widget(stages.Loading(name='loading'))
+        sm.add_widget(stages.Discussion(name='discussion'))
         sm.add_widget(stages.Trial(name='trial'))
-        sm.add_widget(stages.LoadingTN(name='loadingTN'))
         sm.add_widget(stages.Night(name='night'))
-        sm.add_widget(stages.LoadingND(name='loadingND'))
-        sm.add_widget(stages.GameOverMenu(name='gameovermenu'))
 
         return sm
 
@@ -79,7 +77,6 @@ class MafiaDemonstrationApp(App):
             elif token == ('user_settings', 'language'):
                 self.language = value
             elif token == ('user_settings', 'player_count'):
-                self.config.write
                 self.player_count = value
             elif token == ('user_settings', 'agent_number'):
                 self.agent_number = value

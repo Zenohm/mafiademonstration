@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="409fe8b2-e964-440d-9c51-413ba9392bde" name="Default" comment="Fix #10, #11, #12, #14, #15, #16, and #17, added tutorial/credits.&#10;Also refactored players from a dictionary to a list.&#10;Fixed the issues listed, addressed a bit of #7 by moving the player&#10;dictionary to a list instead (This helped simplify a lot of code).&#10;Added a couple new player types to help unify the customization of players.&#10;Refactored the add_players function so that each type of Player only&#10;has to determine what class each player should be and the rest is handled.&#10;Adjusted the size of a few buttons.&#10;Removed the &quot;Border change on action change&quot; feature that has been around&#10;for a while.&#10;Got the easter working again.&#10;Laid down a few more changes (mostly renaming files) that'll make it&#10;easier to just swap out icons when the new ones are completed.&#10;Hei Jing completed the tutorial and credits menus, so we now have those.&#10;Documentation will most likely come in the next update, as well as a lot&#10;of refactoring.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mafiademonstration/stages_new/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mafiademonstration/stages_new/game.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mafiademonstration/stages_new/loading.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mafiademonstration/stages_new/manager.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mafiademonstration/stages_new/menu.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/locales/de/LC_MESSAGES/mafiademonstration.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/locales/en/LC_MESSAGES/mafiademonstration.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/locales/es/LC_MESSAGES/mafiademonstration.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/locales/fr/LC_MESSAGES/mafiademonstration.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/doctrees/index.doctree" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/doctrees/mafiademonstration.doctree" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/doctrees/readme.doctree" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/.buildinfo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_sources/index.rst.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_sources/mafiademonstration.rst.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_sources/readme.rst.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/ajax-loader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/basic.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/classic.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/comment-bright.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/comment-close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/comment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/default.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/doctools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/down-pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/file.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery-3.1.0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/minus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/plus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/pygments.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/searchtools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/sidebar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore-1.3.1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/up-pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/up.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/_static/websupport.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/genindex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/mafiademonstration.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/objects.inv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/readme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/search.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/build/html/searchindex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mafiademonstration/player.kv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mafiademonstration/stages.kv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/__main__.py" afterPath="$PROJECT_DIR$/mafiademonstration/__main__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/hover_behavior.py" afterPath="$PROJECT_DIR$/mafiademonstration/hover_behavior.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/mafiademonstration.ini" afterPath="$PROJECT_DIR$/mafiademonstration/mafiademonstration.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" afterPath="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.kv" afterPath="$PROJECT_DIR$/mafiademonstration/stages.kv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/player.py" afterPath="$PROJECT_DIR$/mafiademonstration/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mafiademonstration/stages.py" afterPath="$PROJECT_DIR$/mafiademonstration/stages.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,6 +66,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/mafiademonstration$Compile.coverage" NAME="Compile Coverage Results" MODIFIED="1499672605649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -23,58 +79,144 @@
     <fileColor scope="Non-Project Files (Material Darker)" color="474747" />
     <fileColor scope="Non-Project Files (Material Lighter)" color="D2D4D5" />
     <fileColor scope="Non-Project Files (Material Palenight)" color="4E5579" />
+    <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
+    <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
+    <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
+    <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stages.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
+      <file leaf-file-name="mafiademonstration.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2340">
-              <caret line="156" column="18" lean-forward="false" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="18" />
+            <state relative-caret-position="204">
+              <caret line="77" column="29" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#25#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stages.kv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
+      <file leaf-file-name="stages.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="413" column="24" lean-forward="false" selection-start-line="413" selection-start-column="24" selection-end-line="413" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="388">
+              <caret line="1224" column="18" lean-forward="false" selection-start-line="1224" selection-start-column="18" selection-end-line="1224" selection-end-column="18" />
+              <folding>
+                <element signature="e#282#506#0" expanded="false" />
+                <element signature="e#539#775#0" expanded="false" />
+                <element signature="e#797#948#0" expanded="false" />
+                <element signature="e#1104#1266#1" expanded="false" />
+                <element signature="e#2046#2552#0" expanded="false" />
+                <element signature="e#2046#2418#1" expanded="false" />
+                <element signature="e#2602#2923#0" expanded="false" />
+                <element signature="e#2602#2893#1" expanded="false" />
+                <element signature="e#2964#3190#0" expanded="false" />
+                <element signature="e#2964#3088#1" expanded="false" />
+                <element signature="e#3235#3464#0" expanded="false" />
+                <element signature="e#3235#3358#1" expanded="false" />
+                <element signature="e#3544#4060#1" expanded="false" />
+                <element signature="e#4833#5304#0" expanded="false" />
+                <element signature="e#4970#5006#0" expanded="false" />
+                <element signature="e#5591#6338#0" expanded="false" />
+                <element signature="e#5591#5927#1" expanded="false" />
+                <element signature="e#6047#6198#0" expanded="false" />
+                <element signature="e#6083#6198#0" expanded="false" />
+                <element signature="e#6364#6881#0" expanded="false" />
+                <element signature="e#6394#6881#0" expanded="false" />
+                <element signature="e#6394#6604#1" expanded="false" />
+                <element signature="e#6910#8220#0" expanded="false" />
+                <element signature="e#6930#8219#0" expanded="false" />
+                <element signature="e#8253#9730#0" expanded="false" />
+                <element signature="e#8273#9729#0" expanded="false" />
+                <element signature="e#9763#11485#0" expanded="false" />
+                <element signature="e#9783#11484#0" expanded="false" />
+                <element signature="e#11520#14658#0" expanded="false" />
+                <element signature="e#11540#14657#0" expanded="false" />
+                <element signature="e#14693#18893#0" expanded="false" />
+                <element signature="e#14713#18892#0" expanded="false" />
+                <element signature="e#18921#22650#0" expanded="false" />
+                <element signature="e#18941#22649#0" expanded="false" />
+                <element signature="e#22699#22940#0" expanded="false" />
+                <element signature="e#22985#23040#0" expanded="false" />
+                <element signature="e#23070#23108#0" expanded="false" />
+                <element signature="e#23142#23340#0" expanded="false" />
+                <element signature="e#23405#24215#0" expanded="false" />
+                <element signature="e#23455#23481#0" expanded="false" />
+                <element signature="e#23615#23687#0" expanded="false" />
+                <element signature="e#23651#23687#0" expanded="false" />
+                <element signature="e#23728#23895#0" expanded="false" />
+                <element signature="e#23767#23895#0" expanded="false" />
+                <element signature="e#23929#24121#0" expanded="false" />
+                <element signature="e#24280#24462#0" expanded="false" />
+                <element signature="e#24280#24406#1" expanded="false" />
+                <element signature="e#24531#24652#1" expanded="false" />
+                <element signature="e#25039#25315#0" expanded="false" />
+                <element signature="e#25105#25315#0" expanded="false" />
+                <element signature="e#25169#25315#0" expanded="false" />
+                <element signature="e#25375#29961#0" expanded="false" />
+                <element signature="e#25395#27022#0" expanded="false" />
+                <element signature="e#27067#27152#0" expanded="false" />
+                <element signature="e#27184#27638#0" expanded="false" />
+                <element signature="e#27184#27296#1" expanded="false" />
+                <element signature="e#27512#27587#0" expanded="false" />
+                <element signature="e#27689#27886#0" expanded="false" />
+                <element signature="e#27769#27853#0" expanded="false" />
+                <element signature="e#27938#28368#0" expanded="false" />
+                <element signature="e#28019#28334#0" expanded="false" />
+                <element signature="e#28418#28679#0" expanded="false" />
+                <element signature="e#28450#28590#0" expanded="false" />
+                <element signature="e#28713#28896#0" expanded="false" />
+                <element signature="e#28934#29005#0" expanded="false" />
+                <element signature="e#29069#29961#0" expanded="false" />
+                <element signature="e#29069#29156#1" expanded="false" />
+                <element signature="e#29282#29548#0" expanded="false" />
+                <element signature="e#29727#29923#0" expanded="false" />
+                <element signature="e#29988#34387#0" expanded="false" />
+                <element signature="e#30008#31022#0" expanded="false" />
+                <element signature="e#31095#32218#0" expanded="false" />
+                <element signature="e#31235#31418#0" expanded="false" />
+                <element signature="e#31467#31603#0" expanded="false" />
+                <element signature="e#31647#31911#0" expanded="false" />
+                <element signature="e#32062#32218#0" expanded="false" />
+                <element signature="e#32268#32602#0" expanded="false" />
+                <element signature="e#32300#32513#0" expanded="false" />
+                <element signature="e#32643#33236#0" expanded="false" />
+                <element signature="e#32892#32982#0" expanded="false" />
+                <element signature="e#32931#32982#0" expanded="false" />
+                <element signature="e#33281#33357#0" expanded="false" />
+                <element signature="e#33425#34387#0" expanded="false" />
+                <element signature="e#33425#33588#1" expanded="false" />
+                <element signature="e#33677#34117#0" expanded="false" />
+                <element signature="e#33773#33877#0" expanded="false" />
+                <element signature="e#33933#34015#0" expanded="false" />
+                <element signature="e#34178#34240#0" expanded="false" />
+                <element signature="e#34267#34363#0" expanded="false" />
+                <element signature="e#34434#35447#0" expanded="false" />
+                <element signature="e#35760#35916#0" expanded="false" />
+                <element signature="e#35966#36231#0" expanded="false" />
+                <element signature="e#35998#36142#0" expanded="false" />
+                <element signature="e#36265#36323#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="player.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player.kv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mafiademonstration.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="37" column="60" lean-forward="false" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+            <state relative-caret-position="169">
+              <caret line="262" column="25" lean-forward="false" selection-start-line="262" selection-start-column="25" selection-end-line="262" selection-end-column="25" />
               <folding>
-                <element signature="e#25#36#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#615#704#0" expanded="false" />
+                <element signature="e#2050#2875#0" expanded="false" />
+                <element signature="e#2908#2924#0" expanded="false" />
+                <element signature="e#3160#3480#0" expanded="false" />
+                <element signature="e#5724#5885#0" expanded="false" />
+                <element signature="e#7771#7991#0" expanded="false" />
+                <element signature="e#8030#8145#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -103,11 +245,15 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mafiademonstration/__main__.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/libs/player.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/Stages.py" />
         <option value="$PROJECT_DIR$/mafiademonstration/border_behavior.py" />
@@ -124,21 +270,37 @@
         <option value="$PROJECT_DIR$/README.rst" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/mafiademonstration/player.kv" />
         <option value="$PROJECT_DIR$/run.sh" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/mafiademonstration/user_settings.json" />
-        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
-        <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
-        <option value="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/HoverBehavior.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/menus.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/menu.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/loading.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/__init__.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/game.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages/manager.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/player.kv" />
         <option value="$PROJECT_DIR$/mafiademonstration/stages.kv" />
+        <option value="$PROJECT_DIR$/mafiademonstration/hover_behavior.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/__main__.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages_new/manager.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/mafiademonstration.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/stages.py" />
+        <option value="$PROJECT_DIR$/mafiademonstration/player.py" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
-    <option name="width" value="960" />
-    <option name="height" value="1053" />
+    <option name="y" value="25" />
+    <option name="width" value="1366" />
+    <option name="height" value="766" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -200,6 +362,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mafiademonstration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mafiademonstration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mafiademonstration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stages_new" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -207,11 +387,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/zen/Documents/Programs/Python/mafiademonstration/mafiademonstration/stages.py" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -255,6 +436,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_player.TestPlayer.test_from_json&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -270,6 +452,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_mafiaDemonstrationApp.TestMafiaDemonstrationApp.test_build&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -285,6 +468,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_mafiaDemonstrationApp.TestMafiaDemonstrationApp&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -300,6 +484,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_mafiaDemonstrationApp.TestMafiaDemonstrationApp.test_build_config&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -315,9 +500,74 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_stage.TestStage&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -332,6 +582,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -347,6 +598,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <module name="mafiademonstration" />
       <method />
     </configuration>
@@ -360,11 +612,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="docutils_input_file" value="" />
       <option name="docutils_output_file" value="" />
       <option name="docutils_params" value="" />
       <option name="docutils_task" value="" />
       <option name="docutils_open_in_browser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -377,6 +646,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -396,27 +666,10 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;.&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Compile" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.6" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="mafiademonstration" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mafiademonstration" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="stages" type="PythonConfigurationType" factoryName="Python">
@@ -431,15 +684,35 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mafiademonstration/stages.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="Compile" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mafiademonstration" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mafiademonstration/__main__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Python.Compile" />
-      <item index="1" class="java.lang.String" itemvalue="Python.stages" />
+      <item index="0" class="java.lang.String" itemvalue="Python.stages" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Compile" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_player.TestPlayer.test_from_json" />
       <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_mafiaDemonstrationApp.TestMafiaDemonstrationApp.test_build" />
       <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_mafiaDemonstrationApp.TestMafiaDemonstrationApp" />
@@ -509,7 +782,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498602462975</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fix #10, #11, #12, #14, #15, #16, and #17, added tutorial/credits.&#10;Also refactored players from a dictionary to a list.&#10;Fixed the issues listed, addressed a bit of #7 by moving the player&#10;dictionary to a list instead (This helped simplify a lot of code).&#10;Added a couple new player types to help unify the customization of players.&#10;Refactored the add_players function so that each type of Player only&#10;has to determine what class each player should be and the rest is handled.&#10;Adjusted the size of a few buttons.&#10;Removed the &quot;Border change on action change&quot; feature that has been around&#10;for a while.&#10;Got the easter egg working again.&#10;Laid down a few more changes (mostly renaming files) that'll make it&#10;easier to just swap out icons when the new ones are completed.&#10;Hei Jing completed the tutorial and credits menus, so we now have those.&#10;Documentation will most likely come in the next update, as well as a lot&#10;of refactoring.">
+      <created>1499378210443</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1499378210443</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -554,18 +834,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="960" height="1053" extended-state="4" />
+    <frame x="0" y="25" width="1366" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22916667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35021096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39732143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4293249" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16202345" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2157738" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42857143" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -574,11 +856,39 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39732143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16202345" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32784432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2157738" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42857143" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -618,54 +928,16 @@
     <MESSAGE value="UI Update and minor code cleanup&#10;Added a display in the discussion stage, changed the logo, cleaned code&#10;Tried to remove useless comments and reorganize the code a tiny amount,&#10;added the required action display to the discussion stage,&#10;added an animated logo :D" />
     <MESSAGE value="Add shebang line&#10;Added a shebang line to run.sh&#10;I'm not saying it again :P" />
     <MESSAGE value="Address #4&#10;Added a Mafia display to Discussion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Address #4&#10;Added a Mafia display to Discussion" />
+    <MESSAGE value="Fix #10, #11, #12, #14, #15, #16, and #17, added tutorial/credits.&#10;Also refactored players from a dictionary to a list.&#10;Fixed the issues listed, addressed a bit of #7 by moving the player&#10;dictionary to a list instead (This helped simplify a lot of code).&#10;Added a couple new player types to help unify the customization of players.&#10;Refactored the add_players function so that each type of Player only&#10;has to determine what class each player should be and the rest is handled.&#10;Adjusted the size of a few buttons.&#10;Removed the &quot;Border change on action change&quot; feature that has been around&#10;for a while.&#10;Got the easter egg working again.&#10;Laid down a few more changes (mostly renaming files) that'll make it&#10;easier to just swap out icons when the new ones are completed.&#10;Hei Jing completed the tutorial and credits menus, so we now have those.&#10;Documentation will most likely come in the next update, as well as a lot&#10;of refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix #10, #11, #12, #14, #15, #16, and #17, added tutorial/credits.&#10;Also refactored players from a dictionary to a list.&#10;Fixed the issues listed, addressed a bit of #7 by moving the player&#10;dictionary to a list instead (This helped simplify a lot of code).&#10;Added a couple new player types to help unify the customization of players.&#10;Refactored the add_players function so that each type of Player only&#10;has to determine what class each player should be and the rest is handled.&#10;Adjusted the size of a few buttons.&#10;Removed the &quot;Border change on action change&quot; feature that has been around&#10;for a while.&#10;Got the easter egg working again.&#10;Laid down a few more changes (mostly renaming files) that'll make it&#10;easier to just swap out icons when the new ones are completed.&#10;Hei Jing completed the tutorial and credits menus, so we now have those.&#10;Documentation will most likely come in the next update, as well as a lot&#10;of refactoring." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="22" />
+      <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.kv" />
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/Stages.py" />
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/libs/garden/garden.circularlayout/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/libs/garden/garden.dragndrop/DragNDropWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="97" column="66" lean-forward="false" selection-start-line="97" selection-start-column="66" selection-end-line="97" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/libs/garden/garden.modernmenu/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4131">
-          <caret line="255" column="8" lean-forward="false" selection-start-line="255" selection-start-column="8" selection-end-line="255" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_cli.py" />
     <entry file="file://$PROJECT_DIR$/tests/test_mafiademonstration.py" />
     <entry file="file://$PROJECT_DIR$/tests/test_mafiaDemonstrationApp.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -773,111 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/lang/builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/behaviors/button.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/relativelayout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/widget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="456" column="0" lean-forward="false" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/core/window/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="1187" column="0" lean-forward="false" selection-start-line="1187" selection-start-column="0" selection-end-line="1187" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="305" column="0" lean-forward="false" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/animation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="351" column="0" lean-forward="false" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="580" column="0" lean-forward="false" selection-start-line="580" selection-start-column="0" selection-end-line="580" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/core/window/window_sdl2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="668" column="0" lean-forward="false" selection-start-line="668" selection-start-column="0" selection-end-line="668" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="827" column="0" lean-forward="false" selection-start-line="827" selection-start-column="0" selection-end-line="827" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/screenmanager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="418" column="0" lean-forward="false" selection-start-line="418" selection-start-column="0" selection-end-line="418" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/site-packages/click/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="534" column="0" lean-forward="false" selection-start-line="534" selection-start-column="0" selection-end-line="534" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/border_behavior.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="123" column="42" lean-forward="false" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/__main__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -913,47 +1080,402 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/animation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state relative-caret-position="105">
+          <caret line="351" column="0" lean-forward="false" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/relativelayout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/widget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="156" column="18" lean-forward="false" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="142">
+          <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.py">
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/screenmanager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="37" column="60" lean-forward="false" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
-          <folding>
-            <element signature="e#25#36#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="113">
+          <caret line="1188" column="0" lean-forward="false" selection-start-line="1188" selection-start-column="0" selection-end-line="1188" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/core/window/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="1187" column="0" lean-forward="false" selection-start-line="1187" selection-start-column="0" selection-end-line="1187" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/lang/builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/uix/behaviors/button.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/libs/garden/garden.circularlayout/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="587" column="0" lean-forward="false" selection-start-line="587" selection-start-column="0" selection-end-line="587" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/core/window/window_sdl2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="662" column="0" lean-forward="false" selection-start-line="662" selection-start-column="0" selection-end-line="662" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="827" column="0" lean-forward="false" selection-start-line="827" selection-start-column="0" selection-end-line="827" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="503" column="0" lean-forward="false" selection-start-line="503" selection-start-column="0" selection-end-line="503" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/click/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="721" column="0" lean-forward="false" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/site-packages/kivy/logger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="305" column="0" lean-forward="false" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/icons/player_alive_mafia.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages_new/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/player.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="413" column="24" lean-forward="false" selection-start-line="413" selection-start-column="24" selection-end-line="413" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/hover_behavior.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/border_behavior.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages_new/menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages_new/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages_new/loading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#2440#2494#0" expanded="false" />
+            <element signature="e#2533#2587#0" expanded="false" />
+            <element signature="e#2626#2685#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages_new/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#42#0" expanded="false" />
+            <element signature="e#350#371#0" expanded="false" />
+            <element signature="e#417#1197#0" expanded="false" />
+            <element signature="e#417#579#1" expanded="false" />
+            <element signature="e#623#1197#0" expanded="false" />
+            <element signature="e#1256#1464#0" expanded="false" />
+            <element signature="e#1544#2671#0" expanded="false" />
+            <element signature="e#1613#2036#0" expanded="false" />
+            <element signature="e#2095#2450#0" expanded="false" />
+            <element signature="e#2231#2267#0" expanded="false" />
+            <element signature="e#2716#2833#0" expanded="false" />
+            <element signature="e#2874#2986#0" expanded="false" />
+            <element signature="e#3031#3147#0" expanded="false" />
+            <element signature="e#3188#3299#0" expanded="false" />
+            <element signature="e#3363#3758#0" expanded="false" />
+            <element signature="e#3473#3618#0" expanded="false" />
+            <element signature="e#3506#3618#0" expanded="false" />
+            <element signature="e#3791#6765#0" expanded="false" />
+            <element signature="e#3817#4172#0" expanded="false" />
+            <element signature="e#3983#4172#0" expanded="false" />
+            <element signature="e#4222#4472#0" expanded="false" />
+            <element signature="e#4251#4383#0" expanded="false" />
+            <element signature="e#4523#4714#0" expanded="false" />
+            <element signature="e#4603#4681#0" expanded="false" />
+            <element signature="e#4766#5196#0" expanded="false" />
+            <element signature="e#4847#5162#0" expanded="false" />
+            <element signature="e#5230#5413#0" expanded="false" />
+            <element signature="e#5451#5522#0" expanded="false" />
+            <element signature="e#5586#6765#0" expanded="false" />
+            <element signature="e#5586#5673#1" expanded="false" />
+            <element signature="e#5799#6065#0" expanded="false" />
+            <element signature="e#6232#6727#0" expanded="false" />
+            <element signature="e#6405#6457#0" expanded="false" />
+            <element signature="e#6554#6617#0" expanded="false" />
+            <element signature="e#6792#10145#0" expanded="false" />
+            <element signature="e#6876#7204#0" expanded="false" />
+            <element signature="e#6905#7115#0" expanded="false" />
+            <element signature="e#7236#8360#0" expanded="false" />
+            <element signature="e#7376#7554#0" expanded="false" />
+            <element signature="e#7603#7737#0" expanded="false" />
+            <element signature="e#7781#8043#0" expanded="false" />
+            <element signature="e#8204#8360#0" expanded="false" />
+            <element signature="e#8401#8994#0" expanded="false" />
+            <element signature="e#8650#8740#0" expanded="false" />
+            <element signature="e#8689#8740#0" expanded="false" />
+            <element signature="e#9039#9115#0" expanded="false" />
+            <element signature="e#9183#10145#0" expanded="false" />
+            <element signature="e#9183#9346#1" expanded="false" />
+            <element signature="e#9435#9875#0" expanded="false" />
+            <element signature="e#9531#9635#0" expanded="false" />
+            <element signature="e#9691#9773#0" expanded="false" />
+            <element signature="e#9936#9998#0" expanded="false" />
+            <element signature="e#10025#10121#0" expanded="false" />
+            <element signature="e#10172#11859#0" expanded="false" />
+            <element signature="e#10216#10475#0" expanded="false" />
+            <element signature="e#10245#10386#0" expanded="false" />
+            <element signature="e#10507#10909#0" expanded="false" />
+            <element signature="e#10753#10909#0" expanded="false" />
+            <element signature="e#10943#11365#0" expanded="false" />
+            <element signature="e#10970#10999#0" expanded="false" />
+            <element signature="e#11403#11859#0" expanded="false" />
+            <element signature="e#11475#11809#0" expanded="false" />
+            <element signature="e#11475#11496#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/__main__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#47#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/mafiademonstration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="77" column="29" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+          <folding>
+            <element signature="e#25#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/stages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="1224" column="18" lean-forward="false" selection-start-line="1224" selection-start-column="18" selection-end-line="1224" selection-end-column="18" />
+          <folding>
+            <element signature="e#282#506#0" expanded="false" />
+            <element signature="e#539#775#0" expanded="false" />
+            <element signature="e#797#948#0" expanded="false" />
+            <element signature="e#1104#1266#1" expanded="false" />
+            <element signature="e#2046#2552#0" expanded="false" />
+            <element signature="e#2046#2418#1" expanded="false" />
+            <element signature="e#2602#2923#0" expanded="false" />
+            <element signature="e#2602#2893#1" expanded="false" />
+            <element signature="e#2964#3190#0" expanded="false" />
+            <element signature="e#2964#3088#1" expanded="false" />
+            <element signature="e#3235#3464#0" expanded="false" />
+            <element signature="e#3235#3358#1" expanded="false" />
+            <element signature="e#3544#4060#1" expanded="false" />
+            <element signature="e#4833#5304#0" expanded="false" />
+            <element signature="e#4970#5006#0" expanded="false" />
+            <element signature="e#5591#6338#0" expanded="false" />
+            <element signature="e#5591#5927#1" expanded="false" />
+            <element signature="e#6047#6198#0" expanded="false" />
+            <element signature="e#6083#6198#0" expanded="false" />
+            <element signature="e#6364#6881#0" expanded="false" />
+            <element signature="e#6394#6881#0" expanded="false" />
+            <element signature="e#6394#6604#1" expanded="false" />
+            <element signature="e#6910#8220#0" expanded="false" />
+            <element signature="e#6930#8219#0" expanded="false" />
+            <element signature="e#8253#9730#0" expanded="false" />
+            <element signature="e#8273#9729#0" expanded="false" />
+            <element signature="e#9763#11485#0" expanded="false" />
+            <element signature="e#9783#11484#0" expanded="false" />
+            <element signature="e#11520#14658#0" expanded="false" />
+            <element signature="e#11540#14657#0" expanded="false" />
+            <element signature="e#14693#18893#0" expanded="false" />
+            <element signature="e#14713#18892#0" expanded="false" />
+            <element signature="e#18921#22650#0" expanded="false" />
+            <element signature="e#18941#22649#0" expanded="false" />
+            <element signature="e#22699#22940#0" expanded="false" />
+            <element signature="e#22985#23040#0" expanded="false" />
+            <element signature="e#23070#23108#0" expanded="false" />
+            <element signature="e#23142#23340#0" expanded="false" />
+            <element signature="e#23405#24215#0" expanded="false" />
+            <element signature="e#23455#23481#0" expanded="false" />
+            <element signature="e#23615#23687#0" expanded="false" />
+            <element signature="e#23651#23687#0" expanded="false" />
+            <element signature="e#23728#23895#0" expanded="false" />
+            <element signature="e#23767#23895#0" expanded="false" />
+            <element signature="e#23929#24121#0" expanded="false" />
+            <element signature="e#24280#24462#0" expanded="false" />
+            <element signature="e#24280#24406#1" expanded="false" />
+            <element signature="e#24531#24652#1" expanded="false" />
+            <element signature="e#25039#25315#0" expanded="false" />
+            <element signature="e#25105#25315#0" expanded="false" />
+            <element signature="e#25169#25315#0" expanded="false" />
+            <element signature="e#25375#29961#0" expanded="false" />
+            <element signature="e#25395#27022#0" expanded="false" />
+            <element signature="e#27067#27152#0" expanded="false" />
+            <element signature="e#27184#27638#0" expanded="false" />
+            <element signature="e#27184#27296#1" expanded="false" />
+            <element signature="e#27512#27587#0" expanded="false" />
+            <element signature="e#27689#27886#0" expanded="false" />
+            <element signature="e#27769#27853#0" expanded="false" />
+            <element signature="e#27938#28368#0" expanded="false" />
+            <element signature="e#28019#28334#0" expanded="false" />
+            <element signature="e#28418#28679#0" expanded="false" />
+            <element signature="e#28450#28590#0" expanded="false" />
+            <element signature="e#28713#28896#0" expanded="false" />
+            <element signature="e#28934#29005#0" expanded="false" />
+            <element signature="e#29069#29961#0" expanded="false" />
+            <element signature="e#29069#29156#1" expanded="false" />
+            <element signature="e#29282#29548#0" expanded="false" />
+            <element signature="e#29727#29923#0" expanded="false" />
+            <element signature="e#29988#34387#0" expanded="false" />
+            <element signature="e#30008#31022#0" expanded="false" />
+            <element signature="e#31095#32218#0" expanded="false" />
+            <element signature="e#31235#31418#0" expanded="false" />
+            <element signature="e#31467#31603#0" expanded="false" />
+            <element signature="e#31647#31911#0" expanded="false" />
+            <element signature="e#32062#32218#0" expanded="false" />
+            <element signature="e#32268#32602#0" expanded="false" />
+            <element signature="e#32300#32513#0" expanded="false" />
+            <element signature="e#32643#33236#0" expanded="false" />
+            <element signature="e#32892#32982#0" expanded="false" />
+            <element signature="e#32931#32982#0" expanded="false" />
+            <element signature="e#33281#33357#0" expanded="false" />
+            <element signature="e#33425#34387#0" expanded="false" />
+            <element signature="e#33425#33588#1" expanded="false" />
+            <element signature="e#33677#34117#0" expanded="false" />
+            <element signature="e#33773#33877#0" expanded="false" />
+            <element signature="e#33933#34015#0" expanded="false" />
+            <element signature="e#34178#34240#0" expanded="false" />
+            <element signature="e#34267#34363#0" expanded="false" />
+            <element signature="e#34434#35447#0" expanded="false" />
+            <element signature="e#35760#35916#0" expanded="false" />
+            <element signature="e#35966#36231#0" expanded="false" />
+            <element signature="e#35998#36142#0" expanded="false" />
+            <element signature="e#36265#36323#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mafiademonstration/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="262" column="25" lean-forward="false" selection-start-line="262" selection-start-column="25" selection-end-line="262" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#615#704#0" expanded="false" />
+            <element signature="e#2050#2875#0" expanded="false" />
+            <element signature="e#2908#2924#0" expanded="false" />
+            <element signature="e#3160#3480#0" expanded="false" />
+            <element signature="e#5724#5885#0" expanded="false" />
+            <element signature="e#7771#7991#0" expanded="false" />
+            <element signature="e#8030#8145#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

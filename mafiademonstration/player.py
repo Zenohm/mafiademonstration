@@ -1,17 +1,13 @@
-from functools import partial
-from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
-from kivy.utils import get_color_from_hex as to_rgba
-from kivy.properties import (
-        BooleanProperty, DictProperty,
-        StringProperty, NumericProperty
-)
 from kivy.logger import Logger
-from kivy.uix.bubble import Bubble
-from kivy.uix.bubble import BubbleButton
+from kivy.properties import (
+    BooleanProperty, DictProperty,
+    StringProperty, NumericProperty,
+)
 from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
+from kivy.utils import get_color_from_hex as to_rgba
 
 try:
     from border_behavior import BorderBehavior
@@ -20,25 +16,48 @@ except ModuleNotFoundError:
     from mafiademonstration.border_behavior import BorderBehavior
     from mafiademonstration.hover_behavior import HoverBehavior
 
-
-try:
-    Builder.load_file('mafiademonstration/player.kv')
-except FileNotFoundError:
-    Builder.load_file('../mafiademonstration/player.kv')
+Builder.load_string("""
+#:import to_rgba kivy.utils.get_color_from_hex
+#:import Logger kivy.logger.Logger
+""")
 
 
 class Player(BoxLayout, BorderBehavior):
+    Builder.load_string("""
+<Player>:
+    orientation: "vertical"
+    on_is_alive: self.icon = self.icon_dead
+    # The second layer in this dictionary is REQUIRED.
+    # Shallow copy dragons will get angry if you flatten this dict. Hiss.
+    actions: {"accuse": {"player": None}, "suspect": {"player": None}, "vote": {"decision": "abstain"}}
+
+    Label:
+        text: root.name
+        size_hint_y: 0.2
+        color: to_rgba("212121")
+    """)
+
     name = StringProperty("player")
     number = NumericProperty(0)
     icon = StringProperty()
-    alive = BooleanProperty(True)
-    mafia = BooleanProperty(False)
-    agent = BooleanProperty(False)
+    icon_alive = StringProperty("data/icons/player_alive.png")
+    icon_dead = StringProperty("data/icons/player_dead.png")
+    is_alive = BooleanProperty(True)
+    is_agent = BooleanProperty(False)
+    is_mafia = BooleanProperty(False)
     is_on_trial = BooleanProperty(False)
+    is_on_death_row = BooleanProperty(False)
+    is_selected = BooleanProperty(False)
     strategic_value = NumericProperty(0)
     # Holds a reference to the action that is to be taken on another player.
-    current_action = StringProperty()
+    current_action = StringProperty("abstain")
     actions = DictProperty()
+
+    selected_player = None
+
+    def __init__(self, parent_instance=None, **kwargs):
+        super().__init__(**kwargs)
+        self.parent_instance = parent_instance
 
     def __iter__(self):
         flattened_actions = self.actions.copy()
@@ -49,29 +68,21 @@ class Player(BoxLayout, BorderBehavior):
                     flattened_actions[action][key] = value.number
 
         return iter([('name', self.name),
-                     ('agent', self.agent),
-                     ('number', self.number),
-                     ('is_on_trial', self.is_on_trial),
                      ('icon', self.icon),
-                     ('mafia', self.mafia),
-                     ('alive', self.alive),
+                     ('number', self.number),
+                     ('is_alive', self.is_alive),
+                     ('is_agent', self.is_agent),
+                     ('is_mafia', self.is_mafia),
+                     ('is_on_trial', self.is_on_trial),
                      ('strategic_value', self.strategic_value),
                      ('current_action', self.current_action),
                      ('actions', flattened_actions)])
 
-    def suspect(self, other):
-        pass
+    def __str__(self):
+        return self.name
 
-    def accuse(self, other):
-        pass
-
-    def kill(self, other):
-        pass
-
-    def die(self):
-        stage = App.get_running_app().root.current_screen
-        stage.players[self.number].alive = self.alive = False
-        stage.players[self.number].icon = self.icon = "data/icons/player_dead.png"
+    def __repr__(self):
+        return f"Player(name={self.name}, number={self.number}, is_alive={self.is_alive}, is_agent={self.is_agent}, is_selected={self.is_selected})"
 
     def set_strategic_value(self, strategic_value):
         tolerance = 1.5
@@ -85,90 +96,246 @@ class Player(BoxLayout, BorderBehavior):
 
         self.update_borders()
 
-    def ready_action(self, action) -> None:
+    def ready_action(self, action) -> object:
         """
         Designate the current player as the one who will be performing actions.
         This is done by setting the player instance as the selected player.
         """
-        stage = App.get_running_app().root.current_screen
         self.current_action = action.lower()
-        stage.selected_player = self
+        selected_player = self
         Logger.info(f"Player: {self.name} readies {self.current_action}")
 
-        if self.current_action == "die":
-            self.die()
-
         if self.current_action == "guilty" or self.current_action == "innocent":
-            stage.players[self.number].actions["vote"]["decision"] = self.current_action
+            self.actions["vote"]["decision"] = self.current_action
 
         if self.current_action == "abstain":
-            # Fix Issue #17
-            stage.players[self.number].actions["accuse"]["player"] = None
-            stage.players[self.number].actions["suspect"]["player"] = None
-            stage.selected_player = None
+            selected_player = None
 
-    def act_on(self, player) -> None:
+        return selected_player
+
+    def act_on(self, other_player) -> None:
         assert self.actions is not None
-        assert player is not None
-        assert issubclass(type(self), Player)
         assert self.actions != {}
+        assert issubclass(type(self), Player)
 
-        self.current_action = self.current_action.lower()
+        if other_player is None:
+            Logger.warning("Player: There was an attempt to act on a non-existent player!")
+            return
 
-        if self == player:
+        if self == other_player:
             Logger.warning(f"Player: {self.name} tried to act on themselves.")
             return
 
-        if self.current_action == 'suspect' and self.actions["accuse"]["player"] != player:
-            self.actions["suspect"]['player'] = player
-        elif self.current_action == 'accuse' and self.actions["suspect"]["player"] != player:
-            self.actions["accuse"]['player'] = player
+        if self.current_action == "suspect" and self.actions["accuse"]["player"] != other_player:
+            self.actions["suspect"]["player"] = other_player
+        elif self.current_action == "accuse" and self.actions["suspect"]["player"] != other_player:
+            self.actions["accuse"]["player"] = other_player
 
-        Logger.info(f"Player: {self.name} {self.current_action} {player.name}")
+        Logger.info(f"Player: {self.name} {self.current_action} {other_player.name}")
 
-    def show_bubble(self) -> None:
-        self.bubb = Bubble(size_hint=(None, None),
-                           size=(160, 30),
-                           pos_hint={'center_x': .5, 'y': .6})
-        accuse = BubbleButton(text='Accuse')
-        suspect = BubbleButton(text='Suspect')
-        accuse.bind(on_press=partial(self.hide_bubble, accuse))
-        suspect.bind(on_press=partial(self.hide_bubble, suspect))
-        self.bubb.add_widget(accuse)
-        self.bubb.add_widget(suspect)
-        self.ids.empty.add_widget(self.bubb)
+    @staticmethod
+    def change_selected_player(player):
+        """
+        There's something strange going on with Kivy and setting things based
+        on instances. This is probably a result of having multiple instances of
+        the singletons. Fuck Singletons.
+        :param player:
+        :return:
+        """
+        if Player.selected_player is not None:
+            Player.selected_player.is_selected = False
 
-    def hide_bubble(self, instance, *args):
-        self.ids.empty.remove_widget(self.bubb)
+        if player:
+            if player.parent_instance:
+                Player.selected_player = player.parent_instance
+            else:
+                Player.selected_player = player
+            Player.selected_player.is_selected = True
+        else:
+            Player.selected_player = None
 
 
 class PlayerIcon(Player):
     """
     Used for dead players and other unclickable player icons.
     """
-    pass
+    Builder.load_string("""
+<PlayerIcon>:
+    Image:
+        source: root.icon
+    """)
 
 
 class DiscussionPlayer(Player):
-    pass
+    Builder.load_string("""
+<DiscussionPlayer>:
+    drop_widget: drop_down.__self__
+
+    ImageButton:
+        source: root.icon
+        on_release:
+            if root.selected_player: root.selected_player.act_on(root); root.change_selected_player(None)
+            else: drop_down.open(self)
+
+    DropDown:
+        id: drop_down
+        drop_down: drop_down.__self__
+        on_select:
+            Logger.info("{}".format(args[1]))
+
+        Button:
+            text: "Accuse"
+            size_hint_y: None
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            height: "38dp"
+            on_release:
+                root.parent_instance.current_action = "accuse"
+                root.change_selected_player(root)
+                drop_down.select("Ready to accuse another player")
+
+        Button:
+            text: "Suspect"
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            size_hint_y: None
+            height: "38dp"
+            on_release:
+                root.parent_instance.current_action = "suspect"
+                root.change_selected_player(root)
+                drop_down.select("Ready to suspect another player")
+
+        Button:
+            text: "Abstain"
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            size_hint_y: None
+            height: "38dp"
+            on_release:
+                # Fix Issue #17
+                root.parent_instance.current_action = "abstain"
+                root._reset_actions()
+                root.change_selected_player(None)
+                drop_down.select("Abstaining from the vote")
+    
+    """)
+
+    def _reset_actions(self):
+        self.actions["accuse"]["player"] = None
+        self.actions["suspect"]["player"] = None
+
+
+class DiscussionAgent(Player):
+    Builder.load_string("""
+<DiscussionAgent>:
+    ImageButton:
+        source: root.icon
+        on_release:
+            if root.selected_player: root.selected_player.act_on(root); root.change_selected_player(None)
+    """)
 
 
 class NightMafiaPlayer(Player):
-    pass
+    Builder.load_string("""
+<NightMafiaPlayer>:
+    Image:
+        source: "data/icons/player_alive_mafia.png"
+    """)
 
 
 class NightSleepingPlayer(Player):
-    pass
+    Builder.load_string("""
+<NightSleepingPlayer>:
+    Image:
+        source: "data/icons/player_asleep.png"
+
+    Button:
+        text: "Kill"
+        size_hint_y: 0.5
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        on_press:
+            root.change_selected_player(root)
+
+    """)
 
 
 class TrialPlayer(Player):
-    pass
+    Builder.load_string("""
+<TrialPlayer>:
+    drop_widget: drop_down.__self__
+
+    Image:
+        source: root.icon
+
+    Button:
+        text: drop_down.text
+        size_hint_y: 0.4
+        color: to_rgba("F5F5F5")
+        background_color: to_rgba("212121")
+        on_release: drop_down.open(self)
+
+    DropDown:
+        id: drop_down
+        text: "Vote"
+        drop_down: drop_down.__self__
+        on_select:
+            self.text = args[1]
+
+        Button:
+            text: "Guilty"
+            size_hint_y: None
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            height: "38dp"
+            on_release:
+                root.actions["vote"]["decision"] = "guilty"
+                Logger.info("Voted guilty.")
+                drop_down.select(self.text)
+
+        Button:
+            text: "Innocent"
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            size_hint_y: None
+            height: "38dp"
+            on_release:
+                root.actions["vote"]["decision"] = "innocent"
+                Logger.info("Voted innocent.")
+                drop_down.select(self.text)
+
+        Button:
+            text: "Abstain"
+            color: to_rgba("F5F5F5")
+            background_color: to_rgba("607D8B")
+            size_hint_y: None
+            height: "38dp"
+            on_release:
+                root.actions["vote"]["decision"] = "abstain"
+                Logger.info("Abstained from the vote.")
+                drop_down.select(self.text)
+    """)
 
 
 class TrialAgent(Player):
-    pass
+    Builder.load_string("""
+<TrialAgent>:
+    Image:
+        source: root.icon
+
+    Label:
+        canvas.before:
+            Color:
+                rgba: to_rgba("212121")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        text: root.actions["vote"]["decision"].title()
+        size_hint_y: 0.4
+        color: to_rgba("F5F5F5")
+    """)
 
 
-class ImageButton(BorderBehavior, ButtonBehavior, Image, HoverBehavior):
+class ImageButton(Image, ButtonBehavior, BorderBehavior):
     pass
 
