@@ -25,25 +25,31 @@ class MafiaDemonstrationApp(App):
 
     title = 'Mafia Demonstration'
 
+    def __init__(self, **kwargs):
+        App.__init__(self)
+        self.language = kwargs.get("language", "en")
+        self.player_count = kwargs.get("player_count", 8)
+        self.agent_number = kwargs.get("agent_number", 0)
+
     def build(self) -> ScreenManager:
         """Initialize the GUI using the screen manager.
 
         :rtype: ScreenManager
-        :return: Root widget specified in the kv file of the app
+        :return: The screen manager which is to act as the root widget for the application.
         """
-        sm = ScreenManager(transition=NoTransition())
-        sm.add_widget(stages.MainMenu(name='mainmenu'))
-        sm.add_widget(stages.GameOverMenu(name='gameovermenu'))
-        sm.add_widget(stages.TutorialMenu(name='tutorial'))
-        sm.add_widget(stages.PlayerTutorial(name='playerstatus'))
-        sm.add_widget(stages.StagesTutorial(name='stagestutorial'))
-        sm.add_widget(stages.Credits(name='credits'))
-        sm.add_widget(stages.Loading(name='loading'))
-        sm.add_widget(stages.Discussion(name='discussion'))
-        sm.add_widget(stages.Trial(name='trial'))
-        sm.add_widget(stages.Night(name='night'))
+        manager = ScreenManager(transition=NoTransition())
+        manager.add_widget(stages.MainMenu(name='main_menu'))
+        manager.add_widget(stages.GameOverMenu(name='game_over_menu'))
+        manager.add_widget(stages.TutorialMenu(name='tutorial'))
+        manager.add_widget(stages.PlayerTutorial(name='player_status'))
+        manager.add_widget(stages.StagesTutorial(name='stages_tutorial'))
+        manager.add_widget(stages.Credits(name='credits'))
+        manager.add_widget(stages.Loading(name='loading'))
+        manager.add_widget(stages.Discussion(name='discussion'))
+        manager.add_widget(stages.Trial(name='trial'))
+        manager.add_widget(stages.Night(name='night'))
 
-        return sm
+        return manager
 
     def build_config(self, config) -> None:
         """Create a config file on disk and assign the ConfigParser object to
@@ -71,10 +77,7 @@ class MafiaDemonstrationApp(App):
     def on_config_change(self, config, section, key, value) -> None:
         if config is self.config:
             token = (section, key)
-            if token == ('user_settings', 'timer_interval'):
-                pass
-                # self.timer_interval = TIMER_OPTIONS[value]
-            elif token == ('user_settings', 'language'):
+            if token == ('user_settings', 'language'):
                 self.language = value
             elif token == ('user_settings', 'player_count'):
                 self.player_count = value

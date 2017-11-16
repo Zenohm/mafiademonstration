@@ -47,7 +47,9 @@ class BorderBehavior(Widget):
             'joint': self.JOINT,
             'dash_length': self.cur_dash_style['dash_length'],
             'dash_offset': self.cur_dash_style['dash_offset'],
-            # 'circle': (self.border_origin_x,self.border_origin_y,sqrt((self.size[0] - 2*self.line_width)**2 + (self.size[1] - 2*self.line_width)**2))
+            # 'circle': (self.border_origin_x,
+            #            self.border_origin_y,
+            #            sqrt((self.size[0] - 2*self.line_width)**2 + (self.size[1] - 2*self.line_width)**2))
         }
 
         with self.canvas.after:
