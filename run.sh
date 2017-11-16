@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-cd "/home/zen/Documents/Programs/Python/mafiademonstration"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
 python mafiademonstration

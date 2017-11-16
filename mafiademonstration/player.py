@@ -82,7 +82,13 @@ class Player(BoxLayout, BorderBehavior):
         return self.name
 
     def __repr__(self):
-        return f"Player(name={self.name}, number={self.number}, is_alive={self.is_alive}, is_agent={self.is_agent}, is_selected={self.is_selected})"
+        return f"Player(" \
+                f"name={self.name},   " \
+                f"number={self.number}, " \
+                f"is_alive={self.is_alive}, " \
+                f"is_agent={self.is_agent}, " \
+                f"is_selected={self.is_selected}" \
+               f")"
 
     def set_strategic_value(self, strategic_value):
         tolerance = 1.5
@@ -338,4 +344,3 @@ class TrialAgent(Player):
 
 class ImageButton(Image, ButtonBehavior, BorderBehavior):
     pass
-

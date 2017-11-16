@@ -316,7 +316,7 @@ class GameOverMenu(Menu):
 
                 Button:
                     text: "Main Menu"
-                    on_press: root.manager.current = "mainmenu"
+                    on_press: root.manager.current = "main_menu"
 
                 Button:
                     text: "Exit"
@@ -366,7 +366,7 @@ class TutorialMenu(Menu):
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
-                on_press: root.manager.current = "playerstatus"
+                on_press: root.manager.current = "player_status"
             Label:
 
         GridLayout:
@@ -377,7 +377,7 @@ class TutorialMenu(Menu):
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
-                on_press: root.manager.current = "stagestutorial"
+                on_press: root.manager.current = "stages_tutorial"
             Label:
 
         Label:
@@ -392,7 +392,7 @@ class TutorialMenu(Menu):
             valign: 'center'
             size_hint: [0.3, 0.075]
             pos: (root.width-self.width-15, 25)
-            on_press: root.manager.current = "mainmenu"
+            on_press: root.manager.current = "main_menu"
 
     """)
 
@@ -780,7 +780,7 @@ class Credits(Menu):
             Label:
             Button:
                 text: "Return"
-                on_press: root.manager.current = "mainmenu"
+                on_press: root.manager.current = "main_menu"
             Label:
 
         Label:
@@ -894,7 +894,7 @@ class Discussion(Stage):
             source: "data/icons/menu_button.png"
             pos_hint: {"center_x": 0.95, "center_y": 0.05}
             size_hint: (0.1, 0.1)
-            on_press: root.manager.current = "mainmenu"
+            on_press: root.manager.current = "main_menu"
 
         Label:
             text: root.action_text
@@ -954,6 +954,7 @@ class Discussion(Stage):
             self.load_stage("night")
 
     def write_to_mafia_log(self, *args):
+        Logger.debug(f"Mafia Log Arguments: {args}")
         output = "[b]Mafia List:[/b]\n"
         for player in self.players:
             if player.is_mafia and player.is_alive:
@@ -961,6 +962,7 @@ class Discussion(Stage):
         self.mafia_text = output
 
     def write_to_action_log(self, *args):
+        Logger.debug(f"Action Log Arguments: {args}")
         output = "[b]Action List:[/b]\n"
         for player in self.players:
             if player.actions['accuse']['player'] is not None:
@@ -1030,7 +1032,7 @@ class Trial(Stage):
             source: "data/icons/menu_button.png"
             pos_hint: {"center_x": 0.95, "center_y": 0.05}
             size_hint: (0.1, 0.1)
-            on_press: root.manager.current = "mainmenu"
+            on_press: root.manager.current = "main_menu"
 
         ImageButton:
             id: submit_button
@@ -1072,9 +1074,9 @@ class Trial(Stage):
         if winner == "Nobody":
             self.load_stage("night")
         else:
-            game_over = self.manager.get_screen("gameovermenu")
+            game_over = self.manager.get_screen("game_over_menu")
             game_over.text = "{} wins!".format(winner)
-            self.manager.current = "gameovermenu"
+            self.manager.current = "game_over_menu"
 
     def get_player_class(self, player):
         if player.is_alive:
@@ -1157,7 +1159,7 @@ class Night(Stage):
             source: "data/icons/menu_button.png"
             pos_hint: {"center_x": 0.95, "center_y": 0.05}
             size_hint: (0.1, 0.1)
-            on_press: root.manager.current = "mainmenu"
+            on_press: root.manager.current = "main_menu"
 
         ImageButton:
             id: submit_button
@@ -1187,9 +1189,9 @@ class Night(Stage):
         if winner == "Nobody":
             self.load_stage("discussion")
         else:
-            game_over = self.manager.get_screen("gameovermenu")
+            game_over = self.manager.get_screen("game_over_menu")
             game_over.text = "{} wins!".format(winner)
-            self.manager.current = "gameovermenu"
+            self.manager.current = "game_over_menu"
 
     def get_player_class(self, player):
         if player.is_alive:
@@ -1223,4 +1225,3 @@ class Night(Stage):
                 return player
 
         return None
-
