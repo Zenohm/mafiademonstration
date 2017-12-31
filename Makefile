@@ -30,7 +30,7 @@ deploy:
 clean:
 	rm -rf .cache
 	rm -rf mafiademonstration.egg-info
-	rm -rf mafiademonstration/__pycache__
+	rm -rf src/__pycache__
 	rm -rf tests/__pycache__
 
 run:

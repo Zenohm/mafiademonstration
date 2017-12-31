@@ -16,9 +16,8 @@ setup(
     long_description=read('README.rst'),
     license='MIT',
     keywords=(
-        "Python, cookiecutter, kivy, buildozer, pytest, projects, project "
-        "templates, example, documentation, tutorial, setup.py, package, "
-        "android, touch, mobile, NUI"
+        "Python, kivy, pytest, projects, project, "
+        "documentation, setup.py, package "
     ),
     url='https://github.com/zenohm/mafiademonstration',
     install_requires=[
@@ -37,7 +36,6 @@ setup(
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3',
-        'Topic :: Artistic Software',
         'Topic :: Multimedia :: Graphics :: Presentation',
         'Topic :: Software Development :: User Interfaces',
     ],

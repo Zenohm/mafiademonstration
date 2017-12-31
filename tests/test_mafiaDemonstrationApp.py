@@ -1,5 +1,5 @@
 from unittest import TestCase
-from mafiademonstration import mafiademonstration
+from src import mafiademonstration
 from kivy.uix.screenmanager import ScreenManager
 
 

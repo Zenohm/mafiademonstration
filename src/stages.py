@@ -19,8 +19,8 @@ try:
         TrialPlayer, TrialAgent
     )
 except ModuleNotFoundError:
-    from mafiademonstration.border_behavior import BorderBehavior
-    from mafiademonstration.player import (
+    from .border_behavior import BorderBehavior
+    from .player import (
         Player, PlayerIcon, DiscussionPlayer,
         NightSleepingPlayer, NightMafiaPlayer,
         TrialPlayer, TrialAgent

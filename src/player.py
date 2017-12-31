@@ -17,8 +17,8 @@ try:
     from border_behavior import BorderBehavior
     from hover_behavior import HoverBehavior
 except ModuleNotFoundError:
-    from mafiademonstration.border_behavior import BorderBehavior
-    from mafiademonstration.hover_behavior import HoverBehavior
+    from .border_behavior import BorderBehavior
+    from .hover_behavior import HoverBehavior
 
 
 try:

@@ -12,7 +12,7 @@ kivy.require('1.9.1')
 try:
     import stages
 except ModuleNotFoundError:
-    import mafiademonstration.stages as stages
+    from . import stages
 
 
 class MafiaDemonstrationApp(App):
