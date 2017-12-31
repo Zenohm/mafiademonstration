@@ -22,9 +22,9 @@ except ModuleNotFoundError:
 
 
 try:
-    Builder.load_file('mafiademonstration/player.kv')
+    Builder.load_file('src/player.kv')
 except FileNotFoundError:
-    Builder.load_file('../mafiademonstration/player.kv')
+    Builder.load_file('../src/player.kv')
 
 
 class Player(BoxLayout, BorderBehavior):

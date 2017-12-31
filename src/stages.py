@@ -27,9 +27,9 @@ except ModuleNotFoundError:
     )
 
 try:
-    Builder.load_file('mafiademonstration/stages.kv')
+    Builder.load_file('src/stages.kv')
 except FileNotFoundError:
-    Builder.load_file('../mafiademonstration/stages.kv')
+    Builder.load_file('../src/stages.kv')
 
 
 class Stage(Screen):
@@ -72,7 +72,7 @@ class Stage(Screen):
 
     @staticmethod
     def initialize_settings():
-        Config.read('mafiademonstration/mafiademonstration.ini')
+        Config.read('config.ini')
         Stage.player_count = Config.getint('user_settings', 'player_count')
         Stage.agent_number = Config.getint('user_settings', 'agent_number')
 

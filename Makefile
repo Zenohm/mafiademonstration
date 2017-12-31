@@ -30,3 +30,6 @@ clean:
 	rm -rf mafiademonstration.egg-info
 	rm -rf mafiademonstration/__pycache__
 	rm -rf tests/__pycache__
+
+run:
+	python src

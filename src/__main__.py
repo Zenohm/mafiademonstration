@@ -8,7 +8,7 @@ os.environ["KIVY_NO_ARGS"] = "1"
 
 
 try:
-    from mafiademonstration.mafiademonstration import MafiaDemonstrationApp
+    from src.mafiademonstration import MafiaDemonstrationApp
 except ModuleNotFoundError:
     from mafiademonstration import MafiaDemonstrationApp
 
