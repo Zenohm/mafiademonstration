@@ -14,8 +14,8 @@ test:
 	python setup.py test
 
 coverage:
-	python setup.py test -a '--cov=mafiademonstration --cov-report=html'
-	xdg-open htmlcov/index.html
+	coverage run setup.py test
+	coverage report
 
 docs:
 	$(MAKE) -C docs html
