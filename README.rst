@@ -6,15 +6,6 @@ A user friendly interface for playing a simplified game of Mafia.
 ----
 
 
-Features
---------
-
-* Minimal design with flat colors
-* Text labels that contain clickable links
-* Several slides that can be controlled via swipe gestures
-* Settings panel to change the slider transition delay (``<F1>``)
-
-
 Requirements
 ------------
 
@@ -38,23 +29,11 @@ Clone the repository:
     $ git clone https://github.com/zenohm/mafiademonstration.git
     $ cd mafiademonstration
 
-
-Install the app package in "editable" mode:
-
-.. code-block:: bash
-
-    $ python setup.py develop
-
-Install Kivy's garden tool and the required packages.
-
+Use the make tool to automatically install all dependencies required for the project:
 
 .. code-block:: bash
 
-    $ python -m pip install kivy-garden
-    $ garden install <module name>
-
-.. note:: You can find the required garden packages listed in the kivy-requirements file:
-
+    $ make dependencies
 
 
 Usage
@@ -64,7 +43,7 @@ Launch the app via:
 
 .. code-block:: bash
 
-    $ python mafiademonstration
+    $ make run
 
 Run the `pytest`_ test suite:
 

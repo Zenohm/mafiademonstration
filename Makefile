@@ -1,6 +1,8 @@
 .PHONY: docs po mo
 
 help:
+	@echo "run - run the project"
+	@echo "dependencies - install all requirements for the project to run"
 	@echo "test - run the test py.test suite"
 	@echo "coverage - generate a coverage report and open it"
 	@echo "docs - generate Sphinx HTML documentation and open it"
@@ -33,3 +35,9 @@ clean:
 
 run:
 	python src
+
+dependencies:
+	@echo "Note: Kivy can sometimes have troubles compiling correctly."
+	@echo "If on Linux consider using your system's package manager."
+	sudo pip install -r requirements.txt
+	garden install circularlayout
