@@ -9,7 +9,7 @@ A user friendly interface for playing a simplified game of Mafia.
 Requirements
 ------------
 
-To run "Mafia Demonstration" you only need `Kivy`_.
+To run "Mafia Demonstration" you will need `Kivy`_, `Click`_, and the circular layout library from Kivy's garden.
 
 Depending on the features that you want to use, you do require additional libs though.
 
@@ -92,6 +92,7 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`Buildozer`: https://github.com/kivy/buildozer
 .. _`Cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`Cookiedozer`: https://github.com/hackebrot/cookiedozer
+.. _`Click`: https://github.com/pallets/click
 .. _`Cython`: https://pypi.python.org/pypi/Cython/
 .. _`Kivy`: https://github.com/kivy/kivy
 .. _`MIT License`: http://opensource.org/licenses/MIT
